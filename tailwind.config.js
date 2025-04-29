@@ -31,7 +31,9 @@ export default {
     },
   },
   plugins: [
-    require('daisyui'),
+    require('daisyui'), 
+    require('tailwindcss-motion'),
+    require('tailwindcss-intersect') 
   ],
 }
 
