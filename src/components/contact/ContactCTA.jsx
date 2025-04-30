@@ -68,7 +68,7 @@ export const ContactMe = () => {
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="space-y-4 rounded-2xl bg-gray-800 bg-opacity-10 p-4 sm:p-6 md:p-8 text-center shadow-lg shadow-[rgba(255,255,255,0.1)] backdrop-blur-md intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth"
+        className="space-y-4 rounded-2xl bg-gray-800 bg-opacity-10 p-4 sm:p-6 md:p-8 text-center shadow-lg shadow-[rgba(255,255,255,0.1)] backdrop-blur-md intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth max-w-3xl mx-auto"
       >
         <div className="grid gap-y-4 sm:grid-cols-2 sm:justify-center sm:gap-x-2 md:gap-x-4">
           <input

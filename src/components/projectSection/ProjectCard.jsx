@@ -14,7 +14,7 @@ export const ProjectCard = ({
 }) => {
   return (
     <ObserverProvider>
-      <div className="intersect-once card glass w-96 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth">
+      <div className="intersect-once card glass w-96 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth hover:scale-105 duration-300 ease-in-out">
         <figure>
           <img className="h-56 w-96 object-cover" src={projectImg} alt="" />
         </figure>

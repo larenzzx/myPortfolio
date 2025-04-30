@@ -3,9 +3,11 @@ import { ContactMe } from "./ContactCTA";
 
 export const Contact = () => {
   return (
-    <div className="container min-h-screen">
+    <div className="container grid min-h-screen">
       <SectionTitle id="contact" title="Contact Me" />
-      <ContactMe />
+      <div className="w-full">
+        <ContactMe />
+      </div>
     </div>
   );
 };

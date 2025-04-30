@@ -57,7 +57,7 @@ const About = () => {
                     <FontAwesomeIcon icon={faLinkedin} />
                   </a>
                 </div>
-                <Button btn="Contact Me" />
+                <Button link={'#contact'} btn="Contact Me" />
               </div>
             </div>
           </div>

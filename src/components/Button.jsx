@@ -1,6 +1,6 @@
-const Button = ({btn}) => {
+const Button = ({btn, link}) => {
     return (
-        <a className="btn btn-primary">{btn}</a>
+        <a href={link} className="btn btn-primary">{btn}</a>
     );
 };
 

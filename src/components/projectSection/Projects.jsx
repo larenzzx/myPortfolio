@@ -6,6 +6,8 @@ import se from "../../assets/SE.svg";
 import ml from "../../assets/ml.svg";
 import ecom from "../../assets/ecommerce.svg";
 import crimson from "../../assets/crimsonquest.svg";
+import todo from "../../assets/todolist.svg";
+import pokemon from "../../assets/pokemon.svg";
 
 export const Projects = () => {
   return (
@@ -20,6 +22,25 @@ export const Projects = () => {
           projectRole={"Role: Full-stack Developer"}
           link={"https://github.com/larenzzx/oneZamboanga_capstone"}
           liveView={false}
+        />
+
+        <ProjectCard
+          projectImg={pokemon}
+          projectDetail={"IT142 WEEKLY PROJECT"}
+          projectTitle={"MiniPokedex with Battle Simulation"}
+          projectRole={"Individual Project"}
+          link={"https://github.com/larenzzx/reactPokedex.git"}
+          liveView={false}
+        />
+
+        <ProjectCard
+          projectImg={todo}
+          projectDetail={"IT142 WEEKLY PROJECT"}
+          projectTitle={"ReactJS Todo-list"}
+          projectRole={"Individual Project"}
+          link={"https://github.com/larenzzx/react-Todolist.git"}
+          liveView={true}
+          liveLink={"https://larenzzx-react-todolist.netlify.app/"}
         />
 
         <ProjectCard
