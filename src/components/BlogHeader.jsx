@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
-function Header() {
+function BlogHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -40,43 +41,46 @@ function Header() {
                 className="menu dropdown-content menu-sm z-50 mt-3 w-52 rounded-box bg-gray-900 bg-clip-padding p-2 shadow"
               >
                 <li>
-                  <a href="#about">About</a>
+                  <Link to="/#about">About</Link>
                 </li>
                 <li>
-                  <a href="#skills">Skills</a>
+                  <Link to="/#skills">Skills</Link>
                 </li>
                 <li>
-                  <a href="#projects">Projects</a>
+                  <Link to="/#projects">Projects</Link>
                 </li>
                 <li>
-                  <a href="#contact">Contact</a>
+                  <Link to="/#contact">Contact</Link>
                 </li>
                 <li>
-                  <a href="#blogs">Blogs</a>
+                  <Link to="/#blogs">Blogs</Link>
                 </li>
               </ul>
             )}
           </div>
-          <a href="#" className="btn btn-ghost animate-pulse text-xl font-bold">
+          <Link
+            to="/"
+            className="btn btn-ghost animate-pulse text-xl font-bold"
+          >
             larenzz
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a href="#about">About</a>
+              <Link to="/#about">About</Link>
             </li>
             <li>
-              <a href="#skills">Skills</a>
+              <Link to="/#skills">Skills</Link>
             </li>
             <li>
-              <a href="#projects">Projects</a>
+              <Link to="/#projects">Projects</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="/#contact">Contact</Link>
             </li>
             <li>
-              <a href="#blogs">Blogs</a>
+              <Link to="/#blogs">Blogs</Link>
             </li>
           </ul>
         </div>
@@ -88,4 +92,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default BlogHeader;
