@@ -113,7 +113,7 @@ function Header() {
               </ul>
             )}
           </div>
-          <a href="#" className="btn btn-ghost animate-pulse text-xl font-bold">
+          <a href="#" className="btn btn-ghost animate-pulse text-base sm:text-xl font-bold">
             larenzz
           </a>
         </div>

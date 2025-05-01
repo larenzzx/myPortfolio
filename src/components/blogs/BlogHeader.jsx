@@ -116,7 +116,7 @@ function BlogHeader() {
           </div>
           <Link
             to="/"
-            className="btn btn-ghost animate-pulse text-xl font-bold"
+            className="btn btn-ghost animate-pulse text-base sm:text-xl font-bold"
           >
             larenzz
           </Link>
