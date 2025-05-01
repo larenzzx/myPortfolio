@@ -3,14 +3,15 @@ import { SectionTitle } from "../SectionTitle";
 
 export const Experience = () => {
   return (
-    <div className="container">
+    <div className="container h-screen">
       <ObserverProvider>
-        <div
-          id="#experience"
+        {/* <div
+          id="#exp"
           className="grid place-items-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text pb-6 pt-20 text-4xl font-bold text-transparent sm:text-5xl"
         >
           <h1>Experience</h1>
-        </div>
+        </div> */}
+        <SectionTitle id="exp" title="Experience" />
 
         <div className="intersect-once px-4 py-8 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth">
           <div className="mx-auto max-w-3xl space-y-6 text-center lg:text-left">

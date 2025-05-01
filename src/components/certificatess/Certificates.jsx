@@ -1,5 +1,4 @@
 import React from "react";
-import { ObserverProvider } from "../ObserverProvider";
 import { CertificateCard } from "./CertificateCard";
 import { SectionTitle } from "../SectionTitle";
 import frontCert from "../../assets/frontCert.png";
@@ -34,18 +33,15 @@ const certificates = [
 export const Certificates = () => {
   return (
     <>
-      <div className="container mb-6">
-        <ObserverProvider>
+      <div className="container mb-12">
           <SectionTitle id="certs" title={"My Certificates"} />
-
-          <section className="intersect-once mx-auto max-w-7xl px-4 py-8 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth">
+          <section>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {certificates.map((cert, index) => (
                 <CertificateCard key={index} certificate={cert} />
               ))}
             </div>
           </section>
-        </ObserverProvider>
       </div>
     </>
   );

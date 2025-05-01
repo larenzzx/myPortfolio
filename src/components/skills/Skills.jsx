@@ -15,7 +15,7 @@ import swipeLogo from "../../assets/swiper-logo.svg";
 import dataTable from "../../assets/datatables.svg";
 
 // backend logos
-import phpLogo from "../../assets/php_dark.svg";
+import php from "../../assets/php.svg";
 import pythonLogo from "../../assets/python.svg";
 import sqlLogo from "../../assets/mysql.svg";
 import djangoLogo from "../../assets/django.svg";
@@ -23,6 +23,7 @@ import djangoLogo from "../../assets/django.svg";
 // git logos
 import gitLogo from "../../assets/git.svg";
 import githubLogo from "../../assets/github-dark.svg";
+import github from "../../assets/github-mark.svg";
 
 import { SkillInfo } from "./Skill-info";
 import { SkillLogo } from "./Skill-logo";
@@ -32,7 +33,7 @@ export const Skills = () => {
     <div className="container min-h-screen">
       <SectionTitle id="skills" title="Skills" />
 
-      <div className="mt-4 rounded-2xl bg-gray-800 bg-opacity-10 p-4 text-center shadow-lg shadow-[rgba(255,255,255,0.1)] backdrop-blur-md">
+      <div className="mt-4 rounded-2xl bg-base-100/70 p-4 text-center shadow-lg shadow-base-content/10 backdrop-blur-md text-base-content">
         <div className="mb-8 text-center">
           <SkillInfo info="Frontend Development" />
           <div className="md:gap flex flex-wrap justify-center gap-4 py-6">
@@ -53,7 +54,7 @@ export const Skills = () => {
         <div className="mb-8 text-center">
           <SkillInfo info="Backend Development" />
           <div className="md:gap flex flex-wrap justify-center gap-4 py-6">
-            <SkillLogo logos={phpLogo} tooltip="PHP" />
+            <SkillLogo logos={php} tooltip="PHP" />
             <SkillLogo logos={pythonLogo} tooltip="python" />
             <SkillLogo logos={sqlLogo} tooltip="MySQL" />
             <SkillLogo logos={djangoLogo} tooltip="django" />
@@ -64,7 +65,7 @@ export const Skills = () => {
           <SkillInfo info="Version Control & Collaboration" />
           <div className="md:gap flex flex-wrap justify-center gap-4 py-6">
             <SkillLogo logos={gitLogo} tooltip="Git" />
-            <SkillLogo logos={githubLogo} tooltip="GitHub" />
+            <SkillLogo logos={github} tooltip="GitHub" />
           </div>
         </div>
       </div>
