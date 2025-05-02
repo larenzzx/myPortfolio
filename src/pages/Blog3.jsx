@@ -7,19 +7,19 @@ import blog3 from "../assets/blog3.png";
 
 const blogData = [
   {
-    title: "Museum Exploration & Philippine Heritage",
+    title: "Museum Exploration",
     img: blog3,
-    date: "April 14, 2025",
-    location: "Manila, Philippines",
-    tags: ["travel", "history", "philippines", "manila"],
+    date: "April 9, 2025",
+    location: "National Museum of Natural History, Manila",
+    tags: ["travel", "EducationalTrip", "NationalMuseumPH ", "NaturalHistory"],
     content: [
-      "Our journey began with an early morning arrival at Manila's Ninoy Aquino International Airport. After a smooth immigration process, we headed straight to DJM Dormitory to drop off our luggage before embarking on our first day of exploration.",
+      "Day 3 brought us to the heart of Manila for an immersive and eye-opening tour at the National Museum of Natural History. The museum's grand architecture and intricate interiors made a stunning first impression from the Tree of Life atrium to the beautifully preserved natural exhibits.",
 
-      "The historical city tour started at Rizal Park, a sprawling urban park dedicated to the Philippine national hero, José Rizal. The park features a monument marking the spot where Rizal was executed, which played a pivotal role in inspiring the Philippine revolution against Spanish colonization.",
+      "We explored a wide range of displays, from ancient fossils and preserved wildlife to marine biodiversity and Philippine ecosystems. Each exhibit gave us a deeper appreciation for our natural heritage and the importance of conservation and education.",
 
-      "Next, we visited the nearby walled city of Intramuros, a well-preserved Spanish colonial settlement. The stone architecture and cobblestone streets transported us back in time as we explored San Agustin Church, the oldest stone church in the Philippines and a UNESCO World Heritage site.",
+      "The museum visit wasn't just informative, it was also inspiring. Walking through the galleries, we saw how history, science, and culture are interconnected, and how important it is to preserve them for future generations. Plus, we had fun capturing memories and learning new things along the way!",
 
-      "As the day wound down, we made our way to SM MOA and witness its famous sunset. The vibrant hues of orange and purple stretching across the horizon created a perfect ending to our first day in the Philippines. We enjoyed a seafood dinner at one of the local restaurants along the bay, savoring fresh Filipino cuisine while watching the city lights come alive.",
+      "It was a meaningful and memorable experience that truly added value to our tour.",
     ],
   },
 ];

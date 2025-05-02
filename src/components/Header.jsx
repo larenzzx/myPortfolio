@@ -7,35 +7,35 @@ function Header() {
   const [currentTheme, setCurrentTheme] = useState("dark");
 
   const themes = [
-    "light",
-    "dark",
-    "cupcake",
-    "bumblebee",
-    "emerald",
-    "corporate",
-    "synthwave",
-    "retro",
-    "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
+    { name: "light", icon: "☀️" },
+    { name: "dark", icon: "🌙" },
+    { name: "cupcake", icon: "🧁" },
+    { name: "bumblebee", icon: "🐝" },
+    { name: "emerald", icon: "💚" },
+    { name: "corporate", icon: "🏢" },
+    { name: "synthwave", icon: "🌌" },
+    { name: "retro", icon: "🕹️" },
+    { name: "cyberpunk", icon: "⚡" },
+    { name: "valentine", icon: "❤️" },
+    { name: "halloween", icon: "🎃" },
+    { name: "garden", icon: "🌼" },
+    { name: "forest", icon: "🌲" },
+    { name: "aqua", icon: "💧" },
+    { name: "lofi", icon: "📼" },
+    { name: "pastel", icon: "🖍️" },
+    { name: "fantasy", icon: "🧚" },
+    { name: "wireframe", icon: "🦴" },
+    { name: "black", icon: "🖤" },
+    { name: "luxury", icon: "💎" },
+    { name: "dracula", icon: "🧛" },
+    { name: "cmyk", icon: "🖨️" },
+    { name: "autumn", icon: "🍂" },
+    { name: "business", icon: "📊" },
+    { name: "acid", icon: "☣️" },
+    { name: "lemonade", icon: "🍋" },
+    { name: "night", icon: "🌃" },
+    { name: "coffee", icon: "☕" },
+    { name: "winter", icon: "❄️" },
   ];
 
   const toggleMenu = () => {
@@ -113,7 +113,10 @@ function Header() {
               </ul>
             )}
           </div>
-          <a href="#" className="btn btn-ghost animate-pulse text-base sm:text-xl font-bold">
+          <a
+            href="#"
+            className="btn btn-ghost animate-pulse text-base font-bold sm:text-xl"
+          >
             larenzz
           </a>
         </div>
@@ -171,12 +174,13 @@ function Header() {
                 className="menu dropdown-content z-50 max-h-96 w-52 overflow-y-auto rounded-box bg-base-200 p-2 shadow"
               >
                 {themes.map((theme) => (
-                  <li key={theme}>
+                  <li key={theme.name}>
                     <a
-                      className={theme === currentTheme ? "active" : ""}
-                      onClick={() => changeTheme(theme)}
+                      className={theme.name === currentTheme ? "active" : ""}
+                      onClick={() => changeTheme(theme.name)}
                     >
-                      {theme}
+                      <span className="mr-2">{theme.icon}</span>
+                      {theme.name}
                     </a>
                   </li>
                 ))}

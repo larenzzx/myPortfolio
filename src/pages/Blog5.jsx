@@ -9,17 +9,17 @@ const blogData = [
   {
     title: "Urban Mobility & Transport Systems Tour",
     img: blog5,
-    date: "April 14, 2025",
-    location: "Manila, Philippines",
-    tags: ["travel", "history", "philippines", "manila"],
+    date: "April 11, 2025",
+    location: "Metro Manila, Philippines",
+    tags: ["travel", "EducationalTrip", "UrbanTransport", "TrafficEngineering", "LRTLine2"],
     content: [
-      "Our journey began with an early morning arrival at Manila's Ninoy Aquino International Airport. After a smooth immigration process, we headed straight to DJM Dormitory to drop off our luggage before embarking on our first day of exploration.",
+      "Day 5 offered a fascinating behind-the-scenes look at how Metro Manila keeps its people moving efficiently amidst the hustle and bustle of city life.",
 
-      "The historical city tour started at Rizal Park, a sprawling urban park dedicated to the Philippine national hero, José Rizal. The park features a monument marking the spot where Rizal was executed, which played a pivotal role in inspiring the Philippine revolution against Spanish colonization.",
+      "We began our day at the Traffic Engineering Center, where we learned how traffic flow is monitored and managed across the metro. From traffic light coordination to real-time traffic data, it was insightful to see the level of planning and technology involved in minimizing congestion and ensuring road safety.",
 
-      "Next, we visited the nearby walled city of Intramuros, a well-preserved Spanish colonial settlement. The stone architecture and cobblestone streets transported us back in time as we explored San Agustin Church, the oldest stone church in the Philippines and a UNESCO World Heritage site.",
+      "In the second half of the day, we explored the inner workings of the LRT Line 2. This gave us a deeper understanding of how public transportation systems operate—from train scheduling to infrastructure design and maintenance. Witnessing how such a large-scale transit system is planned and managed helped us appreciate the complexities of urban mobility and how crucial efficient transport systems are to the daily lives of millions.",
 
-      "As the day wound down, we made our way to SM MOA and witness its famous sunset. The vibrant hues of orange and purple stretching across the horizon created a perfect ending to our first day in the Philippines. We enjoyed a seafood dinner at one of the local restaurants along the bay, savoring fresh Filipino cuisine while watching the city lights come alive.",
+      "This day not only broadened our knowledge of transportation engineering and urban planning but also gave us a greater appreciation for the invisible systems that keep cities running smoothly.",
     ],
   },
 ];

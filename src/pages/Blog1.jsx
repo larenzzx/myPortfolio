@@ -9,9 +9,9 @@ const blogData = [
   {
     title: "Arrival in Manila & Historical City Tour",
     img: blog1,
-    date: "April 14, 2025",
+    date: "April 7, 2025",
     location: "Manila, Philippines",
-    tags: ["travel", "history", "philippines", "manila"],
+    tags: ["travel", "EducationalTrip", "history", "manila"],
     content: [
       "Our journey began with an early morning arrival at Manila's Ninoy Aquino International Airport. After a smooth immigration process, we headed straight to DJM Dormitory to drop off our luggage before embarking on our first day of exploration.",
 

@@ -1,8 +1,8 @@
 export const BlogPost = ({ blog }) => {
   return (
-    <div className="mx-auto max-w-4xl pb-12">
+    <div className="mx-auto max-w-4xl pb-12 -motion-translate-x-in-100 motion-translate-y-in-75">
       <div className="grid place-items-center mb-8">
-        <img src={blog.img} className="md:max-w-lg object-cover rounded-lg" alt="" />
+        <img src={blog.img} className="md:max-w-lg object-cover border border-gray-200 rounded-lg duration-300 hover:scale-105" alt="" />
       </div>
 
       {/* Blog Header - Date */}

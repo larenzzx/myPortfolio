@@ -3,7 +3,7 @@ import { SectionTitle } from "../SectionTitle";
 
 export const Experience = () => {
   return (
-    <div className="container h-screen">
+    <div className="container min-h-screen">
       <ObserverProvider>
         {/* <div
           id="#exp"
@@ -23,8 +23,7 @@ export const Experience = () => {
               developer under the company name{" "}
               <span className="font-medium text-primary">Innovix</span> for our
               Software Engineering project. Our team collaborated with our
-              client,{" "}
-              <span className="font-medium text-primary">Ma'am Lucy</span> from{" "}
+              client from {" "}
               <span className="font-medium text-primary">WESMAARRDEC</span>, to
               develop a comprehensive{" "}
               <span className="font-medium text-primary">
@@ -38,9 +37,7 @@ export const Experience = () => {
               In addition to this project, I have gained valuable experience
               working on{" "}
               <span className="font-medium text-primary">e-commerce</span>{" "}
-              website development, exploring{" "}
-              <span className="font-medium text-primary">machine learning</span>{" "}
-              applications, and successfully completing our{" "}
+              website development and successfully completing our{" "}
               <span className="font-medium text-primary">Capstone project</span>
               . We also presented our{" "}
               <span className="font-medium text-primary">Capstone project</span>{" "}

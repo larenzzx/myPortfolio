@@ -9,17 +9,17 @@ const blogData = [
   {
     title: "Subic Tour & SBMA Site Visits",
     img: blog2,
-    date: "April 14, 2025",
-    location: "Manila, Philippines",
-    tags: ["travel", "history", "philippines", "manila"],
+    date: "April 8, 2025",
+    location: "Subic Bay, Philippines",
+    tags: ["travel", "EducationalTrip ", "SubicTour2025 ", "SBMAVisit "],
     content: [
-      "Our journey began with an early morning arrival at Manila's Ninoy Aquino International Airport. After a smooth immigration process, we headed straight to DJM Dormitory to drop off our luggage before embarking on our first day of exploration.",
+      "Our second day was filled with learning and exploration as we headed to Subic for a tour and official site visits at the Subic Bay Metropolitan Authority (SBMA). We kicked off the day with a briefing session and system demonstrations that gave us insights into how SBMA operates and monitors activities within the Freeport Zone. From real-time surveillance to advanced command centers, the experience was eye-opening.",
 
-      "The historical city tour started at Rizal Park, a sprawling urban park dedicated to the Philippine national hero, José Rizal. The park features a monument marking the spot where Rizal was executed, which played a pivotal role in inspiring the Philippine revolution against Spanish colonization.",
+      "We then had the opportunity to tour various facilities, interact with the personnel, and observe their daily operations. It was especially exciting to see how technology, security, and administration converge to manage such a dynamic economic zone.",
 
-      "Next, we visited the nearby walled city of Intramuros, a well-preserved Spanish colonial settlement. The stone architecture and cobblestone streets transported us back in time as we explored San Agustin Church, the oldest stone church in the Philippines and a UNESCO World Heritage site.",
+      "The breathtaking coastal views of Subic and the warm hospitality of the people made the experience even more memorable. This trip not only broadened our understanding of port and zone management but also strengthened our teamwork and appreciation for public service operations.",
 
-      "As the day wound down, we made our way to SM MOA and witness its famous sunset. The vibrant hues of orange and purple stretching across the horizon created a perfect ending to our first day in the Philippines. We enjoyed a seafood dinner at one of the local restaurants along the bay, savoring fresh Filipino cuisine while watching the city lights come alive.",
+      "A big thank you to our guides and the SBMA officials who welcomed us with open arms and shared their knowledge generously.",
     ],
   },
 ];
