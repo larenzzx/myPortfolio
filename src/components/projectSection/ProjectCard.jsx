@@ -26,7 +26,7 @@ export const ProjectCard = ({
           <img className="h-56 w-96 object-cover" src={projectImg} alt="" />
         </figure>
         <div className="card-body">
-          <div className="flex gap-1 flex-wrap mb-2">
+          <div className="border">
             {techStack?.map((tech, index) => (
               <img key={index} src={tech} className="badge rounded-none bg-transparent border-none" alt="Tech" />
             ))}
