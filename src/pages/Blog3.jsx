@@ -3,12 +3,12 @@ import { BlogTitle } from "../components/blogs/BlogTitle";
 import { BlogPost } from "../components/blogs/BlogPost";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import blog1 from "../assets/blog1.png";
+import blog3 from "../assets/blog3.png";
 
 const blogData = [
   {
-    title: "Arrival in Manila & Historical City Tour",
-    img: blog1,
+    title: "Museum Exploration & Philippine Heritage",
+    img: blog3,
     date: "April 14, 2025",
     location: "Manila, Philippines",
     tags: ["travel", "history", "philippines", "manila"],
@@ -24,18 +24,17 @@ const blogData = [
   },
 ];
 
-export const Blog1 = () => {
+export const Blog3 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return (
     <>
       <BlogHeader />
       <div className="container min-h-screen py-8">
         {/* Blog Navigation */}
 
-        <BlogTitle id={"blog1"} title={"Day 1"} />
+        <BlogTitle id={"blog3"} title={"Day 3"} />
 
         {blogData.map((blog, index) => (
           <BlogPost key={index} blog={blog} />
@@ -45,7 +44,7 @@ export const Blog1 = () => {
         <div className="mt-12 flex justify-between border-t pt-8">
           <div>
             <Link
-              to="/#blogs"
+              to="/blog2"
               className="flex items-center text-gray-600 hover:text-primary"
             >
               <svg
@@ -62,15 +61,15 @@ export const Blog1 = () => {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              Previous: Introduction
+              Previous: Day 2
             </Link>
           </div>
           <div>
             <Link
-              to="/blog2"
+              to="/blog4"
               className="flex items-center text-gray-600 hover:text-primary"
             >
-              Next: Day 2
+              Next: Day 4
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="ml-2 h-5 w-5"
@@ -90,7 +89,6 @@ export const Blog1 = () => {
         </div>
       </div>
       <div className="">
-        {/* Simple Footer */}
         <div className="bg-base-200 py-6 text-base-content">
           <div className="container text-center">
             <p>© 2025 Travel Blog by Mark Larenz Tabotabo</p>

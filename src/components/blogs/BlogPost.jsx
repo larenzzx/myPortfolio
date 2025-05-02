@@ -1,4 +1,3 @@
-// Simplified BlogPost.jsx without unnecessary conditionals
 export const BlogPost = ({ blog }) => {
   return (
     <div className="mx-auto max-w-4xl pb-12">

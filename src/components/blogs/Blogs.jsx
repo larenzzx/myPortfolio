@@ -94,7 +94,7 @@ export const Blogs = () => {
                   through advanced systems. The SBMA Base Tour gave us a deeper
                   appreciation of the area's strategic role.
                 </div>
-                <Link to="/">
+                <Link to="/blog2">
                   <BlogsBtn />
                 </Link>
               </div>
@@ -135,7 +135,7 @@ export const Blogs = () => {
                   at the country's biodiversity and preserved ecosystems at the
                   National Museum of Natural History.
                 </div>
-                <Link to="/">
+                <Link to="/blog3">
                   <BlogsBtn />
                 </Link>
               </div>
@@ -177,7 +177,7 @@ export const Blogs = () => {
                   glimpse into cutting-edge industrial solutions and tech
                   innovations.
                 </div>
-                <Link to="/">
+                <Link to="/blog4">
                   <BlogsBtn />
                 </Link>
               </div>
@@ -218,7 +218,7 @@ export const Blogs = () => {
                   the operations of the LRT Line 2, gaining insights into public
                   transit systems and infrastructure planning.
                 </div>
-                <Link to="/">
+                <Link to="/blog5">
                   <BlogsBtn />
                 </Link>
               </div>
