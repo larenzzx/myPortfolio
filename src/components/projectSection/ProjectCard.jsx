@@ -2,11 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { LiveView } from "./LiveView";
 import { ObserverProvider } from "../ObserverProvider";
-import html from "../../assets/html5.svg";
-import css from "../../assets/css_old.svg";
-
-
-
 
 export const ProjectCard = ({
   projectImg,
@@ -17,18 +12,23 @@ export const ProjectCard = ({
   liveLink,
   techStack,
 }) => {
-
-
   return (
     <ObserverProvider>
-      <div className="intersect-once card glass w-96 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth hover:scale-105 duration-300 ease-in-out">
+      <div className="intersect-once card glass w-96 duration-300 ease-in-out hover:scale-105 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth">
         <figure>
           <img className="h-56 w-96 object-cover" src={projectImg} alt="" />
         </figure>
         <div className="card-body">
-          <div className="flex gap-1 items-center flex-wrap mb-2">
+          <div className="mb-2 flex flex-wrap gap-4 items-center">
             {techStack?.map((tech, index) => (
-              <img key={index} src={tech} className="badge bg-red-500 rounded-none bg-transparent border-none" alt="Tech" />
+              <div key={index} className="b">
+                <img
+                  
+                  src={tech}
+                  className="size-6 rounded-none border-none bg-transparent"
+                  alt="Tech"
+                />
+              </div>
             ))}
           </div>
           <h2 className="card-title text-sm sm:text-base md:text-xl">

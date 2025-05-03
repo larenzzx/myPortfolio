@@ -9,7 +9,7 @@ import crimson from "../../assets/crimsonquest.svg";
 import todo from "../../assets/todolist.svg";
 import pokemon from "../../assets/pokemon.svg";
 import html from "../../assets/html5.svg";
-import css from "../../assets/css_old.svg";
+import css from "../../assets/css.svg";
 import js from "../../assets/javascript.svg";
 import php from "../../assets/php.svg";
 import mysql from "../../assets/mysql.svg";

@@ -1,9 +1,8 @@
 import { SectionTitle } from "../SectionTitle";
-// import { ObserverProvider } from "../ObserverProvider";
 
 // frontend logos
 import htmlLogo from "../../assets/html5.svg";
-import cssLogo from "../../assets/css_old.svg";
+import cssLogo from "../../assets/css.svg";
 import jsLogo from "../../assets/javascript.svg";
 import tailwindLogo from "../../assets/tailwindcss.svg";
 import reactLogo from "../../assets/react_dark.svg";
