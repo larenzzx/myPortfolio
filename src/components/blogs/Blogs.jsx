@@ -1,7 +1,7 @@
 import { SectionTitle } from "../SectionTitle";
 import { BlogsBtn } from "./BlogsBtn";
 import { Link } from "react-router-dom";
-import me from "../../assets/hero.jpg";
+import day1 from "../../assets/day1.jpg";
 import day2 from "../../assets/day2.png";
 import day3 from "../../assets/day3.png";
 import day4 from "../../assets/day4.png";
@@ -15,11 +15,11 @@ export const Blogs = () => {
   return (
     <>
       <div className="container min-h-screen">
-        <ObserverProvider>
-          <SectionTitle id="blogs" title="Blogs" />
-          <div className="intersect-once px-4 py-8 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth">
+        <SectionTitle id="blogs" title="Blogs" />
+        <div>
+          <ObserverProvider>
             <ul className="timeline timeline-vertical timeline-snap-icon mt-4 max-md:timeline-compact">
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <div className="timeline-middle">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export const Blogs = () => {
                   </time>
                   <div className="my-4 md:flex md:justify-end">
                     <img
-                      src={me}
+                      src={day1}
                       className="max-w-56 rounded-xl border border-gray-200 object-cover shadow-lg duration-300 hover:scale-105 sm:max-w-xs"
                       alt=""
                     />
@@ -62,7 +62,7 @@ export const Blogs = () => {
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -100,13 +100,13 @@ export const Blogs = () => {
                     through advanced systems. The SBMA Base Tour gave us a
                     deeper appreciation of the area's strategic role.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog2">
                     <BlogsBtn />
                   </Link>
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -133,9 +133,7 @@ export const Blogs = () => {
                       alt=""
                     />
                   </div>
-                  <div className="text-lg font-black">
-                    Museum Exploration & Philippine Heritage
-                  </div>
+                  <div className="text-lg font-black">Museum Exploration</div>
                   <div className="mb-2">
                     Day 3 was all about appreciating the nation's roots and
                     natural wonders. We explored the life and legacy of a great
@@ -143,13 +141,13 @@ export const Blogs = () => {
                     at the country's biodiversity and preserved ecosystems at
                     the National Museum of Natural History.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog3">
                     <BlogsBtn />
                   </Link>
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -187,13 +185,13 @@ export const Blogs = () => {
                     gave us a glimpse into cutting-edge industrial solutions and
                     tech innovations.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog4">
                     <BlogsBtn />
                   </Link>
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -230,13 +228,13 @@ export const Blogs = () => {
                     explored the operations of the LRT Line 2, gaining insights
                     into public transit systems and infrastructure planning.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog5">
                     <BlogsBtn />
                   </Link>
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -276,13 +274,13 @@ export const Blogs = () => {
                     Burnham Park, and ended the day at SM Baguio and Baguio's
                     Night Market.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog6">
                     <BlogsBtn />
                   </Link>
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -310,7 +308,7 @@ export const Blogs = () => {
                     />
                   </div>
                   <div className="text-lg font-black">
-                    Free Time, Souvenir Shopping & Return to Manila
+                    Free Time & Return to Manila
                   </div>
                   <div className="mb-2">
                     Day 7 was all about enjoying Baguio at our own pace. We
@@ -320,13 +318,13 @@ export const Blogs = () => {
                     Hotel, we began our trip back to Manila with hearts (and
                     bags) full.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog7">
                     <BlogsBtn />
                   </Link>
                 </div>
                 <hr />
               </li>
-              <li>
+              <li className="intersect-once intersect:motion-preset-bounce">
                 <hr />
                 <div className="timeline-middle">
                   <svg
@@ -363,14 +361,14 @@ export const Blogs = () => {
                     boarded our flight back to Zamboanga via PAL, bringing home
                     stories, experiences, and friendships made along the way.
                   </div>
-                  <Link to="/">
+                  <Link to="/blog8">
                     <BlogsBtn />
                   </Link>
                 </div>
               </li>
             </ul>
-          </div>
-        </ObserverProvider>
+          </ObserverProvider>
+        </div>
       </div>
     </>
   );

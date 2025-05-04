@@ -3,14 +3,15 @@ import { SectionTitle } from "../SectionTitle";
 
 export const Experience = () => {
   return (
-    <div className="container">
+    <div className="container min-h-screen">
       <ObserverProvider>
-        <div
-          id="#experience"
+        {/* <div
+          id="#exp"
           className="grid place-items-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text pb-6 pt-20 text-4xl font-bold text-transparent sm:text-5xl"
         >
           <h1>Experience</h1>
-        </div>
+        </div> */}
+        <SectionTitle id="exp" title="Experience" />
 
         <div className="intersect-once px-4 py-8 intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth">
           <div className="mx-auto max-w-3xl space-y-6 text-center lg:text-left">
@@ -22,8 +23,7 @@ export const Experience = () => {
               developer under the company name{" "}
               <span className="font-medium text-primary">Innovix</span> for our
               Software Engineering project. Our team collaborated with our
-              client,{" "}
-              <span className="font-medium text-primary">Ma'am Lucy</span> from{" "}
+              client from {" "}
               <span className="font-medium text-primary">WESMAARRDEC</span>, to
               develop a comprehensive{" "}
               <span className="font-medium text-primary">
@@ -37,9 +37,7 @@ export const Experience = () => {
               In addition to this project, I have gained valuable experience
               working on{" "}
               <span className="font-medium text-primary">e-commerce</span>{" "}
-              website development, exploring{" "}
-              <span className="font-medium text-primary">machine learning</span>{" "}
-              applications, and successfully completing our{" "}
+              website development and successfully completing our{" "}
               <span className="font-medium text-primary">Capstone project</span>
               . We also presented our{" "}
               <span className="font-medium text-primary">Capstone project</span>{" "}

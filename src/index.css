@@ -4,13 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* html {
   @apply scroll-smooth
-}
+} */
 
 body {
-  @apply font-Inter bg-primary-content
+  @apply font-Inter 
 }
+/* body {
+  @apply font-Inter bg-primary-content
+} */
 
 /* .myLogo {
   background-color: red;
