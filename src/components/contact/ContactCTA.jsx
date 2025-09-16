@@ -68,7 +68,7 @@ export const ContactMe = () => {
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="space-y-4 rounded-2xl bg-gray-800 bg-opacity-10 p-4 sm:p-6 md:p-8 text-center shadow-lg shadow-[rgba(255,255,255,0.1)] backdrop-blur-md intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth max-w-3xl mx-auto"
+        className="space-y-4 rounded-2xl bg-base-100/70 p-4 sm:p-6 md:p-8 text-center shadow-lg shadow-base-content/10 backdrop-blur-md text-base-content intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth max-w-3xl mx-auto"
       >
         <div className="grid gap-y-4 sm:grid-cols-2 sm:justify-center sm:gap-x-2 md:gap-x-4">
           <input
@@ -103,24 +103,24 @@ export const ContactMe = () => {
         <div className="divider text-sm">OR REACH ME AT</div>
 
         <div className="flex items-center justify-center gap-4">
-          <a href="mailto:marklarenztabotabo@gmail.com">
+          <a href="mailto:marklarenztabotabo@gmail.com" className="motion-preset-seesaw motion-delay-0">
             <Mail size={24} />
           </a>
           <a
             href="https://www.facebook.com/share/1BtPFnE8wm/?mibextid=wwXIfr"
-            className="text-xl"
+            className="text-xl motion-preset-seesaw motion-delay-75"
           >
             <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a
             href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmark-larenz-tabotabo-681216346%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app&h=AT2cGGHZ4TPk14HKpse10IUrdxA6vst8idrh0JxVZUbOiTPNR3YMoIV6B1YUdzPssmV4qb5Xvo8qcKcDnT9fjdS06XeYCQOmfCoP6Qj3AtcWpB3fUYzq723Y_IjsX7uDVxflj1I5LMtpw2avbHLOQQ"
-            className="text-xl"
+            className="text-xl motion-preset-seesaw motion-delay-100"
           >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
           <a
             href="https://l.messenger.com/l.php?u=https%3A%2F%2Fx.com%2Flarenzz15%3Fs%3D11&h=AT2cGGHZ4TPk14HKpse10IUrdxA6vst8idrh0JxVZUbOiTPNR3YMoIV6B1YUdzPssmV4qb5Xvo8qcKcDnT9fjdS06XeYCQOmfCoP6Qj3AtcWpB3fUYzq723Y_IjsX7uDVxflj1I5LMtpw2avbHLOQQ"
-            className="text-xl"
+            className="text-xl motion-preset-seesaw motion-delay-150"
           >
             <FontAwesomeIcon icon={faTwitter} />
           </a>

@@ -44,17 +44,17 @@ const About = () => {
                   with the ever-changing world of technology.
                 </p>
                 <div className="mb-8 animate-bounce space-x-4 text-2xl text-primary">
-                  <a href="">
-                    <FontAwesomeIcon icon={faFacebook} />
-                  </a>
-                  <a href="">
+                  <a href="https://github.com/larenzzx">
                     <FontAwesomeIcon icon={faGithub} />
                   </a>
-                  <a href="">
-                    <FontAwesomeIcon icon={faTwitter} />
+                  <a href="https://www.facebook.com/marklarenz.tabotabo?mibextid=wwXIfr&rdid=41mPboavCJj7LpdE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AMy9Kz15z%2F%3Fmibextid%3DwwXIfr">
+                    <FontAwesomeIcon icon={faFacebook} />
                   </a>
-                  <a href="">
+                  <a href="https://www.linkedin.com/in/mark-larenz-tabotabo-681216346?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
                     <FontAwesomeIcon icon={faLinkedin} />
+                  </a>
+                  <a href="https://x.com/larenzz15?s=21">
+                    <FontAwesomeIcon icon={faTwitter} />
                   </a>
                 </div>
                 <Button link={'#contact'} btn="Contact Me" />

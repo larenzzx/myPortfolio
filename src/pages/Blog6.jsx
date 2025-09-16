@@ -3,39 +3,38 @@ import { BlogTitle } from "../components/blogs/BlogTitle";
 import { BlogPost } from "../components/blogs/BlogPost";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import blog1 from "../assets/blog1.png";
+import blog6 from "../assets/blog6.png";
 
 const blogData = [
   {
-    title: "Arrival in Manila & Historical City Tour",
-    img: blog1,
-    date: "April 7, 2025",
-    location: "Manila, Philippines",
-    tags: ["travel", "EducationalTrip", "history", "manila"],
+    title: "Journey to Baguio & Scenic City Tour",
+    img: blog6,
+    date: "April 12, 2025",
+    location: "Baguio City, Philippines",
+    tags: ["travel", "EducationalTrip", "SummerCapital", "StrawberryFarm", "PhilippineMilitaryAcademy ", "WrightPark", "BurnhamPark"],
     content: [
-      "Our journey began with an early morning arrival at Manila's Ninoy Aquino International Airport. After a smooth immigration process, we headed straight to DJM Dormitory to drop off our luggage before embarking on our first day of exploration.",
+      "Our adventure took a refreshing turn as we made our way to Baguio, the Summer Capital of the Philippines. The journey itself was a treat—winding roads, cool weather, and breathtaking mountain views set the tone for a memorable day.",
 
-      "The historical city tour started at Rizal Park, a sprawling urban park dedicated to the Philippine national hero, José Rizal. The park features a monument marking the spot where Rizal was executed, which played a pivotal role in inspiring the Philippine revolution against Spanish colonization.",
+      "We kicked off our city tour at the Strawberry Farm, where we witnessed local agriculture in action and enjoyed the cool breeze of La Trinidad. Next, we visited the peaceful Chinese Bell Church, a quiet and spiritual stop that contrasted beautifully with the bustling city vibe.",
 
-      "Next, we visited the nearby walled city of Intramuros, a well-preserved Spanish colonial settlement. The stone architecture and cobblestone streets transported us back in time as we explored San Agustin Church, the oldest stone church in the Philippines and a UNESCO World Heritage site.",
+      "One of the highlights of the day was our visit to the prestigious Philippine Military Academy. Seeing the cadets and learning about the discipline and values upheld there was both inspiring and eye-opening.",
 
-      "As the day wound down, we made our way to SM MOA and witness its famous sunset. The vibrant hues of orange and purple stretching across the horizon created a perfect ending to our first day in the Philippines. We enjoyed a seafood dinner at one of the local restaurants along the bay, savoring fresh Filipino cuisine while watching the city lights come alive.",
+      "As the sun set, we capped the day with a visit to SM Baguio for a bit of leisure and sightseeing, followed by a stroll through Baguio’s Night Market, where vibrant local culture, street food, and bargain shopping came alive. Day 6 was a perfect mix of nature, culture, and discovery a true highlight of the trip",
     ],
   },
 ];
 
-export const Blog1 = () => {
+export const Blog6 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return (
     <>
       <BlogHeader />
       <div className="container min-h-screen py-8">
         {/* Blog Navigation */}
 
-        <BlogTitle id={"blog1"} title={"Day 1"} />
+        <BlogTitle id={"blog6"} title={"Day 6"} />
 
         {blogData.map((blog, index) => (
           <BlogPost key={index} blog={blog} />
@@ -45,7 +44,7 @@ export const Blog1 = () => {
         <div className="mt-12 flex justify-between border-t pt-8">
           <div>
             <Link
-              to="/#blogs"
+              to="/blog5"
               className="flex items-center text-gray-600 hover:text-primary"
             >
               <svg
@@ -62,15 +61,15 @@ export const Blog1 = () => {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              Previous: Introduction
+              Previous: Day 5
             </Link>
           </div>
           <div>
             <Link
-              to="/blog2"
+              to="/blog7"
               className="flex items-center text-gray-600 hover:text-primary"
             >
-              Next: Day 2
+              Next: Day 7
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="ml-2 h-5 w-5"
@@ -90,7 +89,6 @@ export const Blog1 = () => {
         </div>
       </div>
       <div className="">
-        {/* Simple Footer */}
         <div className="bg-base-200 py-6 text-base-content">
           <div className="container text-center">
             <p>© 2025 Travel Blog by Mark Larenz Tabotabo</p>

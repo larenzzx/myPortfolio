@@ -3,39 +3,36 @@ import { BlogTitle } from "../components/blogs/BlogTitle";
 import { BlogPost } from "../components/blogs/BlogPost";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import blog1 from "../assets/blog1.png";
+import blog7 from "../assets/blog7.png";
 
 const blogData = [
   {
-    title: "Arrival in Manila & Historical City Tour",
-    img: blog1,
-    date: "April 7, 2025",
-    location: "Manila, Philippines",
-    tags: ["travel", "EducationalTrip", "history", "manila"],
+    title: "Free Time & Return to Manila",
+    img: blog7,
+    date: "April 13, 2025",
+    location: "Baguio City & Manila, Philippines",
+    tags: ["travel", "EducationalTrip", "SummerCapital", "GoodTasteRestaurant", "BurnhamPark"],
     content: [
-      "Our journey began with an early morning arrival at Manila's Ninoy Aquino International Airport. After a smooth immigration process, we headed straight to DJM Dormitory to drop off our luggage before embarking on our first day of exploration.",
+      "Our final morning in Baguio gave us the freedom to explore at our own pace. Some of us took leisurely walks around Burnham Park, enjoying the crisp mountain air and calm atmosphere. Others took the opportunity for last-minute souvenir shopping—searching for the perfect pasalubong to bring home.",
 
-      "The historical city tour started at Rizal Park, a sprawling urban park dedicated to the Philippine national hero, José Rizal. The park features a monument marking the spot where Rizal was executed, which played a pivotal role in inspiring the Philippine revolution against Spanish colonization.",
+      "A satisfying lunch awaited us at the well-loved Good Taste Restaurant, where we enjoyed hearty meals that warmed both stomach and soul.",
 
-      "Next, we visited the nearby walled city of Intramuros, a well-preserved Spanish colonial settlement. The stone architecture and cobblestone streets transported us back in time as we explored San Agustin Church, the oldest stone church in the Philippines and a UNESCO World Heritage site.",
-
-      "As the day wound down, we made our way to SM MOA and witness its famous sunset. The vibrant hues of orange and purple stretching across the horizon created a perfect ending to our first day in the Philippines. We enjoyed a seafood dinner at one of the local restaurants along the bay, savoring fresh Filipino cuisine while watching the city lights come alive.",
+      "After checking out from Prince Plaza Hotel, we made our way down from the highlands and started our return journey to Manila. The long drive gave us time to reflect on the week behind us—filled with unforgettable sights, new learnings, and shared laughs.",
     ],
   },
 ];
 
-export const Blog1 = () => {
+export const Blog7 = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return (
     <>
       <BlogHeader />
       <div className="container min-h-screen py-8">
         {/* Blog Navigation */}
 
-        <BlogTitle id={"blog1"} title={"Day 1"} />
+        <BlogTitle id={"blog7"} title={"Day 7"} />
 
         {blogData.map((blog, index) => (
           <BlogPost key={index} blog={blog} />
@@ -45,7 +42,7 @@ export const Blog1 = () => {
         <div className="mt-12 flex justify-between border-t pt-8">
           <div>
             <Link
-              to="/#blogs"
+              to="/blog6"
               className="flex items-center text-gray-600 hover:text-primary"
             >
               <svg
@@ -62,15 +59,15 @@ export const Blog1 = () => {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              Previous: Introduction
+              Previous: Day 6
             </Link>
           </div>
           <div>
             <Link
-              to="/blog2"
+              to="/blog8"
               className="flex items-center text-gray-600 hover:text-primary"
             >
-              Next: Day 2
+              Next: Day 8
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="ml-2 h-5 w-5"
@@ -90,7 +87,6 @@ export const Blog1 = () => {
         </div>
       </div>
       <div className="">
-        {/* Simple Footer */}
         <div className="bg-base-200 py-6 text-base-content">
           <div className="container text-center">
             <p>© 2025 Travel Blog by Mark Larenz Tabotabo</p>

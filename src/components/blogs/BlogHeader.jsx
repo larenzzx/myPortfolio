@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Button from "./Button";
+import Button from "../Button";
+import { Link } from "react-router-dom";
 
-function Header() {
+function BlogHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState("dark");
@@ -63,7 +64,7 @@ function Header() {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-base-100/70 text-base-content backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter">
+      <div className="navbar fixed z-10 bg-gray-500 bg-opacity-10 bg-clip-padding backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -93,53 +94,53 @@ function Header() {
                 className="menu dropdown-content menu-sm z-50 mt-3 w-52 rounded-box bg-base-200 bg-clip-padding p-2 text-base-content shadow"
               >
                 <li>
-                  <a href="#about">About</a>
+                  <Link to="/#about">About</Link>
                 </li>
                 <li>
-                  <a href="#exp">Experience</a>
+                  <Link to="/#exp">Experience</Link>
                 </li>
                 <li>
-                  <a href="#skills">Skills</a>
+                  <Link to="/#skills">Skills</Link>
                 </li>
                 <li>
-                  <a href="#projects">Projects</a>
+                  <Link to="/#projects">Projects</Link>
                 </li>
                 <li>
-                  <a href="#contact">Contact</a>
+                  <Link to="/#contact">Contact</Link>
                 </li>
-                {/* <li>
-                  <a href="#blogs">Blogs</a>
-                </li> */}
+                <li>
+                  <Link to="/#blogs">Blogs</Link>
+                </li>
               </ul>
             )}
           </div>
-          <a
-            href="#"
+          <Link
+            to="/"
             className="btn btn-ghost animate-pulse text-base font-bold sm:text-xl"
           >
             larenzz
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a href="#about">About</a>
+              <Link to="/#about">About</Link>
             </li>
             <li>
-              <a href="#exp">Experience</a>
+              <Link to="/#exp">Experience</Link>
             </li>
             <li>
-              <a href="#skills">Skills</a>
+              <Link to="/#skills">Skills</Link>
             </li>
             <li>
-              <a href="#projects">Projects</a>
+              <Link to="/#projects">Projects</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="/#contact">Contact</Link>
             </li>
-            {/* <li>
-              <a href="#blogs">Blogs</a>
-            </li> */}
+            <li>
+              <Link to="/#blogs">Blogs</Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
@@ -193,4 +194,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default BlogHeader;
