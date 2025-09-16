@@ -2,26 +2,43 @@ import { SectionTitle } from "../SectionTitle";
 import { SkillInfo } from "./Skill-info";
 import { SkillLogo } from "./Skill-logo";
 
+// frontend logos
+import htmlLogo from "../../assets/html5.svg";
+import cssLogo from "../../assets/css.svg";
+import jsLogo from "../../assets/javascript.svg";
+import tailwindLogo from "../../assets/tailwindcss.svg";
+import reactLogo from "../../assets/react_dark.svg";
+import daisyLogo from "../../assets/daisyui.svg";
+import headlessLogo from "../../assets/headlessui.svg";
+import chartLogo from "../../assets/chartjs.svg";
+import sweetLogo from "../../assets/SweetAlert2.png";
+import swipeLogo from "../../assets/swiper-logo.svg";
+import dataTable from "../../assets/datatables.svg";
+
+// git logos
+import gitLogo from "../../assets/git.svg";
+import github from "../../assets/github-mark.svg";
+
 export const Skills = () => {
   // Frontend
   const frontendSkills = [
-    { logo: "/src/assets/html5.svg", name: "HTML", delay: 0 },
-    { logo: "/src/assets/css.svg", name: "CSS", delay: 100 },
-    { logo: "/src/assets/javascript.svg", name: "JavaScript", delay: 200 },
-    { logo: "/src/assets/tailwindcss.svg", name: "TailwindCSS", delay: 300 },
-    { logo: "/src/assets/react_dark.svg", name: "ReactJS", delay: 400 },
-    { logo: "/src/assets/daisyui.svg", name: "daisyUI", delay: 500 },
-    { logo: "/src/assets/headlessui.svg", name: "HeadlessUI", delay: 600 },
-    { logo: "/src/assets/chartjs.svg", name: "ChartJS", delay: 700 },
-    { logo: "/src/assets/SweetAlert2.png", name: "SweetAlert2", delay: 800 },
-    { logo: "/src/assets/swiper-logo.svg", name: "SwiperJS", delay: 900 },
-    { logo: "/src/assets/datatables.svg", name: "DataTablesJS", delay: 1000 },
+    { logo: htmlLogo, name: "HTML", delay: 0 },
+    { logo: cssLogo, name: "CSS", delay: 100 },
+    { logo: jsLogo, name: "JavaScript", delay: 200 },
+    { logo: tailwindLogo, name: "TailwindCSS", delay: 300 },
+    { logo: reactLogo, name: "ReactJS", delay: 400 },
+    { logo: daisyLogo, name: "daisyUI", delay: 500 },
+    { logo: headlessLogo, name: "HeadlessUI", delay: 600 },
+    { logo: chartLogo, name: "ChartJS", delay: 700 },
+    { logo: sweetLogo, name: "SweetAlert2", delay: 800 },
+    { logo: swipeLogo, name: "SwiperJS", delay: 900 },
+    { logo: dataTable, name: "DataTablesJS", delay: 1000 },
   ];
 
   // Git
   const versionControlSkills = [
-    { logo: "/src/assets/git.svg", name: "Git", delay: 0 },
-    { logo: "/src/assets/github-mark.svg", name: "GitHub", delay: 100 },
+    { logo: gitLogo, name: "Git", delay: 0 },
+    { logo: github, name: "GitHub", delay: 100 },
   ];
 
   return (
@@ -47,7 +64,7 @@ export const Skills = () => {
             <div className="mb-16 text-center">
               <SkillInfo info="Frontend Development" />
 
-              <div className="grid grid-cols-2 gap-6 place-items-center sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-6">
+              <div className="grid grid-cols-2 place-items-center gap-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-6">
                 {frontendSkills.map((skill, index) => (
                   <SkillLogo
                     key={skill.name}
@@ -97,7 +114,6 @@ export const Skills = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
