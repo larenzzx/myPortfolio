@@ -1,131 +1,294 @@
-import React, { useRef } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import Swal from "sweetalert2";
-import { Mail } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faGithub,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { ObserverProvider } from "../ObserverProvider";
 
 export const ContactMe = () => {
-  const form = useRef();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  const sendEmail = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const name = form.current.from_name.value.trim();
-    const email = form.current.from_email.value.trim();
-    const message = form.current.message.value.trim();
-
-    if (!name || !email || !message) {
-      Swal.fire({
-        icon: "warning",
-        title: "Oops...",
-        text: "Please fill out all fields before sending!",
-      });
+    if (!validateForm()) {
       return;
     }
 
-    emailjs
-      .sendForm("service_vyz19ms", "template_gv1chvm", form.current, {
-        publicKey: "abQOvAcfydX4GgF5f",
-      })
-      .then(
-        () => {
-          console.log("SUCCESS!");
-          Swal.fire({
-            toast: true,
-            position: "top-end",
-            icon: "success",
-            title: "Message sent successfully!",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-          });
-          form.current.reset();
+    setIsLoading(true);
+
+    try {
+      // EmailJS
+      const result = await emailjs.send(
+        "service_vyz19ms", 
+        "template_gv1chvm", 
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
         },
-        (error) => {
-          console.log("FAILED...", error.text);
-          Swal.fire({
-            toast: true,
-            position: "top-end",
-            icon: "error",
-            title: "Failed to send. Try again.",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-          });
-        },
+        "abQOvAcfydX4GgF5f", 
       );
+
+      console.log("SUCCESS!", result.text);
+      setIsSubmitted(true);
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+
+      
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error("FAILED...", error.text);
+      
+      setErrors({ submit: "Failed to send message. Please try again." });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <ObserverProvider>
-      <form
-        ref={form}
-        onSubmit={sendEmail}
-        className="space-y-4 rounded-2xl bg-base-100/70 p-4 sm:p-6 md:p-8 text-center shadow-lg shadow-base-content/10 backdrop-blur-md text-base-content intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[2s] intersect:motion-ease-spring-smooth max-w-3xl mx-auto"
-      >
-        <div className="grid gap-y-4 sm:grid-cols-2 sm:justify-center sm:gap-x-2 md:gap-x-4">
-          <input
-            type="text"
-            className="input input-bordered w-full bg-gray-400 bg-opacity-10 bg-clip-padding"
-            placeholder="Name"
-            name="from_name"
-            required
-          />
-          <input
-            type="email"
-            className="input input-bordered w-full bg-gray-400 bg-opacity-10 bg-clip-padding"
-            name="from_email"
-            placeholder="Email"
-            required
-          />
+    <div className="mx-auto w-full max-w-2xl mb-8">
+      <div className="card border border-base-300 bg-base-100 shadow-xl">
+        <div className="card-body p-8">
+          <div className="mb-8 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary">
+              <svg
+                className="h-8 w-8 text-primary-content"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                />
+              </svg>
+            </div>
+            <h3 className="mb-2 text-2xl font-bold text-base-content">
+              Send Message
+            </h3>
+            <p className="text-base-content/70">
+              Fill out the form below and I'll get back to you as soon as
+              possible.
+            </p>
+          </div>
+
+          {isSubmitted && (
+            <div className="alert alert-success mb-6 animate-pulse">
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Thank you! Your message has been sent successfully.</span>
+            </div>
+          )}
+
+          {errors.submit && (
+            <div className="alert alert-error mb-6">
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
+                />
+              </svg>
+              <span>{errors.submit}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-medium">
+                    Name <span className="text-error">*</span>
+                  </span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your full name"
+                  className={`input input-bordered w-full transition-all duration-300 focus:input-primary ${
+                    errors.name ? "input-error" : ""
+                  }`}
+                  value={formData.name}
+                  onChange={handleChange}
+                  disabled={isLoading}
+                />
+                {errors.name && (
+                  <label className="label">
+                    <span className="label-text-alt text-error">
+                      {errors.name}
+                    </span>
+                  </label>
+                )}
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-medium">
+                    Email <span className="text-error">*</span>
+                  </span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="your.email@example.com"
+                  className={`input input-bordered w-full transition-all duration-300 focus:input-primary ${
+                    errors.email ? "input-error" : ""
+                  }`}
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={isLoading}
+                />
+                {errors.email && (
+                  <label className="label">
+                    <span className="label-text-alt text-error">
+                      {errors.email}
+                    </span>
+                  </label>
+                )}
+              </div>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">
+                  Message <span className="text-error">*</span>
+                </span>
+              </label>
+              <textarea
+                name="message"
+                className={`textarea textarea-bordered h-32 w-full resize-none transition-all duration-300 focus:textarea-primary ${
+                  errors.message ? "textarea-error" : ""
+                }`}
+                placeholder="Input message here"
+                value={formData.message}
+                onChange={handleChange}
+                disabled={isLoading}
+              ></textarea>
+              {errors.message && (
+                <label className="label">
+                  <span className="label-text-alt text-error">
+                    {errors.message}
+                  </span>
+                </label>
+              )}
+              <label className="label">
+                <span className="label-text-alt text-base-content/60">
+                  {formData.message.length}/500 characters
+                </span>
+              </label>
+            </div>
+
+            <div className="form-control pt-4">
+              <button
+                type="submit"
+                className={`btn btn-primary btn-lg w-full transition-all duration-300 ${
+                  isLoading ? "loading" : ""
+                } hover:scale-[1.02] hover:shadow-lg`}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className="loading loading-spinner loading-sm"></span>
+                    Sending Message...
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="mr-2 h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                      />
+                    </svg>
+                    Send Message
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="pt-4 text-center">
+              <p className="text-sm text-base-content/60">
+                By sending this message, you agree to be contacted regarding
+                your inquiry.
+              </p>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <textarea
-          className="textarea textarea-bordered min-h-32 w-full bg-gray-400 bg-opacity-10 bg-clip-padding sm:min-h-40 md:min-h-48"
-          name="message"
-          placeholder="Write your message here"
-          required
-        ></textarea>
-
-        <input
-          type="submit"
-          className="btn btn-primary w-full"
-          value="Send message"
-        />
-
-        <div className="divider text-sm">OR REACH ME AT</div>
-
-        <div className="flex items-center justify-center gap-4">
-          <a href="mailto:marklarenztabotabo@gmail.com" className="motion-preset-seesaw motion-delay-0">
-            <Mail size={24} />
-          </a>
-          <a
-            href="https://www.facebook.com/share/1BtPFnE8wm/?mibextid=wwXIfr"
-            className="text-xl motion-preset-seesaw motion-delay-75"
-          >
-            <FontAwesomeIcon icon={faFacebook} />
-          </a>
-          <a
-            href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmark-larenz-tabotabo-681216346%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app&h=AT2cGGHZ4TPk14HKpse10IUrdxA6vst8idrh0JxVZUbOiTPNR3YMoIV6B1YUdzPssmV4qb5Xvo8qcKcDnT9fjdS06XeYCQOmfCoP6Qj3AtcWpB3fUYzq723Y_IjsX7uDVxflj1I5LMtpw2avbHLOQQ"
-            className="text-xl motion-preset-seesaw motion-delay-100"
-          >
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a
-            href="https://l.messenger.com/l.php?u=https%3A%2F%2Fx.com%2Flarenzz15%3Fs%3D11&h=AT2cGGHZ4TPk14HKpse10IUrdxA6vst8idrh0JxVZUbOiTPNR3YMoIV6B1YUdzPssmV4qb5Xvo8qcKcDnT9fjdS06XeYCQOmfCoP6Qj3AtcWpB3fUYzq723Y_IjsX7uDVxflj1I5LMtpw2avbHLOQQ"
-            className="text-xl motion-preset-seesaw motion-delay-150"
-          >
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-        </div>
-      </form>
-    </ObserverProvider>
+      {/* Floating Animation Elements */}
+      <div className="absolute left-10 top-10 -z-10 h-20 w-20 animate-pulse rounded-full bg-primary/5 blur-xl"></div>
+      <div className="absolute bottom-10 right-10 -z-10 h-32 w-32 animate-pulse rounded-full bg-secondary/5 blur-xl delay-1000"></div>
+    </div>
   );
 };

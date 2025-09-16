@@ -1,6 +1,7 @@
 import React from "react";
 import { CertificateCard } from "./CertificateCard";
 import { SectionTitle } from "../SectionTitle";
+import htmlCert from "../../assets/htmlCert.png"
 import frontCert from "../../assets/frontCert.png";
 import jsCert from "../../assets/jsCert.png";
 import reactCert from "../../assets/reactCert.png";
@@ -8,6 +9,10 @@ import webCert from "../../assets/webCert.png";
 import dataStruc from "../../assets/dataStruc.png";
 
 const certificates = [
+  {
+    title: "HTML Fundamentals",
+    image: htmlCert,
+  },
   {
     title: "Introduction to Front End Development",
     image: frontCert,

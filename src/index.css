@@ -9,25 +9,66 @@
 } */
 
 body {
-  @apply font-Inter 
+  @apply font-Inter;
 }
-/* body {
-  @apply font-Inter bg-primary-content
-} */
-
-/* .myLogo {
-  background-color: red;
-
-  animation-name: spin;
-  animation-duration: 3s
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes spin {
+@keyframes shine {
   0% {
-
+    transform: translateX(-100%) skewX(-12deg);
   }
-
   100% {
-    transform: rotatet(360deg);
+    transform: translateX(200%) skewX(-12deg);
   }
-} */
+}
+
+.animate-shine {
+  animation: shine 2s ease-in-out;
+}
+
+.intersect\\:animate-fade-in {
+  animation: fade-in 0.7s ease-out forwards;
+}
+
+@media (max-width: 640px) {
+  .grid-cols-2 {
+    gap: 1rem;
+  }
+}
+
+@keyframes fadeInn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeInn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
