@@ -30,9 +30,9 @@ export const Home = () => {
       <Experience />
       <Skills />
       <Projects />
-      <Contact />
-      <Blogs />
+      {/* <Blogs /> */}
       <Certificates />
+      <Contact />
       <Footer />
     </>
   );

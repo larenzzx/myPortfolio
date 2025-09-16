@@ -51,9 +51,9 @@ function Header() {
                 <li>
                   <a href="#contact">Contact</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#blogs">Blogs</a>
-                </li>
+                </li> */}
               </ul>
             )}
           </div>
@@ -75,9 +75,9 @@ function Header() {
             <li>
               <a href="#contact">Contact</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#blogs">Blogs</a>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="navbar-end">
