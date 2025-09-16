@@ -31,6 +31,7 @@ export const Home = () => {
       <Skills />
       <Projects />
       {/* <Blogs /> */}
+      
       {/* <Certificates /> */}
       <Contact />
       <Footer />
