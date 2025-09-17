@@ -311,7 +311,7 @@ export const Projects = () => {
               <div className="text-3xl font-bold text-primary">
                 {experienceProjects.length + academicProjects.length}
               </div>
-              <div className="text-sm uppercase tracking-wider text-white/70">
+              <div className="text-sm uppercase tracking-wider">
                 Total Projects
               </div>
             </div>
@@ -319,7 +319,7 @@ export const Projects = () => {
               <div className="text-3xl font-bold text-orange-400">
                 {experienceProjects.length}
               </div>
-              <div className="text-sm uppercase tracking-wider text-white/70">
+              <div className="text-sm uppercase tracking-wider">
                 Personal & Freelance
               </div>
             </div>
@@ -327,7 +327,7 @@ export const Projects = () => {
               <div className="text-3xl font-bold text-blue-400">
                 {academicProjects.length}
               </div>
-              <div className="text-sm uppercase tracking-wider text-white/70">
+              <div className="text-sm uppercase tracking-wider">
                 Academic
               </div>
             </div>
@@ -339,7 +339,7 @@ export const Projects = () => {
                   ).length
                 }
               </div>
-              <div className="text-sm uppercase tracking-wider text-white/70">
+              <div className="text-sm uppercase tracking-wider">
                 Live Demos
               </div>
             </div>
