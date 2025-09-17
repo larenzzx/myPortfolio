@@ -107,7 +107,7 @@ export const Skills = () => {
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-3 rounded-full border border-info/20 bg-info/10 px-6 py-3 backdrop-blur-sm">
             <div className="h-2 w-2 animate-pulse rounded-full bg-info"></div>
-            <span className="font-medium text-info-content/80">
+            <span className="font-medium ">
               Currently expanding into Backend Development
             </span>
             <div className="h-2 w-2 animate-pulse rounded-full bg-info"></div>
