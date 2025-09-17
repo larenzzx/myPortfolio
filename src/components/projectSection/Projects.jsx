@@ -305,7 +305,7 @@ export const Projects = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+        <div className="mt-16 rounded-2xl border border-base-content/10 bg-base-content/5 p-8 backdrop-blur-sm">
           <div className="grid grid-cols-2 gap-6 text-center md:grid-cols-4">
             <div className="space-y-2">
               <div className="text-3xl font-bold text-primary">
