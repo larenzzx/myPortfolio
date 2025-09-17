@@ -17,10 +17,10 @@ export const Contact = () => {
           {/* Contact Info Section */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-base-content">
+              <h3 className="text-xl sm:text-2xl font-bold text-base-content">
                 Let's Work Together
               </h3>
-              <p className="text-lg leading-relaxed text-base-content/80">
+              <p className="text-xs sm:text-base leading-relaxed text-base-content/80">
                 I'm always interested in new opportunities and exciting
                 projects. Whether you have a project in mind or just want to
                 connect, I'd love to hear from you.
@@ -46,8 +46,8 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm text-base-content/60">Email</p>
-                  <p className="font-medium text-base-content">
+                  <p className="text-xs sm:text-sm text-base-content/60">Email</p>
+                  <p className="font-medium text-xs sm:text-base text-base-content">
                     marklarenztabotabo@gmail.com
                   </p>
                 </div>
@@ -76,8 +76,8 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm text-base-content/60">Location</p>
-                  <p className="font-medium text-base-content">
+                  <p className="text-xs sm:text-sm text-base-content/60">Location</p>
+                  <p className="font-medium text-xs sm:text-base text-base-content">
                     Zamboanga City, Philippines
                   </p>
                 </div>
@@ -100,8 +100,8 @@ export const Contact = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm text-base-content/60">Response Time</p>
-                  <p className="font-medium text-base-content">
+                  <p className="text-xs sm:text-sm text-base-content/60">Response Time</p>
+                  <p className="font-medium text-xs sm:text-base text-base-content">
                     Usually within 24 hours
                   </p>
                 </div>

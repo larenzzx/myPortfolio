@@ -341,7 +341,7 @@ function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          <Button btn="Resume" />
+          <a href="https://drive.google.com/file/d/1dqqeL91GURjAXiUEM4hBtWujOvc4VoBl/view?usp=sharing" target="_blank" className="btn btn-primary">Resume</a>
           <div className="divider divider-horizontal mx-2"></div>
           <div className="dropdown dropdown-end">
             <div

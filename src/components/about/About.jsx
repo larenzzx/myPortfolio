@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import myImg from "../../assets/me.jpg";
+import myImg from "../../assets/profilePic.jpg";
 import {
   faFacebook,
   faGithub,

@@ -6,10 +6,18 @@ import {
   faGraduationCap,
 } from "@fortawesome/free-solid-svg-icons";
 
+import emailTemp from "../../assets/htmlEmail.svg";
+import ziara from "../../assets/ziara.svg";
+import journey from "../../assets/janrey.svg";
+import jhon from "../../assets/jhon.svg";
+import erich from "../../assets/erich.svg";
+import pokedex from "../../assets/pokedex.svg";
+import todoo from "../../assets/todoo.svg";
+import weatherApp from "../../assets/weatherapp.svg";
+import sunnyside from "../../assets/sunnyside.svg";
 import capstone from "../../assets/capstone.svg";
 import elective from "../../assets/elective.svg";
 import se from "../../assets/SE.svg";
-import ml from "../../assets/ml.svg";
 import ecom from "../../assets/ecommerce.svg";
 import crimson from "../../assets/crimsonquest.svg";
 import todo from "../../assets/todolist.svg";
@@ -19,33 +27,116 @@ import css from "../../assets/css.svg";
 import js from "../../assets/javascript.svg";
 import php from "../../assets/php.svg";
 import mysql from "../../assets/mysql.svg";
-import django from "../../assets/django.svg";
 import tailwind from "../../assets/tailwindcss.svg";
 import react from "../../assets/react_dark.svg";
 
 export const Projects = () => {
   const experienceProjects = [
     {
-      projectImg: todo, 
-      projectTitle: "Client Portfolio Websites & Web Apps",
-      projectRole: "Freelance Frontend Developer",
-      category: "Professional",
+      projectImg: emailTemp, 
+      projectTitle: "Email Templates",
+      projectRole: "Email Template",
+      category: "Self-Learning",
       year: "2025",
-      link: "https://github.com/larenzzx/react-Todolist.git",
+      link: "https://github.com/larenzzx/htmlEmailSample", 
       liveView: true,
-      liveLink: "https://larenzzx-react-todolist.netlify.app/",
+      liveLink: "https://htmlemaplesample.netlify.app/",
+      techStack: [html, css],
+      isExperience: true,
+    },
+    {
+      projectImg: ziara, 
+      projectTitle: "Client Portfolio",
+      projectRole: "Frontend Developer",
+      category: "Freelance Project",
+      year: "2025",
+      link: "https://github.com/ziaramelon/reactPortfolio",
+      liveView: true,
+      liveLink: "https://personal-porfolio-raiza.netlify.app/",
       techStack: [react, tailwind],
       isExperience: true,
     },
     {
-      projectImg: pokemon, 
-      projectTitle: "Responsive Email Templates",
-      projectRole: "Email Template Developer",
-      category: "Self-Learning",
+      projectImg: journey, 
+      projectTitle: "Client Portfolio",
+      projectRole: "Frontend Developer",
+      category: "Freelance Project",
       year: "2025",
-      link: "https://github.com/larenzzx/email-templates", 
+      link: "https://github.com/przvlll/myportfolio",
+      liveView: true,
+      liveLink: "https://przvlllportfolio.netlify.app/",
+      techStack: [react, tailwind],
+      isExperience: true,
+    },
+    {
+      projectImg: jhon, 
+      projectTitle: "Client Portfolio",
+      projectRole: "Frontend Developer",
+      category: "Freelance Project",
+      year: "2025",
+      link: "https://github.com/dinojondino12/jondinoportfolio",
+      liveView: true,
+      liveLink: "https://jondinorodrigo.netlify.app/",
+      techStack: [react, tailwind],
+      isExperience: true,
+    },
+    {
+      projectImg: erich, 
+      projectTitle: "Client Portfolio",
+      projectRole: "Frontend Developer",
+      category: "Freelance Project",
+      year: "2025",
+      link: "https://github.com/erich411/Portfolio",
+      liveView: true,
+      liveLink: "https://erichramos.netlify.app/",
+      techStack: [react, tailwind],
+      isExperience: true,
+    },
+    {
+      projectImg: pokedex, 
+      projectTitle: "Pokedex",
+      projectRole: "Frontend Developer",
+      category: "Freelance Project",
+      year: "2025",
+      link: "https://github.com/ziaramelon/minipokedex",
       liveView: false,
-      techStack: [html, css],
+      techStack: [react, tailwind],
+      isExperience: true,
+    },
+    {
+      projectImg: todoo, 
+      projectTitle: "Task Manager",
+      projectRole: "Frontend Developer",
+      category: "Freelance Project",
+      year: "2025",
+      link: "https://github.com/ziaramelon/myReactTodolist",
+      liveView: true,
+      liveLink: "https://reacttodolistproj.netlify.app/",
+      techStack: [react, tailwind],
+      isExperience: true,
+    },
+    {
+      projectImg: weatherApp, 
+      projectTitle: "Weather App",
+      projectRole: "Frontend Developer",
+      category: "Personal Project",
+      year: "2025",
+      link: "https://github.com/larenzzx/jsWeatherApp",
+      liveView: true,
+      liveLink: "https://larenzzsimpleweatherapp.netlify.app/",
+      techStack: [html, css, js],
+      isExperience: true,
+    },
+    {
+      projectImg: sunnyside, 
+      projectTitle: "Sunny Landing Page",
+      projectRole: "Frontend Developer",
+      category: "Personal Project",
+      year: "2024",
+      link: "https://github.com/larenzzx/sunnyside",
+      liveView: true,
+      liveLink: "https://larenzzx.github.io/sunnyside/",
+      techStack: [html, css, js],
       isExperience: true,
     },
   ];
@@ -64,9 +155,9 @@ export const Projects = () => {
     },
     {
       projectImg: pokemon,
-      projectTitle: "MiniPokedex with Battle Simulation",
+      projectTitle: "Pokedex with Battle Simulation",
       projectRole: "Individual Project",
-      category: "IT142 Weekly Project",
+      category: "IT142 Project",
       year: "2025",
       link: "https://github.com/larenzzx/reactPokedex.git",
       liveView: false,
@@ -75,9 +166,9 @@ export const Projects = () => {
     },
     {
       projectImg: todo,
-      projectTitle: "ReactJS Todo-list",
+      projectTitle: "Todo-list App using ReactJS",
       projectRole: "Individual Project",
-      category: "IT142 Weekly Project",
+      category: "IT142 Project",
       year: "2025",
       link: "https://github.com/larenzzx/react-Todolist.git",
       liveView: true,
@@ -109,22 +200,11 @@ export const Projects = () => {
       isExperience: false,
     },
     {
-      projectImg: ml,
-      projectTitle: "Sleepwell Hub",
-      projectRole: "Backend Developer",
-      category: "IT Elective 3",
-      year: "2024",
-      link: "https://github.com/larenzzx/Sleepwell-Hub",
-      liveView: false,
-      techStack: [html, css, js, django],
-      isExperience: false,
-    },
-    {
       projectImg: ecom,
       projectTitle: "ECOVARIETY E-commerce Plant Store",
       projectRole: "Frontend Developer",
       category: "IT Elective 2",
-      year: "2023",
+      year: "2024",
       link: "https://github.com/larenzzx/Ecovariety",
       liveView: false,
       techStack: [html, css, js],
@@ -132,7 +212,7 @@ export const Projects = () => {
     },
     {
       projectImg: crimson,
-      projectTitle: "CrimsonQuest - Campus Directory",
+      projectTitle: "CrimsonQuest: Campus Directory",
       projectRole: "Frontend Developer",
       category: "Database Project",
       year: "2023",
@@ -158,10 +238,10 @@ export const Projects = () => {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-bold">
+              <h3 className="text-sm sm:text-xl md:text-2xl font-bold">
                 Personal & Freelance Projects
               </h3>
-              <p className="text-base-content">
+              <p className="text-xs sm:text-sm md:text-base text-base-content">
                 Independent projects, client work, and freelance collaborations.
               </p>
             </div>
@@ -196,10 +276,10 @@ export const Projects = () => {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-bold">
+              <h3 className="text-sm sm:text-xl md:text-2xl font-bold">
                 Academic Projects
               </h3>
-              <p className="text-base-content">
+              <p className="text-xs sm:text-sm md:text-base text-base-content">
                 University coursework and learning projects
               </p>
             </div>
@@ -225,7 +305,7 @@ export const Projects = () => {
         </div>
 
         {/* Stats Section */}
-        {/* <div className="mt-16 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
+        <div className="mt-16 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
           <div className="grid grid-cols-2 gap-6 text-center md:grid-cols-4">
             <div className="space-y-2">
               <div className="text-3xl font-bold text-primary">
@@ -240,7 +320,7 @@ export const Projects = () => {
                 {experienceProjects.length}
               </div>
               <div className="text-sm uppercase tracking-wider text-white/70">
-                Professional
+                Personal & Freelance
               </div>
             </div>
             <div className="space-y-2">
@@ -264,7 +344,7 @@ export const Projects = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
