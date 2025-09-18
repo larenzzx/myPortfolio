@@ -7,6 +7,7 @@ import jsCert from "../../assets/jsCert.png";
 import reactCert from "../../assets/reactCert.png";
 import webCert from "../../assets/webCert.png";
 import dataStruc from "../../assets/dataStruc.png";
+import tesda from "../../assets/tesda.png";
 
 const certificates = [
   {
@@ -30,8 +31,12 @@ const certificates = [
     image: webCert,
   },
   {
-    title: "Responsive Web Design",
+    title: "JavaScript Algorithms and Data Structures",
     image: dataStruc,
+  },
+  {
+    title: "Computer Systems Servicing",
+    image: tesda,
   }
 ];
 
