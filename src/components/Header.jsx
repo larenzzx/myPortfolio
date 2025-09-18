@@ -303,6 +303,9 @@ function Header() {
                   <a href="#projects">Projects</a>
                 </li>
                 <li>
+                  <a href="#certs">Certificates</a>
+                </li>
+                <li>
                   <a href="#contact">Contact</a>
                 </li>
                 {/* <li>
@@ -333,6 +336,9 @@ function Header() {
               <a href="#projects">Projects</a>
             </li>
             <li>
+              <a href="#certs">Certificates</a>
+            </li>
+            <li>
               <a href="#contact">Contact</a>
             </li>
             {/* <li>
@@ -341,7 +347,13 @@ function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          <a href="https://drive.google.com/file/d/1dqqeL91GURjAXiUEM4hBtWujOvc4VoBl/view?usp=sharing" target="_blank" className="btn btn-primary">Resume</a>
+          <a
+            href="https://drive.google.com/file/d/1dqqeL91GURjAXiUEM4hBtWujOvc4VoBl/view?usp=sharing"
+            target="_blank"
+            className="btn btn-primary"
+          >
+            Resume
+          </a>
           <div className="divider divider-horizontal mx-2"></div>
           <div className="dropdown dropdown-end">
             <div
