@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import myImg from "../../assets/profilePic.jpg";
+import myLogo from "../../assets/logoLarenz.png";
 import {
   faFacebook,
   faGithub,
@@ -15,12 +16,13 @@ const Button = ({ link, btn }) => (
   <a
     href={link}
     className="group btn btn-primary btn-lg relative overflow-hidden"
+    aria-label={btn}
   >
     <span className="relative z-10 flex items-center gap-2">
       <FontAwesomeIcon icon={faEnvelope} />
       {btn}
     </span>
-    <div className="absolute inset-0 translate-x-full -skew-x-12 transform bg-gradient-to-r from-primary/20 to-secondary/20 transition-transform duration-700 group-hover:translate-x-0"></div>
+    <div className="absolute inset-0 translate-x-full -skew-x-12 transform bg-gradient-to-r from-primary/20 to-secondary/20 transition-transform duration-700 group-hover:translate-x-0" />
   </a>
 );
 
@@ -32,10 +34,8 @@ const About = () => {
           <SectionTitle id="about" title="About Me" />
 
           <div className="intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[1.5s] intersect:motion-ease-spring-smooth">
-            {/* Main Content */}
             <div className="hero">
               <div className="hero-content max-w-6xl flex-col gap-16 lg:flex-row lg:gap-20">
-                {/* Image Section */}
                 <div className="group relative">
                   <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-primary to-secondary opacity-20 blur-xl transition-opacity duration-500 group-hover:opacity-30"></div>
                   <div className="relative">
@@ -48,16 +48,29 @@ const About = () => {
                   </div>
                 </div>
 
-                {/* Content Section */}
                 <div className="flex-1 space-y-8 text-center lg:text-left">
-                  {/* Header */}
-                  <div className="space-y-4">
-                    <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
-                      Mark Larenz Tabotabo
-                    </h1>
+                  <div className="flex flex-col items-center gap-2 lg:items-start">
+                    <div className="flex flex-col lg:flex-row items-center gap-4">
+                      <img
+                        src={myLogo}
+                        alt="Mark Larenz brand logo"
+                        className="size-16 rounded-md object-cover"
+                        aria-hidden={false}
+                      />
+
+                      <div>
+                        <h1 className="text-3xl font-bold leading-tight lg:text-4xl">
+                          Mark Larenz Tabotabo
+                        </h1>
+                        <p className="text-sm tracking-wide opacity-80 lg:text-base">
+                          Frontend Web Developer — Learning Backend
+                        </p>
+                      </div>
+                    </div>
+
+                   
                   </div>
 
-                  {/* Description */}
                   <div className="space-y-6 text-base leading-relaxed lg:text-lg">
                     <p className="opacity-90">
                       I am a passionate{" "}
@@ -85,7 +98,6 @@ const About = () => {
                     </p>
                   </div>
 
-                  {/* Social Links */}
                   <div className="flex justify-center gap-4 lg:justify-start">
                     {[
                       {
@@ -115,6 +127,7 @@ const About = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-base-200/50 text-xl backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-lg ${social.color} group`}
+                        aria-label={`Open ${social.url}`}
                       >
                         <FontAwesomeIcon
                           icon={social.icon}
@@ -124,7 +137,6 @@ const About = () => {
                     ))}
                   </div>
 
-                  {/* CTA Button */}
                   <div className="pt-4">
                     <Button link="#contact" btn="Let's Work Together" />
                   </div>

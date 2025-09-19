@@ -28,6 +28,7 @@ import js from "../../assets/javascript.svg";
 import php from "../../assets/php.svg";
 import mysql from "../../assets/mysql.svg";
 import tailwind from "../../assets/tailwindcss.svg";
+import daisy from "../../assets/daisyui.svg";
 import react from "../../assets/react_dark.svg";
 
 export const Projects = () => {
@@ -100,7 +101,7 @@ export const Projects = () => {
       year: "2025",
       link: "https://github.com/ziaramelon/minipokedex",
       liveView: false,
-      techStack: [react, tailwind],
+      techStack: [react, tailwind, daisy],
       isExperience: true,
     },
     {
@@ -161,7 +162,7 @@ export const Projects = () => {
       year: "2025",
       link: "https://github.com/larenzzx/reactPokedex.git",
       liveView: false,
-      techStack: [react, tailwind],
+      techStack: [react, tailwind, daisy],
       isExperience: false,
     },
     {
@@ -173,7 +174,7 @@ export const Projects = () => {
       link: "https://github.com/larenzzx/react-Todolist.git",
       liveView: true,
       liveLink: "https://larenzzx-react-todolist.netlify.app/",
-      techStack: [react, tailwind],
+      techStack: [react, tailwind, daisy],
       isExperience: false,
     },
     {

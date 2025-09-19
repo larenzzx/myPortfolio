@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Button from "./Button";
+import { useState, useEffect } from "react";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -318,7 +317,7 @@ function Header() {
             href="#"
             className="btn btn-ghost animate-pulse text-base font-bold sm:text-xl"
           >
-            larenzz
+            larenz
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
