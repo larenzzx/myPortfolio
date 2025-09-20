@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState("dark");
+  const [currentTheme, setCurrentTheme] = useState("synthwave");
 
   const themes = [
     {
