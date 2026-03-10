@@ -1,8 +1,27 @@
+import { useState } from "react";
 import { SectionTitle } from "../SectionTitle";
 import { SkillInfo } from "./Skill-info";
 import { SkillLogo } from "./Skill-logo";
+import {
+  Shield,
+  ShieldAlert,
+  AlertTriangle,
+  Search,
+  Activity,
+  Eye,
+  Bug,
+  Users,
+  Smartphone,
+  Mail,
+  FileText,
+  Server,
+  Monitor,
+  Cpu,
+  Wifi,
+  Box,
+} from "lucide-react";
 
-// frontend logos
+// frontend + git logos
 import htmlLogo from "../../assets/html5.svg";
 import cssLogo from "../../assets/css.svg";
 import jsLogo from "../../assets/javascript.svg";
@@ -14,152 +33,165 @@ import chartLogo from "../../assets/chartjs.svg";
 import sweetLogo from "../../assets/SweetAlert2.png";
 import swipeLogo from "../../assets/swiper-logo.svg";
 import dataTable from "../../assets/datatables.svg";
-
-// git logos
 import gitLogo from "../../assets/git.svg";
 import github from "../../assets/github-mark.svg";
 
-export const Skills = () => {
-  // Frontend
-  const frontendSkills = [
-    { logo: htmlLogo, name: "HTML", delay: 100 },
-    { logo: cssLogo, name: "CSS", delay: 200 },
-    { logo: jsLogo, name: "JavaScript", delay: 300 },
-    { logo: tailwindLogo, name: "TailwindCSS", delay: 400 },
-    { logo: reactLogo, name: "ReactJS", delay: 500 },
-    { logo: daisyLogo, name: "daisyUI", delay: 600 },
-    { logo: headlessLogo, name: "HeadlessUI", delay: 700 },
-    { logo: chartLogo, name: "ChartJS", delay: 800 },
-    { logo: sweetLogo, name: "SweetAlert2", delay: 900 },
-    { logo: swipeLogo, name: "SwiperJS", delay: 1000 },
-    { logo: dataTable, name: "DataTablesJS", delay: 1100 },
-  ];
+// backend logos
+import pythonLogo from "../../assets/python.svg";
+import phpLogo from "../../assets/php.svg";
+import mysqlLogo from "../../assets/mysql.svg";
 
-  // Git
-  const versionControlSkills = [
-    { logo: gitLogo, name: "Git", delay: 200 },
-    { logo: github, name: "GitHub", delay: 400 },
+/* ----------------------------------------------------------------
+   Skill data per category — stagger delay capped at 60ms per item
+---------------------------------------------------------------- */
+const buildSkills = (items) =>
+  items.map((s, i) => ({ ...s, delay: i * 60 }));
+
+const CATEGORIES = {
+  frontend: buildSkills([
+    { logo: htmlLogo, name: "HTML5", type: "img" },
+    { logo: cssLogo, name: "CSS3", type: "img" },
+    { logo: jsLogo, name: "JavaScript", type: "img" },
+    { logo: tailwindLogo, name: "Tailwind CSS", type: "img" },
+    { logo: reactLogo, name: "React", type: "img" },
+    { logo: daisyLogo, name: "DaisyUI", type: "img" },
+    { logo: headlessLogo, name: "HeadlessUI", type: "img" },
+    { logo: chartLogo, name: "ChartJS", type: "img" },
+    { logo: sweetLogo, name: "SweetAlert2", type: "img" },
+    { logo: swipeLogo, name: "SwiperJS", type: "img" },
+    { logo: dataTable, name: "DataTablesJS", type: "img" },
+    { logo: gitLogo, name: "Git", type: "img" },
+    { logo: github, name: "GitHub", type: "img" },
+  ]),
+  backend: buildSkills([
+    { logo: pythonLogo, name: "Python", type: "img" },
+    { logo: "https://svgl.app/library/django.svg", name: "Django", type: "img" },
+    { logo: phpLogo, name: "PHP", type: "img" },
+    { logo: mysqlLogo, name: "MySQL", type: "img" },
+  ]),
+  cyber: buildSkills([
+    { logo: <Shield size={32} />, name: "Security Ops", type: "lucide" },
+    { logo: <ShieldAlert size={32} />, name: "Alert Triage", type: "lucide" },
+    { logo: <Activity size={32} />, name: "Incident Response", type: "lucide" },
+    { logo: <Eye size={32} />, name: "Wazuh", type: "lucide" },
+    { logo: <Shield size={32} />, name: "MS Defender", type: "lucide" },
+    { logo: <Search size={32} />, name: "OSINT Tools", type: "lucide" },
+    { logo: <Bug size={32} />, name: "Qualys VMDR", type: "lucide" },
+    { logo: <AlertTriangle size={32} />, name: "Threat Analysis", type: "lucide" },
+  ]),
+  it: buildSkills([
+    { logo: <Users size={32} />, name: "Entra ID", type: "lucide" },
+    { logo: <Smartphone size={32} />, name: "Intune", type: "lucide" },
+    { logo: <Mail size={32} />, name: "Exchange", type: "lucide" },
+    { logo: <FileText size={32} />, name: "SharePoint", type: "lucide" },
+    { logo: <Server size={32} />, name: "Datto RMM", type: "lucide" },
+    { logo: <Monitor size={32} />, name: "OS Config", type: "lucide" },
+    { logo: <Cpu size={32} />, name: "Hardware Maint.", type: "lucide" },
+    { logo: <Wifi size={32} />, name: "LAN / Network", type: "lucide" },
+    { logo: <Box size={32} />, name: "VM Setup", type: "lucide" },
+  ]),
+};
+
+const TABS = [
+  { id: "frontend", label: "Frontend" },
+  { id: "backend", label: "Backend" },
+  { id: "cyber", label: "Cybersecurity" },
+  { id: "it", label: "IT & Systems" },
+];
+
+export const Skills = () => {
+  const [activeTab, setActiveTab] = useState("frontend");
+  const activeSkills = CATEGORIES[activeTab];
+
+  const stats = [
+    {
+      value: `${CATEGORIES.frontend.length + CATEGORIES.backend.length}+`,
+      label: "Frontend + Backend",
+      color: "text-primary",
+    },
+    {
+      value: `${CATEGORIES.cyber.length}+`,
+      label: "Cybersecurity Tools",
+      color: "text-secondary",
+    },
+    {
+      value: `${CATEGORIES.it.length}+`,
+      label: "IT & Systems Tools",
+      color: "text-accent",
+    },
   ];
 
   return (
-    <div className="container min-h-screen px-4 py-16">
-      <SectionTitle id="skills" title="Skills" />
+    <div className="bg-base-100 px-4 py-16">
+      <div className="container mx-auto">
+        <SectionTitle id="skills" title="Skills" />
 
-      <div className="mx-auto max-w-7xl">
-        <div className="hover:shadow-3xl group relative overflow-hidden rounded-3xl border border-base-content/10 bg-gradient-to-br from-base-100/95 to-base-200/90 shadow-2xl shadow-base-content/10 backdrop-blur-xl transition-all duration-700 hover:shadow-primary/10">
-          {/* animated background pattern */}
-          <div className="absolute inset-0 opacity-[0.03]">
-            <div className="absolute inset-0 animate-pulse bg-[radial-gradient(circle_at_25%_25%,hsl(var(--p))_0%,transparent_45%),radial-gradient(circle_at_75%_75%,hsl(var(--s))_0%,transparent_45%)]"></div>
-            <div className="absolute inset-0 animate-spin bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,hsl(var(--a))/5%_60deg,transparent_120deg)] duration-[20s]"></div>
-          </div>
+        <div className="mx-auto max-w-5xl">
+          {/* Outer card */}
+          <div className="relative overflow-hidden rounded-3xl border border-base-content/10 bg-gradient-to-br from-base-100/95 to-base-200/90 shadow-2xl shadow-base-content/10">
+            {/* Decorative orbs */}
+            <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-br from-primary/15 to-secondary/15 blur-3xl motion-safe:animate-pulse" />
+            <div
+              className="pointer-events-none absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-gradient-to-br from-accent/15 to-info/15 blur-3xl motion-safe:animate-pulse"
+              style={{ animationDelay: "1s" }}
+            />
 
-          {/* Floating orbs */}
-          <div className="absolute -right-24 -top-24 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl"></div>
-          <div className="animation-delay-1000 absolute -bottom-24 -left-24 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br from-accent/20 to-info/20 blur-3xl"></div>
+            <div className="relative p-6 md:p-10 lg:p-14">
+              <SkillInfo info="Skills & Technologies" />
 
-          <div className="relative p-8 md:p-12 lg:p-16">
-            <div className="text-center mb-20">
-              <SkillInfo info="Frontend Development" />
+              {/* DaisyUI tabs — boxed style */}
+              <div
+                role="tablist"
+                className="tabs tabs-boxed mb-8 flex-wrap gap-1"
+              >
+                {TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    role="tab"
+                    className={`tab transition-all duration-200 ${
+                      activeTab === tab.id ? "tab-active" : ""
+                    }`}
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
 
-              <div className="grid grid-cols-2 place-items-center gap-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-6 xl:gap-10">
-                {frontendSkills.map((skill, index) => (
+              {/* Skills grid — key forces remount on tab change so entrance animation replays */}
+              <div
+                key={activeTab}
+                className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+              >
+                {activeSkills.map((skill) => (
                   <SkillLogo
-                    key={skill.name}
+                    key={`${skill.name}-${activeTab}`}
                     logos={skill.logo}
                     tooltip={skill.name}
                     delay={skill.delay}
-                    index={index}
+                    type={skill.type}
                   />
                 ))}
               </div>
             </div>
 
-            {/* divider */}
-            <div className="mb-20 flex items-center justify-center">
-              <div className="relative flex-1">
-                <div className="h-px bg-gradient-to-r from-transparent via-base-content/30 to-base-content/10"></div>
-                <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-              </div>
+            {/* Glass overlay */}
+            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-base-content/[0.02] via-transparent to-base-content/[0.02]" />
+          </div>
 
-              <div className="relative px-8">
-                <div className="flex items-center justify-center">
-                  <div className="h-3 w-3 animate-pulse rounded-full bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/30"></div>
-                  <div className="absolute h-6 w-6 animate-ping rounded-full border-2 border-primary/20"></div>
+          {/* Stats row */}
+          <div className="mt-12 grid grid-cols-1 gap-4 opacity-70 sm:grid-cols-3">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl border border-base-content/10 bg-base-content/5 p-5 text-center backdrop-blur-sm"
+              >
+                <div className={`mb-1 text-2xl font-bold ${s.color}`}>
+                  {s.value}
                 </div>
+                <div className="text-sm text-base-content/60">{s.label}</div>
               </div>
-
-              <div className="relative flex-1">
-                <div className="h-px bg-gradient-to-r from-base-content/10 via-base-content/30 to-transparent"></div>
-                <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <SkillInfo info="Version Control & Collaboration" />
-
-              <div className="flex justify-center gap-12 md:gap-16 lg:gap-20">
-                {versionControlSkills.map((skill, index) => (
-                  <SkillLogo
-                    key={skill.name}
-                    logos={skill.logo}
-                    tooltip={skill.name}
-                    delay={skill.delay}
-                    index={index}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* glass effect overlay */}
-          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/5 via-transparent to-white/5"></div>
-        </div>
-
-        <div className="mt-16 text-center">
-          <div className="group relative inline-flex items-center gap-4 rounded-2xl border border-info/30 bg-gradient-to-r from-info/10 via-info/5 to-info/10 px-8 py-4 backdrop-blur-sm transition-all duration-500 hover:border-info/50 hover:bg-gradient-to-r hover:from-info/15 hover:via-info/10 hover:to-info/15 hover:shadow-lg hover:shadow-info/20">
-            {/* dots */}
-            <div className="flex gap-1">
-              <div className="h-2 w-2 animate-bounce rounded-full bg-info"></div>
-              <div className="animation-delay-100 h-2 w-2 animate-bounce rounded-full bg-info"></div>
-              <div className="animation-delay-200 h-2 w-2 animate-bounce rounded-full bg-info"></div>
-            </div>
-
-            <span className="font-semibold text-base-content transition-colors duration-300 group-hover:text-info text-xs sm:text-base">
-              Currently expanding into Backend Development
-            </span>
-
-            <div className="flex gap-1">
-              <div className="animation-delay-300 h-2 w-2 animate-bounce rounded-full bg-info"></div>
-              <div className="animation-delay-400 h-2 w-2 animate-bounce rounded-full bg-info"></div>
-              <div className="animation-delay-500 h-2 w-2 animate-bounce rounded-full bg-info"></div>
-            </div>
-
-           
-          </div>
-        </div>
-
-        <div className="mt-20 grid grid-cols-1 gap-6 opacity-60 md:grid-cols-3">
-          <div className="rounded-2xl border border-base-content/10 bg-base-content/5 p-6 text-center backdrop-blur-sm">
-            <div className="mb-2 text-2xl font-bold text-primary">
-              {frontendSkills.length}+
-            </div>
-            <div className="text-sm text-base-content/70">
-              Frontend Technologies
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-base-content/10 bg-base-content/5 p-6 text-center backdrop-blur-sm">
-            <div className="mb-2 text-2xl font-bold text-secondary">
-              {versionControlSkills.length}
-            </div>
-            <div className="text-sm text-base-content/70">
-              Version Control Tools
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-base-content/10 bg-base-content/5 p-6 text-center backdrop-blur-sm">
-            <div className="mb-2 text-2xl font-bold text-accent">∞</div>
-            <div className="text-sm text-base-content/70">Learning Journey</div>
+            ))}
           </div>
         </div>
       </div>

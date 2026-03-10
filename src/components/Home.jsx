@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Hero from "./hero/Hero";
 import About from "./about/About";
-// import { Experience } from "./exp/Experience";
+import { Experience } from "./exp/Experience";
 import { Skills } from "./skills/Skills";
 import { Projects } from "./projectSection/Projects";
 import { Contact } from "./contact/Contact";
@@ -27,7 +27,7 @@ export const Home = () => {
       <Header />
       <Hero />
       <About />
-      {/* <Experience /> */}
+      <Experience />
       <Skills />
       <Projects />
       {/* <Blogs /> */}
