@@ -75,7 +75,7 @@ export const Contact = () => {
       <div className="container mx-auto max-w-6xl">
         <SectionTitle id="contact" title="Contact Me" />
 
-        <div className="grid items-start gap-12 lg:grid-cols-2">
+        <div className="grid items-start gap-8 sm:gap-12 lg:grid-cols-2">
           {/* ── Left: Info + Social ── */}
           <div className="space-y-8">
             <div className="space-y-3">
@@ -102,7 +102,7 @@ export const Contact = () => {
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs text-base-content/50">{item.label}</p>
-                      <p className="truncate text-sm font-medium text-base-content sm:text-base">
+                      <p className="break-all text-sm font-medium text-base-content sm:break-normal sm:text-base">
                         {item.value}
                       </p>
                     </div>

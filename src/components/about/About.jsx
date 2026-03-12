@@ -56,7 +56,7 @@ const SectionTitle = ({ id, title }) => {
 
       {/* Title */}
       <h2
-        className={`text-4xl sm:text-5xl font-bold text-base-content transition-all duration-700 ease-spring delay-100 ${
+        className={`text-3xl sm:text-4xl md:text-5xl font-bold text-base-content transition-all duration-700 ease-spring delay-100 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
@@ -81,10 +81,10 @@ const SectionTitle = ({ id, title }) => {
    Stat card — icon + large value + descriptor
 ------------------------------------------------------------------ */
 const StatCard = ({ icon: Icon, value, label, color }) => (
-  <div className="flex flex-col items-center gap-1.5 rounded-xl bg-base-200 p-4 text-center">
-    <Icon size={18} className={`text-${color}`} />
-    <span className={`text-xl font-bold text-${color}`}>{value}</span>
-    <span className="text-xs text-base-content/60 leading-snug">{label}</span>
+  <div className="flex flex-col items-center gap-1 sm:gap-1.5 rounded-xl bg-base-200 p-2 sm:p-4 text-center">
+    <Icon size={15} className={`text-${color} sm:size-[18px]`} />
+    <span className={`text-base sm:text-xl font-bold text-${color}`}>{value}</span>
+    <span className="text-[10px] sm:text-xs text-base-content/60 leading-snug">{label}</span>
   </div>
 );
 
@@ -214,7 +214,7 @@ const About = () => {
           >
             {/* Name + subtitle */}
             <div>
-              <h1 className="text-3xl font-bold text-base-content sm:text-4xl md:text-5xl">
+              <h1 className="text-2xl font-bold text-base-content sm:text-3xl md:text-4xl lg:text-5xl">
                 Mark Larenz Tabotabo
               </h1>
               <p className="mt-2 text-lg font-medium text-primary sm:text-xl">
@@ -225,30 +225,33 @@ const About = () => {
             {/* Three paragraphs */}
             <div className="space-y-4 text-sm leading-relaxed text-base-content/75 sm:text-base">
               <p>
-                I started building for the web out of pure curiosity — writing
-                HTML, styling with CSS, and eventually falling in love with
-                React and Tailwind. Over time, that curiosity turned into
-                real projects: client websites, full-stack apps, and everything
-                in between.
+                I discovered web development during my college years — and from
+                the moment I wrote my first lines of HTML and CSS, I was hooked.
+                What started as curiosity quickly turned into genuine passion.
+                I fell in love with building things for the web and haven&apos;t
+                stopped since.
               </p>
               <p>
-                In November 2025, I stepped into cybersecurity as a{" "}
+                I began as a frontend developer, learning the fundamentals and
+                working on real client projects. Now I&apos;m continuously
+                upskilling toward becoming a well-rounded full-stack developer —
+                picking up backend concepts, databases, and system design while
+                still sharpening my frontend craft.
+              </p>
+              <p>
+                Alongside that, I work as a{" "}
                 <span className="font-semibold text-primary">
                   SOC Analyst L1 at Aetas Security
                 </span>
-                . Today I monitor and respond to security incidents, work with
-                tools like Wazuh, Microsoft Defender, and Qualys VMDR, and
-                help enterprise clients stay protected.
-              </p>
-              <p>
-                Both paths reinforce each other — I build with security in
-                mind, and I protect systems I understand how to build. That
-                intersection is where I do my sharpest work.
+                , monitoring threats, responding to incidents, and supporting
+                enterprise IT operations. Both paths feed each other — I build
+                with security in mind, and I defend systems I understand how to
+                build.
               </p>
             </div>
 
             {/* Quick stats */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <StatCard
                 icon={Code2}
                 value="2+"

@@ -31,7 +31,7 @@ export const SectionTitle = ({ title, id }) => {
 
       {/* Title */}
       <h2
-        className={`text-4xl sm:text-5xl font-bold text-base-content transition-all duration-700 delay-100 ${
+        className={`text-3xl sm:text-4xl md:text-5xl font-bold text-base-content transition-all duration-700 delay-100 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >

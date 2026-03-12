@@ -19,6 +19,8 @@ import {
   Cpu,
   Wifi,
   Box,
+  Code2,
+  Database,
 } from "lucide-react";
 
 // frontend + git logos
@@ -93,10 +95,10 @@ const CATEGORIES = {
 };
 
 const TABS = [
-  { id: "frontend", label: "Frontend" },
-  { id: "backend", label: "Backend" },
-  { id: "cyber", label: "Cybersecurity" },
-  { id: "it", label: "IT & Systems" },
+  { id: "frontend", label: "Frontend", Icon: Code2 },
+  { id: "backend", label: "Backend", Icon: Database },
+  { id: "cyber", label: "Cybersecurity", Icon: Shield },
+  { id: "it", label: "IT & Systems", Icon: Monitor },
 ];
 
 export const Skills = () => {
@@ -136,26 +138,27 @@ export const Skills = () => {
               style={{ animationDelay: "1s" }}
             />
 
-            <div className="relative p-6 md:p-10 lg:p-14">
+            <div className="relative p-4 sm:p-6 md:p-10 lg:p-14">
               <SkillInfo info="Skills & Technologies" />
 
-              {/* DaisyUI tabs — boxed style */}
-              <div
-                role="tablist"
-                className="tabs tabs-boxed mb-8 flex-wrap gap-1"
-              >
-                {TABS.map((tab) => (
-                  <button
-                    key={tab.id}
-                    role="tab"
-                    className={`tab transition-all duration-200 ${
-                      activeTab === tab.id ? "tab-active" : ""
-                    }`}
-                    onClick={() => setActiveTab(tab.id)}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
+              {/* Scrollable tab bar */}
+              <div className="no-scrollbar -mx-4 mb-8 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+                <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
+                  {TABS.map(({ id, label, Icon }) => (
+                    <button
+                      key={id}
+                      onClick={() => setActiveTab(id)}
+                      className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                        activeTab === id
+                          ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
+                          : "bg-base-200 text-base-content/70 hover:bg-base-300 hover:text-base-content"
+                      }`}
+                    >
+                      <Icon size={13} strokeWidth={2} />
+                      {label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Skills grid — key forces remount on tab change so entrance animation replays */}

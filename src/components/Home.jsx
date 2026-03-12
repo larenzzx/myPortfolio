@@ -5,7 +5,6 @@ import { Experience } from "./exp/Experience";
 import { Skills } from "./skills/Skills";
 import { Projects } from "./projectSection/Projects";
 import { Contact } from "./contact/Contact";
-// import { Blogs } from "./blogs/Blogs";
 import { Certificates } from "./certificatess/Certificates";
 import { Footer } from "./Footer";
 import { useEffect } from "react";
@@ -30,7 +29,6 @@ export const Home = () => {
       <Experience />
       <Skills />
       <Projects />
-      {/* <Blogs /> */}
       <Certificates />
       <Contact />
       <Footer />

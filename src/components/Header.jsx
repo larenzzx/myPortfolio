@@ -142,7 +142,7 @@ function Header() {
               <span className="ml-1 hidden md:inline text-xs">{currentTheme}</span>
             </button>
             {isThemeOpen && (
-              <ul className="absolute right-0 top-full mt-2 menu z-50 max-h-96 w-48 overflow-y-auto rounded-box bg-base-200 p-2 shadow">
+              <ul className="absolute right-0 top-full mt-2 menu z-50 max-h-96 w-44 sm:w-48 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-box bg-base-200 p-2 shadow">
                 {themes.map((theme) => (
                   <li key={theme.name}>
                     <a

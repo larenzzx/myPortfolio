@@ -272,23 +272,23 @@ export const Projects = () => {
         <SectionTitle id="projects" title="Projects" />
 
         {/* Filter tabs */}
-        <div
-          role="tablist"
-          className="tabs tabs-boxed mb-10 flex-wrap gap-1 justify-center"
-        >
-          {TABS.map(({ id, label, Icon }) => (
-            <button
-              key={id}
-              role="tab"
-              className={`tab gap-2 transition-all duration-200 ${
-                activeTab === id ? "tab-active" : ""
-              }`}
-              onClick={() => setActiveTab(id)}
-            >
-              <Icon size={14} strokeWidth={2} />
-              {label}
-            </button>
-          ))}
+        <div className="no-scrollbar -mx-4 mb-10 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap sm:justify-center">
+            {TABS.map(({ id, label, Icon }) => (
+              <button
+                key={id}
+                onClick={() => setActiveTab(id)}
+                className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                  activeTab === id
+                    ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
+                    : "bg-base-200 text-base-content/70 hover:bg-base-300 hover:text-base-content"
+                }`}
+              >
+                <Icon size={13} strokeWidth={2} />
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Personal & Freelance */}
@@ -328,8 +328,8 @@ export const Projects = () => {
         )}
 
         {/* Stats bar */}
-        <div className="rounded-2xl border border-base-content/10 bg-base-100/60 p-6 backdrop-blur-sm">
-          <div className="grid grid-cols-2 gap-4 text-center md:grid-cols-4">
+        <div className="rounded-2xl border border-base-content/10 bg-base-100/60 p-4 sm:p-6 backdrop-blur-sm">
+          <div className="grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
             {[
               {
                 value: allProjects.length,

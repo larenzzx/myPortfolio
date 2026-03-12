@@ -185,7 +185,7 @@ export const ContactMe = () => {
               <textarea
                 id="message"
                 name="message"
-                rows={5}
+                rows={4}
                 className={`textarea textarea-bordered w-full resize-none focus:textarea-primary transition-all duration-200 ${
                   errors.message ? "textarea-error" : ""
                 }`}

@@ -161,11 +161,11 @@ export const Experience = () => {
 
               return (
                 <RevealItem key={exp.id} delay={i * 80}>
-                  <div className="flex gap-5">
+                  <div className="flex gap-3 sm:gap-5">
                     {/* ── Dot ── */}
                     <div className="relative flex-shrink-0 pt-5">
                       <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-full ${cfg.dot} ${cfg.dotRing} z-10`}
+                        className={`flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full ${cfg.dot} ${cfg.dotRing} z-10`}
                       >
                         <exp.Icon
                           size={16}
@@ -180,11 +180,11 @@ export const Experience = () => {
                       className={`flex-1 rounded-2xl ${cfg.border} ${cfg.cardBg} shadow-md ${cfg.glow} transition-all duration-300 ease-spring hover:shadow-xl hover:-translate-y-0.5 overflow-hidden`}
                     >
                       {/* Card header */}
-                      <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-4">
-                        <div className="flex items-start gap-3 min-w-0">
+                      <div className="flex items-start justify-between gap-2 px-4 sm:px-5 pt-4 sm:pt-5 pb-3 sm:pb-4">
+                        <div className="flex items-start gap-2 sm:gap-3 min-w-0">
                           {/* Role icon badge */}
                           <div
-                            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${cfg.headerIcon}`}
+                            className={`hidden sm:flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${cfg.headerIcon}`}
                           >
                             <exp.Icon size={18} strokeWidth={1.8} />
                           </div>
@@ -221,10 +221,10 @@ export const Experience = () => {
                       </div>
 
                       {/* Divider */}
-                      <div className="mx-5 h-px bg-base-content/8" />
+                      <div className="mx-4 sm:mx-5 h-px bg-base-content/8" />
 
                       {/* Bullets */}
-                      <ul className="space-y-2 px-5 py-4">
+                      <ul className="space-y-2 px-4 sm:px-5 py-3 sm:py-4">
                         {exp.bullets.map((bullet, bi) => (
                           <li
                             key={bi}
@@ -239,7 +239,7 @@ export const Experience = () => {
                       </ul>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 px-5 pb-5">
+                      <div className="flex flex-wrap gap-1.5 px-4 sm:px-5 pb-4 sm:pb-5">
                         {exp.tags.map((tag) => (
                           <span
                             key={tag}

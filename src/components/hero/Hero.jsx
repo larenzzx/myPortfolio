@@ -59,22 +59,22 @@ function Hero() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Primary — top-left */}
         <div
-          className="hero-blob absolute -top-32 -left-32 h-[580px] w-[580px] rounded-full bg-primary/10 blur-[110px]"
+          className="hero-blob absolute -top-20 -left-20 h-[280px] w-[280px] sm:h-[420px] sm:w-[420px] md:h-[580px] md:w-[580px] rounded-full bg-primary/10 blur-[80px] sm:blur-[110px]"
           style={{ animation: "blob-drift 10s ease-in-out infinite" }}
         />
         {/* Secondary — bottom-right */}
         <div
-          className="hero-blob absolute -bottom-40 -right-20 h-[480px] w-[480px] rounded-full bg-secondary/10 blur-[100px]"
+          className="hero-blob absolute -bottom-20 -right-10 h-[240px] w-[240px] sm:h-[360px] sm:w-[360px] md:h-[480px] md:w-[480px] rounded-full bg-secondary/10 blur-[70px] sm:blur-[100px]"
           style={{ animation: "blob-drift 13s ease-in-out infinite 2s" }}
         />
         {/* Accent — center */}
         <div
-          className="hero-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[340px] w-[340px] rounded-full bg-accent/7 blur-[90px]"
+          className="hero-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[200px] w-[200px] sm:h-[280px] sm:w-[280px] md:h-[340px] md:w-[340px] rounded-full bg-accent/7 blur-[60px] sm:blur-[90px]"
           style={{ animation: "blob-drift 16s ease-in-out infinite 5s" }}
         />
         {/* Primary tint — bottom-left */}
         <div
-          className="hero-blob absolute bottom-10 left-10 h-[260px] w-[260px] rounded-full bg-primary/7 blur-[80px]"
+          className="hero-blob absolute bottom-6 left-6 h-[160px] w-[160px] sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] rounded-full bg-primary/7 blur-[50px] sm:blur-[80px]"
           style={{ animation: "blob-drift 11s ease-in-out infinite 3.5s" }}
         />
       </div>
@@ -94,15 +94,15 @@ function Hero() {
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
 
         {/* Role badges */}
-        <div className="flex gap-3 justify-center flex-wrap mb-8">
+        <div className="flex gap-2 sm:gap-3 justify-center flex-wrap mb-6 sm:mb-8">
           <span
-            className="badge badge-primary badge-lg font-mono shadow-md shadow-primary/25 motion-safe:animate-pulse"
+            className="badge badge-primary badge-md sm:badge-lg font-mono shadow-md shadow-primary/25 motion-safe:animate-pulse"
             style={{ animationDuration: "3s" }}
           >
             &lt; Web Developer /&gt;
           </span>
           <span
-            className="badge badge-secondary badge-lg font-mono shadow-md shadow-secondary/25 motion-safe:animate-pulse"
+            className="badge badge-secondary badge-md sm:badge-lg font-mono shadow-md shadow-secondary/25 motion-safe:animate-pulse"
             style={{ animationDuration: "3s", animationDelay: "1.5s" }}
           >
             [ SOC Analyst ]
@@ -110,21 +110,21 @@ function Hero() {
         </div>
 
         {/* Main headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-base-content leading-tight mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-base-content leading-tight mb-4">
           I build for the web.
           <br />
           <span className="text-primary">I defend it too.</span>
         </h1>
 
         {/* Typewriter row */}
-        <div className="flex items-center justify-center gap-x-2 text-2xl sm:text-3xl font-bold mb-4">
+        <div className="flex items-center justify-center gap-x-2 text-xl sm:text-2xl md:text-3xl font-bold mb-4">
           <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             I&apos;m
           </span>
           <TypingAnimation />
         </div>
 
-        <p className="text-lg sm:text-xl text-base-content/60 mb-10 max-w-xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-base-content/60 mb-8 sm:mb-10 max-w-xl mx-auto">
           Full-Stack Developer &amp; SOC Analyst L1 — crafting and securing
           digital experiences.
         </p>

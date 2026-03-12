@@ -131,12 +131,21 @@ export const CertificateCard = ({ cert, config }) => {
               </div>
             </div>
 
-            {/* Image */}
-            <img
-              src={cert.image}
-              alt={cert.title}
-              className="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl"
-            />
+            {/* Image or PDF */}
+            {cert.isPdf ? (
+              <iframe
+                src={cert.image}
+                title={cert.title}
+                className="w-[90vw] max-w-4xl rounded-xl shadow-2xl"
+                style={{ height: "75vh" }}
+              />
+            ) : (
+              <img
+                src={cert.image}
+                alt={cert.title}
+                className="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl"
+              />
+            )}
 
             <p className="text-xs text-base-100/50">
               Press <kbd className="rounded bg-base-100/10 px-1.5 py-0.5">ESC</kbd> or click outside to close
