@@ -1,10 +1,9 @@
 import { useRef, useState, useEffect } from "react";
-import { Shield, Code2, Monitor } from "lucide-react";
+import { Shield, Code2, Monitor, MapPin, Calendar } from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
 
 /* ------------------------------------------------------------------
-   Single scroll-reveal wrapper — fires once on viewport entry.
-   Animates only opacity + transform (no layout properties).
+   Scroll-reveal — fires once, animates only opacity + transform
 ------------------------------------------------------------------ */
 const RevealItem = ({ children, delay = 0 }) => {
   const ref = useRef(null);
@@ -18,7 +17,7 @@ const RevealItem = ({ children, delay = 0 }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     const el = ref.current;
     if (el) observer.observe(el);
@@ -31,10 +30,10 @@ const RevealItem = ({ children, delay = 0 }) => {
       style={{
         transitionDelay: `${delay}ms`,
         transitionProperty: "opacity, transform",
-        transitionDuration: "450ms",
+        transitionDuration: "480ms",
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(16px)",
+        transform: visible ? "translateY(0)" : "translateY(20px)",
       }}
     >
       {children}
@@ -42,147 +41,197 @@ const RevealItem = ({ children, delay = 0 }) => {
   );
 };
 
+/* ------------------------------------------------------------------
+   Experience data
+------------------------------------------------------------------ */
 const experiences = [
   {
     id: 1,
-    title: "Cybersecurity Analyst (SOC Analyst L1)",
+    title: "Cybersecurity Analyst",
+    subtitle: "SOC Analyst L1",
     company: "Aetas Security",
-    period: "November 2025 – Present",
+    location: "Remote",
+    period: "Nov 2025 – Present",
     current: true,
-    icon: Shield,
+    Icon: Shield,
+    accent: "primary",
     bullets: [
       "Monitor and triage security alerts across client environments",
       "Perform incident response and escalate threats as needed",
-      "Use tools: Wazuh, Microsoft Defender for Endpoint, Qualys VMDR, OSINT tools",
-      "Support helpdesk/IT with user provisioning, device management, VM setup via Microsoft Entra ID, Intune, Exchange, SharePoint, Datto RMM",
+      "Work with Wazuh, Microsoft Defender for Endpoint, Qualys VMDR, and OSINT tools",
+      "Support enterprise IT: user provisioning, Intune device management, VM setup via Entra ID, Exchange, SharePoint, and Datto RMM",
     ],
     tags: ["Wazuh", "MS Defender", "Qualys VMDR", "Incident Response", "Entra ID"],
-    tagStyle: "badge-primary",
-    cardStyle: "bg-base-100 border-primary/20",
-    bulletColor: "bg-primary/60",
   },
   {
     id: 2,
     title: "Freelance Frontend Developer",
-    company: "Self-employed",
+    subtitle: "Self-employed",
+    company: "Independent",
+    location: "Remote",
     period: "Prior to 2025",
     current: false,
-    icon: Code2,
+    Icon: Code2,
+    accent: "secondary",
     bullets: [
-      "Designed and developed modern, responsive web interfaces for clients",
-      "Built projects using HTML, CSS, JavaScript, React, and Tailwind CSS",
-      "Delivered portfolio websites and landing pages for multiple clients",
+      "Designed and built responsive web interfaces for multiple clients",
+      "Delivered projects using React, Tailwind CSS, and JavaScript",
+      "Produced portfolio sites and landing pages end-to-end",
     ],
     tags: ["React", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
-    tagStyle: "badge-secondary",
-    cardStyle: "bg-base-100 border-base-content/10",
-    bulletColor: "bg-secondary/60",
   },
   {
     id: 3,
     title: "IT Technician",
+    subtitle: "Hardware & Systems",
     company: "Prior Experience",
+    location: "On-site",
     period: "Prior",
     current: false,
-    icon: Monitor,
+    Icon: Monitor,
+    accent: "accent",
     bullets: [
-      "Installed and configured operating systems, applications, and games",
-      "Performed reprogramming, bug fixes, and hardware maintenance for PC and internet café systems",
-      "Provided LAN and network setup support",
+      "Installed and configured operating systems, software, and games",
+      "Performed reprogramming, bug fixes, and hardware maintenance for PCs and café systems",
+      "Set up and managed LAN environments",
     ],
     tags: ["OS Installation", "Hardware", "LAN Setup", "Networking"],
-    tagStyle: "badge-accent",
-    cardStyle: "bg-base-100 border-base-content/10",
-    bulletColor: "bg-accent/60",
   },
 ];
 
+/* ------------------------------------------------------------------
+   Accent config — 100% DaisyUI tokens
+------------------------------------------------------------------ */
+const accentCfg = {
+  primary: {
+    dot: "bg-primary shadow-lg shadow-primary/30",
+    dotRing: "ring-4 ring-primary/20",
+    iconColor: "text-primary-content",
+    border: "border-l-4 border-primary",
+    cardBg: "bg-base-100",
+    glow: "shadow-primary/10",
+    headerIcon: "bg-primary/10 text-primary",
+    tagClass: "badge-primary",
+    bullet: "bg-primary",
+    periodBg: "bg-primary/10 text-primary",
+  },
+  secondary: {
+    dot: "bg-base-300",
+    dotRing: "",
+    iconColor: "text-base-content/60",
+    border: "border-l-4 border-secondary/50",
+    cardBg: "bg-base-100",
+    glow: "shadow-base-content/5",
+    headerIcon: "bg-secondary/10 text-secondary",
+    tagClass: "badge-secondary",
+    bullet: "bg-secondary",
+    periodBg: "bg-secondary/10 text-secondary",
+  },
+  accent: {
+    dot: "bg-base-300",
+    dotRing: "",
+    iconColor: "text-base-content/60",
+    border: "border-l-4 border-accent/50",
+    cardBg: "bg-base-100",
+    glow: "shadow-base-content/5",
+    headerIcon: "bg-accent/10 text-accent",
+    tagClass: "badge-accent",
+    bullet: "bg-accent",
+    periodBg: "bg-accent/10 text-accent",
+  },
+};
+
+/* ------------------------------------------------------------------
+   Main component
+------------------------------------------------------------------ */
 export const Experience = () => {
   return (
     <div className="bg-base-200 px-4 py-16">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-3xl">
         <SectionTitle id="exp" title="Experience" />
 
-        {/* DaisyUI vertical timeline */}
-        <ul className="timeline timeline-vertical">
-          {experiences.map((exp, i) => {
-            const IconComponent = exp.icon;
-            const isLast = i === experiences.length - 1;
+        {/* Timeline container */}
+        <div className="relative">
+          {/* Vertical connector line */}
+          <div className="absolute left-[19px] top-5 bottom-5 w-px bg-gradient-to-b from-primary via-base-content/20 to-transparent" />
 
-            return (
-              <li key={exp.id}>
-                {/* HR above first item and between items */}
-                {i > 0 && (
-                  <hr
-                    className={
-                      experiences[i - 1].current ? "bg-primary" : "bg-base-content/20"
-                    }
-                  />
-                )}
+          <div className="space-y-8">
+            {experiences.map((exp, i) => {
+              const cfg = accentCfg[exp.accent];
 
-                {/* Period — left side */}
-                <div className="timeline-start mb-10 text-end pr-4">
-                  <RevealItem delay={i * 60}>
-                    <span className="badge badge-outline badge-sm font-mono whitespace-nowrap text-base-content/60">
-                      {exp.period}
-                    </span>
-                  </RevealItem>
-                </div>
+              return (
+                <RevealItem key={exp.id} delay={i * 80}>
+                  <div className="flex gap-5">
+                    {/* ── Dot ── */}
+                    <div className="relative flex-shrink-0 pt-5">
+                      <div
+                        className={`flex h-10 w-10 items-center justify-center rounded-full ${cfg.dot} ${cfg.dotRing} z-10`}
+                      >
+                        <exp.Icon
+                          size={16}
+                          className={cfg.iconColor}
+                          strokeWidth={2}
+                        />
+                      </div>
+                    </div>
 
-                {/* Dot — middle */}
-                <div className="timeline-middle">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-full ${
-                      exp.current
-                        ? "bg-primary shadow-md shadow-primary/40"
-                        : "bg-base-content/20"
-                    }`}
-                  >
-                    <IconComponent
-                      size={14}
-                      className={
-                        exp.current
-                          ? "text-primary-content"
-                          : "text-base-content/50"
-                      }
-                    />
-                  </div>
-                </div>
-
-                {/* Card — right side */}
-                <div className={`timeline-end mb-10 w-full max-w-lg pl-4`}>
-                  <RevealItem delay={i * 60 + 30}>
+                    {/* ── Card ── */}
                     <div
-                      className={`rounded-2xl border p-5 transition-all duration-300 ease-spring hover:shadow-lg ${exp.cardStyle}`}
+                      className={`flex-1 rounded-2xl ${cfg.border} ${cfg.cardBg} shadow-md ${cfg.glow} transition-all duration-300 ease-spring hover:shadow-xl hover:-translate-y-0.5 overflow-hidden`}
                     >
-                      {/* Header row */}
-                      <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
-                        <div>
-                          <div className="flex flex-wrap items-center gap-2">
-                            <h3 className="text-base font-semibold text-base-content sm:text-lg">
+                      {/* Card header */}
+                      <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-4">
+                        <div className="flex items-start gap-3 min-w-0">
+                          {/* Role icon badge */}
+                          <div
+                            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${cfg.headerIcon}`}
+                          >
+                            <exp.Icon size={18} strokeWidth={1.8} />
+                          </div>
+
+                          <div className="min-w-0">
+                            {/* Title + subtitle */}
+                            <h3 className="text-base font-bold leading-tight text-base-content sm:text-lg">
                               {exp.title}
                             </h3>
-                            {exp.current && (
-                              <span className="badge badge-primary badge-sm">
-                                Present
+                            <p className="text-sm font-medium text-base-content/55">
+                              {exp.subtitle}
+                            </p>
+
+                            {/* Company + location row */}
+                            <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                              <span className="flex items-center gap-1 text-xs text-base-content/50">
+                                <MapPin size={11} strokeWidth={2} />
+                                {exp.company}
                               </span>
-                            )}
+                              <span className="flex items-center gap-1 text-xs text-base-content/50">
+                                <Calendar size={11} strokeWidth={2} />
+                                {exp.period}
+                              </span>
+                            </div>
                           </div>
-                          <p className="mt-0.5 text-sm text-base-content/55">
-                            {exp.company}
-                          </p>
                         </div>
+
+                        {/* Present badge — top-right */}
+                        {exp.current && (
+                          <span className="badge badge-primary badge-sm flex-shrink-0 mt-0.5 font-medium">
+                            Present
+                          </span>
+                        )}
                       </div>
 
+                      {/* Divider */}
+                      <div className="mx-5 h-px bg-base-content/8" />
+
                       {/* Bullets */}
-                      <ul className="mb-4 space-y-1.5">
+                      <ul className="space-y-2 px-5 py-4">
                         {exp.bullets.map((bullet, bi) => (
                           <li
                             key={bi}
-                            className="flex gap-2 text-sm text-base-content/70"
+                            className="flex items-start gap-2.5 text-sm text-base-content/70"
                           >
                             <span
-                              className={`mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full ${exp.bulletColor}`}
+                              className={`mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${cfg.bullet} opacity-70`}
                             />
                             {bullet}
                           </li>
@@ -190,32 +239,23 @@ export const Experience = () => {
                       </ul>
 
                       {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1.5 px-5 pb-5">
                         {exp.tags.map((tag) => (
                           <span
                             key={tag}
-                            className={`badge badge-outline badge-sm ${exp.tagStyle}`}
+                            className={`badge badge-outline badge-sm ${cfg.tagClass} font-normal`}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
-                  </RevealItem>
-                </div>
-
-                {/* HR after last item omitted */}
-                {!isLast && (
-                  <hr
-                    className={
-                      exp.current ? "bg-primary" : "bg-base-content/20"
-                    }
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
+                  </div>
+                </RevealItem>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
