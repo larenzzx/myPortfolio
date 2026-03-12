@@ -4,9 +4,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html {
-  @apply scroll-smooth
-} */
+html {
+  @apply scroll-smooth;
+}
+
+.ease-spring {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes skillEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-enter {
+  animation: skillEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-grid-bg {
+  background-image:
+    linear-gradient(hsl(var(--p) / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--p) / 0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
 
 body {
   @apply font-Inter;
@@ -71,6 +105,38 @@ body {
 
 .animate-scaleIn {
   animation: scaleIn 0.3s ease-out;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hero aurora blob drift */
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  25% {
+    transform: translate(40px, -30px) scale(1.06);
+  }
+  50% {
+    transform: translate(-25px, 25px) scale(0.94);
+  }
+  75% {
+    transform: translate(30px, 40px) scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob {
+    animation: none !important;
+  }
 }
 
 /* about section custom animation */

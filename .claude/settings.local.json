@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:svgl.app)",
+      "WebFetch(domain:aetassecurity-my.sharepoint.com)"
+    ]
+  }
+}

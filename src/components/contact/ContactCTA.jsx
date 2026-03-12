@@ -5,6 +5,7 @@ export const ContactMe = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -13,77 +14,47 @@ export const ContactMe = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
+    if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email";
     }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsLoading(true);
-
     try {
-      // EmailJS
-      const result = await emailjs.send(
-        "service_vyz19ms", 
-        "template_gv1chvm", 
+      await emailjs.send(
+        "service_vyz19ms",
+        "template_gv1chvm",
         {
           from_name: formData.name,
           from_email: formData.email,
+          subject: formData.subject,
           message: formData.message,
         },
-        "abQOvAcfydX4GgF5f", 
+        "abQOvAcfydX4GgF5f"
       );
-
-      console.log("SUCCESS!", result.text);
       setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
-      });
-
-      
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    } catch (error) {
-      console.error("FAILED...", error.text);
-      
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch {
       setErrors({ submit: "Failed to send message. Please try again." });
     } finally {
       setIsLoading(false);
@@ -91,85 +62,54 @@ export const ContactMe = () => {
   };
 
   return (
-    <div className="mx-auto w-full max-w-2xl mb-8">
-      <div className="card border border-base-300 bg-base-100 shadow-xl">
-        <div className="card-body p-8">
-          <div className="mb-8 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary">
-              <svg
-                className="h-8 w-8 text-primary-content"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                />
+    <div className="mx-auto w-full max-w-2xl">
+      <div className="card border border-base-content/10 bg-base-100 shadow-xl">
+        <div className="card-body p-6 sm:p-8">
+          {/* Header */}
+          <div className="mb-6 text-center">
+            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary">
+              <svg className="h-7 w-7 text-primary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
-            <h3 className="mb-2 text-2xl font-bold text-base-content">
-              Send Message
-            </h3>
-            <p className="text-base-content/70">
-              Fill out the form below and I'll get back to you as soon as
-              possible.
+            <h3 className="text-xl font-bold text-base-content">Send a Message</h3>
+            <p className="mt-1 text-sm text-base-content/60">
+              Fill out the form and I&apos;ll get back to you soon.
             </p>
           </div>
 
+          {/* Success / error alerts */}
           {isSubmitted && (
-            <div className="alert alert-success mb-6 animate-pulse">
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+            <div className="alert alert-success mb-4">
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Thank you! Your message has been sent successfully.</span>
+              <span>Message sent successfully!</span>
             </div>
           )}
-
           {errors.submit && (
-            <div className="alert alert-error mb-6">
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"
-                />
-              </svg>
+            <div className="alert alert-error mb-4">
               <span>{errors.submit}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid gap-4 md:grid-cols-2">
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            {/* Name + Email row */}
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="form-control">
-                <label className="label">
+                <label className="label pb-1" htmlFor="name">
                   <span className="label-text font-medium">
                     Name <span className="text-error">*</span>
                   </span>
                 </label>
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   placeholder="Your full name"
-                  className={`input input-bordered w-full transition-all duration-300 focus:input-primary ${
+                  className={`input input-bordered w-full focus:input-primary transition-all duration-200 ${
                     errors.name ? "input-error" : ""
                   }`}
                   value={formData.name}
@@ -177,25 +117,24 @@ export const ContactMe = () => {
                   disabled={isLoading}
                 />
                 {errors.name && (
-                  <label className="label">
-                    <span className="label-text-alt text-error">
-                      {errors.name}
-                    </span>
+                  <label className="label pt-1">
+                    <span className="label-text-alt text-error">{errors.name}</span>
                   </label>
                 )}
               </div>
 
               <div className="form-control">
-                <label className="label">
+                <label className="label pb-1" htmlFor="email">
                   <span className="label-text font-medium">
                     Email <span className="text-error">*</span>
                   </span>
                 </label>
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   placeholder="your.email@example.com"
-                  className={`input input-bordered w-full transition-all duration-300 focus:input-primary ${
+                  className={`input input-bordered w-full focus:input-primary transition-all duration-200 ${
                     errors.email ? "input-error" : ""
                   }`}
                   value={formData.email}
@@ -203,92 +142,96 @@ export const ContactMe = () => {
                   disabled={isLoading}
                 />
                 {errors.email && (
-                  <label className="label">
-                    <span className="label-text-alt text-error">
-                      {errors.email}
-                    </span>
+                  <label className="label pt-1">
+                    <span className="label-text-alt text-error">{errors.email}</span>
                   </label>
                 )}
               </div>
             </div>
 
+            {/* Subject */}
             <div className="form-control">
-              <label className="label">
+              <label className="label pb-1" htmlFor="subject">
+                <span className="label-text font-medium">
+                  Subject <span className="text-error">*</span>
+                </span>
+              </label>
+              <input
+                id="subject"
+                type="text"
+                name="subject"
+                placeholder="What is this about?"
+                className={`input input-bordered w-full focus:input-primary transition-all duration-200 ${
+                  errors.subject ? "input-error" : ""
+                }`}
+                value={formData.subject}
+                onChange={handleChange}
+                disabled={isLoading}
+              />
+              {errors.subject && (
+                <label className="label pt-1">
+                  <span className="label-text-alt text-error">{errors.subject}</span>
+                </label>
+              )}
+            </div>
+
+            {/* Message */}
+            <div className="form-control">
+              <label className="label pb-1" htmlFor="message">
                 <span className="label-text font-medium">
                   Message <span className="text-error">*</span>
                 </span>
               </label>
               <textarea
+                id="message"
                 name="message"
-                className={`textarea textarea-bordered h-32 w-full resize-none transition-all duration-300 focus:textarea-primary ${
+                rows={4}
+                className={`textarea textarea-bordered w-full resize-none focus:textarea-primary transition-all duration-200 ${
                   errors.message ? "textarea-error" : ""
                 }`}
-                placeholder="Input message here"
+                placeholder="Tell me about your project or inquiry..."
                 value={formData.message}
                 onChange={handleChange}
                 disabled={isLoading}
-              ></textarea>
+              />
               {errors.message && (
-                <label className="label">
-                  <span className="label-text-alt text-error">
-                    {errors.message}
-                  </span>
+                <label className="label pt-1">
+                  <span className="label-text-alt text-error">{errors.message}</span>
                 </label>
               )}
-              <label className="label">
-                <span className="label-text-alt text-base-content/60">
-                  {formData.message.length}/500 characters
+              <label className="label pt-1">
+                <span className="label-text-alt text-base-content/40">
+                  {formData.message.length}/500
                 </span>
               </label>
             </div>
 
-            <div className="form-control pt-4">
+            {/* Submit */}
+            <div className="form-control pt-2">
               <button
                 type="submit"
-                className={`btn btn-primary btn-lg w-full transition-all duration-300 ${
-                  isLoading ? "loading" : ""
-                } hover:scale-[1.02] hover:shadow-lg`}
+                className="btn btn-primary w-full transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <>
-                    <span className="loading loading-spinner loading-sm"></span>
-                    Sending Message...
+                    <span className="loading loading-spinner loading-sm" />
+                    Sending…
                   </>
                 ) : (
                   <>
-                    <svg
-                      className="mr-2 h-5 w-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                      />
+                    <svg className="mr-1.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                     Send Message
                   </>
                 )}
               </button>
             </div>
-
-            <div className="pt-4 text-center">
-              <p className="text-sm text-base-content/60">
-                By sending this message, you agree to be contacted regarding
-                your inquiry.
-              </p>
-            </div>
           </form>
         </div>
       </div>
-
-      {/* Floating Animation Elements */}
-      <div className="absolute left-10 top-10 -z-10 h-20 w-20 animate-pulse rounded-full bg-primary/5 blur-xl"></div>
-      <div className="absolute bottom-10 right-10 -z-10 h-32 w-32 animate-pulse rounded-full bg-secondary/5 blur-xl delay-1000"></div>
     </div>
   );
 };
