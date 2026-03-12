@@ -4,7 +4,7 @@ import { Palette } from "lucide-react";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState("synthwave");
+  const [currentTheme, setCurrentTheme] = useState("night");
   const [isScrolled, setIsScrolled] = useState(false);
 
   const themes = [
