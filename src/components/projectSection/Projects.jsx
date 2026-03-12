@@ -132,7 +132,7 @@ const academicProjects = [
   {
     projectImg: capstone,
     projectTitle: "One Zamboanga: Evacuation Center Management System",
-    projectRole: "Frontend Developer",
+    projectRole: "Full Stack Developer",
     category: "Capstone",
     year: "2025",
     link: "https://github.com/larenzzx/oneZamboanga_capstone",
@@ -178,7 +178,7 @@ const academicProjects = [
   {
     projectImg: se,
     projectTitle: "WESMAARDEC Event Management",
-    projectRole: "Frontend Developer",
+    projectRole: "Full Stack Developer",
     category: "Software Eng.",
     year: "2024",
     link: "https://github.com/larenzzx/WESMAARDEC-Event-Management-System",
@@ -200,7 +200,7 @@ const academicProjects = [
   {
     projectImg: crimson,
     projectTitle: "CrimsonQuest: Campus Directory",
-    projectRole: "Frontend Developer",
+    projectRole: "Full Stack Developer",
     category: "Database Project",
     year: "2023",
     link: "https://github.com/larenzzx/CrimsonQuest",

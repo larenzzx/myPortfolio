@@ -254,7 +254,7 @@ const About = () => {
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <StatCard
                 icon={Code2}
-                value="2+"
+                value={`${Math.floor((Date.now() - new Date("2024-01-01").getTime()) / (365.25 * 24 * 60 * 60 * 1000))}+`}
                 label="Years Web Dev"
                 color="primary"
               />
