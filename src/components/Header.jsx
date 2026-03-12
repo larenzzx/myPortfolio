@@ -6,7 +6,6 @@ function Header() {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState("synthwave");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
 
   const themes = [
     {
@@ -76,18 +75,6 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => e.isIntersecting && setActiveSection(e.target.id)),
-      { threshold: 0.3, rootMargin: "-80px 0px -50% 0px" }
-    );
-    document.querySelectorAll("section[id], div[id]").forEach((s) =>
-      observer.observe(s)
-    );
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setCurrentTheme(savedTheme);
@@ -125,14 +112,9 @@ function Header() {
             <a
               key={link.id}
               href={link.href}
-              className={`relative px-1 py-0.5 transition-colors duration-200 text-sm font-medium
+              className="relative px-1 py-0.5 transition-colors duration-200 text-sm font-medium text-base-content/80 hover:text-primary
                 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-x-0
-                after:bg-primary after:transition-transform after:origin-left hover:after:scale-x-100
-                ${
-                  activeSection === link.id
-                    ? "text-primary after:scale-x-100"
-                    : "text-base-content/80 hover:text-primary"
-                }`}
+                after:bg-primary after:transition-transform after:origin-left hover:after:scale-x-100"
             >
               {link.label}
             </a>
@@ -214,11 +196,7 @@ function Header() {
             <a
               key={link.id}
               href={link.href}
-              className={`py-2 text-sm font-medium transition-colors duration-200 ${
-                activeSection === link.id
-                  ? "text-primary"
-                  : "text-base-content/80 hover:text-primary"
-              }`}
+              className="py-2 text-sm font-medium transition-colors duration-200 text-base-content/80 hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.label}

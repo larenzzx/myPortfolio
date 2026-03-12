@@ -44,20 +44,35 @@ const useScrollReveal = () => {
 const SectionTitle = ({ id, title }) => {
   const [ref, visible] = useScrollReveal();
   return (
-    <div ref={ref} className="mb-12 text-center">
+    <div ref={ref} id={id} className="scroll-mt-16 mb-10 text-center">
+      {/* Eyebrow */}
+      <span
+        className={`inline-block font-mono text-xs tracking-widest text-primary uppercase mb-3 transition-all duration-500 ease-spring ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+        }`}
+      >
+        // {title.toLowerCase().replace(/\s+/g, "-")}
+      </span>
+
+      {/* Title */}
       <h2
-        id={id}
-        className={`bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-4xl font-bold text-transparent transition-all duration-500 ease-spring sm:text-5xl ${
-          visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        className={`text-4xl sm:text-5xl font-bold text-base-content transition-all duration-700 ease-spring delay-100 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
         {title}
       </h2>
+
+      {/* Accent divider */}
       <div
-        className={`mt-4 mx-auto h-1 rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500 ease-spring delay-100 ${
-          visible ? "w-24 opacity-100" : "w-0 opacity-0"
+        className={`mt-4 flex items-center justify-center gap-2 transition-all duration-700 ease-spring delay-200 ${
+          visible ? "opacity-100" : "opacity-0"
         }`}
-      />
+      >
+        <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
+        <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+        <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary" />
+      </div>
     </div>
   );
 };

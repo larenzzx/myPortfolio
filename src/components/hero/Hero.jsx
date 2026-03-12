@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown } from "lucide-react";
 import TypingAnimation from "./TypingAnimation";
 
 function Hero() {
@@ -55,9 +54,34 @@ function Hero() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-base-100 flex items-center justify-center">
-      {/* Animated grid background with parallax */}
+
+      {/* ── Aurora blobs ─────────────────────────────────────────── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Primary — top-left */}
+        <div
+          className="hero-blob absolute -top-32 -left-32 h-[580px] w-[580px] rounded-full bg-primary/10 blur-[110px]"
+          style={{ animation: "blob-drift 10s ease-in-out infinite" }}
+        />
+        {/* Secondary — bottom-right */}
+        <div
+          className="hero-blob absolute -bottom-40 -right-20 h-[480px] w-[480px] rounded-full bg-secondary/10 blur-[100px]"
+          style={{ animation: "blob-drift 13s ease-in-out infinite 2s" }}
+        />
+        {/* Accent — center */}
+        <div
+          className="hero-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[340px] w-[340px] rounded-full bg-accent/7 blur-[90px]"
+          style={{ animation: "blob-drift 16s ease-in-out infinite 5s" }}
+        />
+        {/* Primary tint — bottom-left */}
+        <div
+          className="hero-blob absolute bottom-10 left-10 h-[260px] w-[260px] rounded-full bg-primary/7 blur-[80px]"
+          style={{ animation: "blob-drift 11s ease-in-out infinite 3.5s" }}
+        />
+      </div>
+
+      {/* ── Grid background with parallax ────────────────────────── */}
       <div
-        className="absolute inset-0 hero-grid-bg opacity-40"
+        className="absolute inset-0 hero-grid-bg opacity-25"
         style={{
           transform: prefersReduced.current
             ? "none"
@@ -66,63 +90,10 @@ function Hero() {
         }}
       />
 
-      {/* Ambient glow blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-secondary/5 blur-3xl pointer-events-none" />
-
-      {/* Floating circuit nodes — motion-safe so reduced-motion users see static dots */}
-      <div className="absolute top-[15%] left-[8%] w-2 h-2 rounded-full bg-primary/40 motion-safe:animate-pulse" />
-      <div
-        className="absolute top-[30%] right-[20%] w-1.5 h-1.5 rounded-full bg-accent/30 motion-safe:animate-pulse"
-        style={{ animationDelay: "1s" }}
-      />
-      <div
-        className="absolute top-[55%] left-[15%] w-1.5 h-1.5 rounded-full bg-secondary/40 motion-safe:animate-pulse"
-        style={{ animationDelay: "2s" }}
-      />
-      <div
-        className="absolute top-[20%] right-[35%] w-1.5 h-1.5 rounded-full bg-primary/30 motion-safe:animate-pulse"
-        style={{ animationDelay: "0.5s" }}
-      />
-      <div
-        className="absolute top-[45%] right-[5%] w-2 h-2 rounded-full bg-accent/40 motion-safe:animate-pulse"
-        style={{ animationDelay: "1.5s" }}
-      />
-      <div
-        className="absolute top-[70%] right-[12%] w-2 h-2 rounded-full bg-secondary/30 motion-safe:animate-pulse"
-        style={{ animationDelay: "0.8s" }}
-      />
-      <div
-        className="absolute top-[65%] left-[42%] w-1 h-1 rounded-full bg-primary/50 motion-safe:animate-pulse"
-        style={{ animationDelay: "3s" }}
-      />
-
-      {/* Connecting SVG lines */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none"
-        aria-hidden="true"
-      >
-        <line
-          x1="8%" y1="15%" x2="20%" y2="30%"
-          stroke="hsl(var(--p))" strokeWidth="0.5" strokeDasharray="4 4"
-        />
-        <line
-          x1="80%" y1="70%" x2="65%" y2="45%"
-          stroke="hsl(var(--p))" strokeWidth="0.5" strokeDasharray="4 4"
-        />
-        <line
-          x1="35%" y1="20%" x2="50%" y2="35%"
-          stroke="hsl(var(--s))" strokeWidth="0.5" strokeDasharray="4 4"
-        />
-        <line
-          x1="15%" y1="55%" x2="30%" y2="80%"
-          stroke="hsl(var(--a))" strokeWidth="0.5" strokeDasharray="4 4"
-        />
-      </svg>
-
-      {/* Main content */}
+      {/* ── Main content ─────────────────────────────────────────── */}
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
-        {/* Role badges with subtle glow */}
+
+        {/* Role badges */}
         <div className="flex gap-3 justify-center flex-wrap mb-8">
           <span
             className="badge badge-primary badge-lg font-mono shadow-md shadow-primary/25 motion-safe:animate-pulse"
@@ -145,7 +116,7 @@ function Hero() {
           <span className="text-primary">I defend it too.</span>
         </h1>
 
-        {/* Typewriter row — "I'm" and TypingAnimation are siblings, not nested */}
+        {/* Typewriter row */}
         <div className="flex items-center justify-center gap-x-2 text-2xl sm:text-3xl font-bold mb-4">
           <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             I&apos;m
@@ -174,12 +145,6 @@ function Hero() {
           </a>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-base-content/40 motion-safe:animate-bounce">
-        <span className="text-xs uppercase tracking-widest">scroll</span>
-        <ChevronDown size={16} />
-      </div> */}
     </div>
   );
 }
