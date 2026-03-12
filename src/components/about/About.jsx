@@ -5,7 +5,7 @@ import {
   faFacebook,
   faGithub,
   faLinkedin,
-  faTwitter,
+  faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 import { Code2, Shield, Layers } from "lucide-react";
 
@@ -101,9 +101,9 @@ const socialLinks = [
     name: "LinkedIn",
   },
   {
-    icon: faTwitter,
-    url: "https://x.com/larenzz15?s=21",
-    name: "Twitter",
+    icon: faInstagram,
+    url: "https://www.instagram.com/larenzzzx?igsh=MW1uMXNwdW9hZGowYw%3D%3D&utm_source=qr",
+    name: "Instagram",
   },
 ];
 

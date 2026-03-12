@@ -5,7 +5,7 @@ import {
   faFacebook,
   faGithub,
   faLinkedin,
-  faTwitter,
+  faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
 
 const contactInfo = [
@@ -63,9 +63,9 @@ const socialLinks = [
     href: "https://www.facebook.com/marklarenz.tabotabo?mibextid=wwXIfr&rdid=41mPboavCJj7LpdE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AMy9Kz15z%2F%3Fmibextid%3DwwXIfr",
   },
   {
-    icon: faTwitter,
-    label: "Twitter / X",
-    href: "https://x.com/larenzz15?s=21",
+    icon: faInstagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/larenzzzx?igsh=MW1uMXNwdW9hZGowYw%3D%3D&utm_source=qr",
   },
 ];
 
