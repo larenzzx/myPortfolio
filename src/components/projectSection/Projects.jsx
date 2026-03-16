@@ -3,7 +3,7 @@ import { SectionTitle } from "../SectionTitle";
 import { ProjectCard } from "./ProjectCard";
 import { Briefcase, GraduationCap, LayoutGrid } from "lucide-react";
 
-import ziara from "../../assets/ziara.svg";
+// import ziara from "../../assets/ziara.svg";
 import journey from "../../assets/janrey.svg";
 import jhon from "../../assets/jhon.svg";
 import erich from "../../assets/erich.svg";
@@ -31,18 +31,18 @@ import react from "../../assets/react_dark.svg";
    Project data
 ---------------------------------------------------------------- */
 const experienceProjects = [
-  {
-    projectImg: ziara,
-    projectTitle: "Client Portfolio",
-    projectRole: "Frontend Developer",
-    category: "Freelance",
-    year: "2025",
-    link: "https://github.com/ziaramelon/reactPortfolio",
-    liveView: true,
-    liveLink: "https://personal-porfolio-raiza.netlify.app/",
-    techStack: [react, tailwind],
-    isExperience: true,
-  },
+  // {
+  //   projectImg: ziara,
+  //   projectTitle: "Client Portfolio",
+  //   projectRole: "Frontend Developer",
+  //   category: "Freelance",
+  //   year: "2025",
+  //   link: "https://github.com/ziaramelon/reactPortfolio",
+  //   liveView: true,
+  //   liveLink: "https://personal-porfolio-raiza.netlify.app/",
+  //   techStack: [react, tailwind],
+  //   isExperience: true,
+  // },
   {
     projectImg: journey,
     projectTitle: "Client Portfolio",
@@ -303,7 +303,7 @@ export const Projects = () => {
             />
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {freelanceList.map((project, i) => (
-                <ProjectCard key={i} {...project} />
+                <ProjectCard key={i} index={i} {...project} />
               ))}
             </div>
           </div>
@@ -321,7 +321,7 @@ export const Projects = () => {
             />
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {academicList.map((project, i) => (
-                <ProjectCard key={i} {...project} />
+                <ProjectCard key={i} index={i} {...project} />
               ))}
             </div>
           </div>

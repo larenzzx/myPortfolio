@@ -22,7 +22,7 @@ export const SectionTitle = ({ title, id }) => {
     <div ref={ref} id={id} className="scroll-mt-16 mb-10 text-center">
       {/* Eyebrow */}
       <span
-        className={`inline-block font-mono text-xs tracking-widest text-primary uppercase mb-3 transition-all duration-500 ${
+        className={`inline-block font-mono text-xs tracking-widest text-primary uppercase mb-3 transition-all duration-500 ease-spring ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
         }`}
       >
@@ -31,7 +31,7 @@ export const SectionTitle = ({ title, id }) => {
 
       {/* Title */}
       <h2
-        className={`text-3xl sm:text-4xl md:text-5xl font-bold text-base-content transition-all duration-700 delay-100 ${
+        className={`text-3xl sm:text-4xl md:text-5xl font-bold text-base-content transition-all duration-700 ease-spring delay-100 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
       >
@@ -40,7 +40,7 @@ export const SectionTitle = ({ title, id }) => {
 
       {/* Accent divider */}
       <div
-        className={`mt-4 flex items-center justify-center gap-2 transition-all duration-700 delay-200 ${
+        className={`mt-4 flex items-center justify-center gap-2 transition-all duration-700 ease-spring delay-200 ${
           visible ? "opacity-100" : "opacity-0"
         }`}
       >

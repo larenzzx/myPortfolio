@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { ZoomIn, X, ExternalLink, Download } from "lucide-react";
-import { ObserverProvider } from "../ObserverProvider";
 
-export const CertificateCard = ({ cert, config }) => {
+export const CertificateCard = ({ cert, config, index = 0 }) => {
   const [open, setOpen] = useState(false);
 
   /* ── Keyboard / scroll lock ─────────────────────────────── */
@@ -38,8 +37,10 @@ export const CertificateCard = ({ cert, config }) => {
 
   return (
     <>
-      <ObserverProvider>
-        <div className="intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[1s] intersect:motion-ease-spring-smooth">
+      <div
+        className="intersect-once intersect:motion-translate-y-in-[18px] intersect:motion-duration-[0.5s] intersect:motion-ease-spring-smooth"
+        style={{ animationDelay: `${Math.min(index * 50, 300)}ms` }}
+      >
           <div className="group flex h-full flex-col gap-3 rounded-2xl border border-base-content/10 bg-base-100 p-5 transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5">
 
             {/* Header row: category badge + year */}
@@ -81,13 +82,12 @@ export const CertificateCard = ({ cert, config }) => {
               </button>
             )}
           </div>
-        </div>
-      </ObserverProvider>
+      </div>
 
       {/* ── Modal ────────────────────────────────────────────── */}
       {open && (
         <div
-          className="animate-fadeInn fixed inset-0 z-50 flex items-center justify-center bg-base-content/80 p-4 backdrop-blur-sm"
+          className="animate-fadeIn fixed inset-0 z-50 flex items-center justify-center bg-base-content/80 p-4 backdrop-blur-sm"
           onClick={(e) => e.target === e.currentTarget && closeModal()}
           onKeyDown={handleKey}
           role="dialog"

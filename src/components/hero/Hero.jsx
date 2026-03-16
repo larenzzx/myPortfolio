@@ -94,7 +94,10 @@ function Hero() {
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
 
         {/* Role badges */}
-        <div className="flex gap-2 sm:gap-3 justify-center flex-wrap mb-6 sm:mb-8">
+        <div
+          className="flex gap-2 sm:gap-3 justify-center flex-wrap mb-6 sm:mb-8"
+          style={{ animation: "fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both" }}
+        >
           <span
             className="badge badge-primary badge-md sm:badge-lg font-mono shadow-md shadow-primary/25 motion-safe:animate-pulse"
             style={{ animationDuration: "3s" }}
@@ -110,27 +113,39 @@ function Hero() {
         </div>
 
         {/* Main headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-base-content leading-tight mb-4">
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-base-content leading-tight mb-4"
+          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both" }}
+        >
           I build for the web.
           <br />
           <span className="text-primary">I defend it too.</span>
         </h1>
 
         {/* Typewriter row */}
-        <div className="flex items-center justify-center gap-x-2 text-xl sm:text-2xl md:text-3xl font-bold mb-4">
+        <div
+          className="flex items-center justify-center gap-x-2 text-xl sm:text-2xl md:text-3xl font-bold mb-4"
+          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both" }}
+        >
           <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             I&apos;m
           </span>
           <TypingAnimation />
         </div>
 
-        <p className="text-base sm:text-lg md:text-xl text-base-content/60 mb-8 sm:mb-10 max-w-xl mx-auto">
+        <p
+          className="text-base sm:text-lg md:text-xl text-base-content/60 mb-8 sm:mb-10 max-w-xl mx-auto"
+          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both" }}
+        >
           Full-Stack Developer &amp; SOC Analyst L1 — crafting and securing
           digital experiences.
         </p>
 
         {/* CTA buttons */}
-        <div className="flex gap-4 justify-center flex-wrap">
+        <div
+          className="flex gap-4 justify-center flex-wrap"
+          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both" }}
+        >
           <a
             href="#projects"
             className="btn btn-primary transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"

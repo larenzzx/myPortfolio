@@ -140,7 +140,7 @@ const About = () => {
               {/* Glow halo */}
               <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-20 blur-xl transition-opacity duration-500 group-hover:opacity-30" />
               {/* Spinning gradient ring */}
-              <div className="animate-spin-slow absolute -inset-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-60" />
+              <div className="motion-safe:animate-spin-slow absolute -inset-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-60" />
 
               <div className="relative">
                 <img

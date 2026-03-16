@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { ExternalLink } from "lucide-react";
-import { ObserverProvider } from "../ObserverProvider";
 
 export const ProjectCard = ({
   projectImg,
@@ -15,10 +14,13 @@ export const ProjectCard = ({
   category,
   year,
   isExperience = false,
+  index = 0,
 }) => {
   return (
-    <ObserverProvider>
-      <div className="intersect-once intersect:motion-translate-y-in-100 intersect:motion-duration-[1.2s] intersect:motion-ease-spring-smooth">
+      <div
+        className="intersect-once intersect:motion-translate-y-in-[18px] intersect:motion-duration-[0.55s] intersect:motion-ease-spring-smooth"
+        style={{ animationDelay: `${Math.min(index * 60, 300)}ms` }}
+      >
         <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-base-content/10 bg-base-100 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10">
 
           {/* ── Image ── */}
@@ -113,6 +115,5 @@ export const ProjectCard = ({
           </div>
         </div>
       </div>
-    </ObserverProvider>
   );
 };

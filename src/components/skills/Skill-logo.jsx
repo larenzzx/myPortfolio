@@ -35,12 +35,11 @@ export const SkillLogo = ({ logos, tooltip, delay = 0, type = "img" }) => {
     <div
       ref={ref}
       className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-base-content/10 bg-base-200 p-4 transition-all duration-300 ease-spring hover:-translate-y-1 hover:border-primary/30 hover:shadow-md hover:shadow-primary/20"
-      style={{
-        transitionDelay: `${delay}ms`,
-        transitionProperty: "opacity, transform",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(8px)",
-      }}
+      style={
+        visible
+          ? { animation: `skillEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms both` }
+          : { opacity: 0, transform: "translateY(8px)" }
+      }
     >
       {/* Icon container — fixed size guarantees centering uniformity */}
       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center">

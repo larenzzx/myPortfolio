@@ -7,6 +7,7 @@ import { Projects } from "./projectSection/Projects";
 import { Contact } from "./contact/Contact";
 import { Certificates } from "./certificatess/Certificates";
 import { Footer } from "./Footer";
+import { ObserverProvider } from "./ObserverProvider";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -22,7 +23,7 @@ export const Home = () => {
     }
   }, [location]);
   return (
-    <>
+    <ObserverProvider>
       <Header />
       <Hero />
       <About />
@@ -32,6 +33,6 @@ export const Home = () => {
       <Certificates />
       <Contact />
       <Footer />
-    </>
+    </ObserverProvider>
   );
 };

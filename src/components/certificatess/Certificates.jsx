@@ -426,6 +426,7 @@ export const Certificates = () => {
           {visible.map((cert, i) => (
             <CertificateCard
               key={i}
+              index={i}
               cert={cert}
               config={
                 CATEGORY_CONFIG[cert.category] ?? CATEGORY_CONFIG.general
