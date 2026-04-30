@@ -51,7 +51,7 @@ const experiences = [
     subtitle: "SOC Analyst L1",
     company: "Aetas Security",
     location: "Remote",
-    period: "Nov 2025 – Present",
+    period: "Nov 2025 - Present",
     current: true,
     Icon: Shield,
     accent: "primary",
@@ -65,20 +65,21 @@ const experiences = [
   },
   {
     id: 2,
-    title: "Freelance Frontend Developer",
-    subtitle: "Self-employed",
+    title: "Freelance Web Developer",
+    subtitle: "Full-stack, frontend, maintenance, and deployment",
     company: "Independent",
     location: "Remote",
-    period: "Prior to 2025",
-    current: false,
+    period: "2024 - Present",
+    current: true,
     Icon: Code2,
     accent: "secondary",
     bullets: [
-      "Designed and built responsive web interfaces for multiple clients",
-      "Delivered projects using React, Tailwind CSS, and JavaScript",
-      "Produced portfolio sites and landing pages end-to-end",
+      "Build full-stack web applications, frontend apps, portfolios, dashboards, and landing pages for client commissions",
+      "Improve existing projects by fixing bugs, resolving errors, refining UI, and adding requested features",
+      "Develop responsive interfaces using React, Tailwind CSS, JavaScript, PHP, and database-backed workflows when needed",
+      "Prepare projects for production by testing, configuring hosting, and deploying sites online",
     ],
-    tags: ["React", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
+    tags: ["React", "Tailwind CSS", "JavaScript", "PHP", "MySQL", "Deployment"],
   },
   {
     id: 3,
@@ -92,7 +93,7 @@ const experiences = [
     accent: "accent",
     bullets: [
       "Installed and configured operating systems, software, and games",
-      "Performed reprogramming, bug fixes, and hardware maintenance for PCs and café systems",
+      "Performed reprogramming, bug fixes, and hardware maintenance for PCs and cafe systems",
       "Set up and managed LAN environments",
     ],
     tags: ["OS Installation", "Hardware", "LAN Setup", "Networking"],
@@ -146,7 +147,7 @@ const accentCfg = {
 ------------------------------------------------------------------ */
 export const Experience = () => {
   return (
-    <div className="bg-base-200 px-4 py-16">
+    <section className="bg-base-200 px-4 py-16 lg:py-24">
       <div className="container mx-auto max-w-3xl">
         <SectionTitle id="exp" title="Experience" />
 
@@ -257,6 +258,6 @@ export const Experience = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

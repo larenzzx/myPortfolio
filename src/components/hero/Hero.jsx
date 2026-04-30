@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, Send } from "lucide-react";
 import TypingAnimation from "./TypingAnimation";
 
 function Hero() {
@@ -20,27 +21,28 @@ function Hero() {
 
     const update = () => {
       setTransform({
-        x: mouseX * 0.25,
-        y: scrollY * 0.15 + mouseY * 0.25,
+        x: mouseX * 0.2,
+        y: scrollY * 0.12 + mouseY * 0.2,
       });
       ticking = false;
     };
 
-    const handleScroll = () => {
-      scrollY = window.scrollY;
+    const requestUpdate = () => {
       if (!ticking) {
         rafRef.current = requestAnimationFrame(update);
         ticking = true;
       }
     };
 
+    const handleScroll = () => {
+      scrollY = window.scrollY;
+      requestUpdate();
+    };
+
     const handleMouseMove = (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 30;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-      if (!ticking) {
-        rafRef.current = requestAnimationFrame(update);
-        ticking = true;
-      }
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 28;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 18;
+      requestUpdate();
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -53,35 +55,10 @@ function Hero() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-base-100 flex items-center justify-center">
-
-      {/* ── Aurora blobs ─────────────────────────────────────────── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Primary — top-left */}
-        <div
-          className="hero-blob absolute -top-20 -left-20 h-[280px] w-[280px] sm:h-[420px] sm:w-[420px] md:h-[580px] md:w-[580px] rounded-full bg-primary/10 blur-[80px] sm:blur-[110px]"
-          style={{ animation: "blob-drift 10s ease-in-out infinite" }}
-        />
-        {/* Secondary — bottom-right */}
-        <div
-          className="hero-blob absolute -bottom-20 -right-10 h-[240px] w-[240px] sm:h-[360px] sm:w-[360px] md:h-[480px] md:w-[480px] rounded-full bg-secondary/10 blur-[70px] sm:blur-[100px]"
-          style={{ animation: "blob-drift 13s ease-in-out infinite 2s" }}
-        />
-        {/* Accent — center */}
-        <div
-          className="hero-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[200px] w-[200px] sm:h-[280px] sm:w-[280px] md:h-[340px] md:w-[340px] rounded-full bg-accent/7 blur-[60px] sm:blur-[90px]"
-          style={{ animation: "blob-drift 16s ease-in-out infinite 5s" }}
-        />
-        {/* Primary tint — bottom-left */}
-        <div
-          className="hero-blob absolute bottom-6 left-6 h-[160px] w-[160px] sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px] rounded-full bg-primary/7 blur-[50px] sm:blur-[80px]"
-          style={{ animation: "blob-drift 11s ease-in-out infinite 3.5s" }}
-        />
-      </div>
-
-      {/* ── Grid background with parallax ────────────────────────── */}
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-base-100 px-4 pt-24">
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--p)/0.10),transparent_32%,hsl(var(--s)/0.08)_68%,transparent)]" />
       <div
-        className="absolute inset-0 hero-grid-bg opacity-25"
+        className="hero-grid-bg absolute inset-0 opacity-25"
         style={{
           transform: prefersReduced.current
             ? "none"
@@ -89,43 +66,42 @@ function Hero() {
           willChange: "transform",
         }}
       />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-base-100 to-transparent" />
 
-      {/* ── Main content ─────────────────────────────────────────── */}
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full">
-
-        {/* Role badges */}
+      <div className="relative z-10 mx-auto w-full max-w-4xl text-center">
         <div
-          className="flex gap-2 sm:gap-3 justify-center flex-wrap mb-6 sm:mb-8"
-          style={{ animation: "fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both" }}
+          className="mb-6 flex flex-wrap justify-center gap-2 sm:gap-3"
+          style={{
+            animation:
+              "fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both",
+          }}
         >
-          <span
-            className="badge badge-primary badge-md sm:badge-lg font-mono shadow-md shadow-primary/25 motion-safe:animate-pulse"
-            style={{ animationDuration: "3s" }}
-          >
+          <span className="badge badge-primary badge-md font-mono shadow-md shadow-primary/25 sm:badge-lg">
             &lt; Web Developer /&gt;
           </span>
-          <span
-            className="badge badge-secondary badge-md sm:badge-lg font-mono shadow-md shadow-secondary/25 motion-safe:animate-pulse"
-            style={{ animationDuration: "3s", animationDelay: "1.5s" }}
-          >
+          <span className="badge badge-secondary badge-md font-mono shadow-md shadow-secondary/25 sm:badge-lg">
             [ SOC Analyst ]
           </span>
         </div>
 
-        {/* Main headline */}
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-base-content leading-tight mb-4"
-          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both" }}
+          className="mx-auto mb-5 max-w-4xl text-4xl font-bold leading-tight text-base-content sm:text-5xl md:text-6xl lg:text-7xl"
+          style={{
+            animation:
+              "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both",
+          }}
         >
           I build for the web.
           <br />
           <span className="text-primary">I defend it too.</span>
         </h1>
 
-        {/* Typewriter row */}
         <div
-          className="flex items-center justify-center gap-x-2 text-xl sm:text-2xl md:text-3xl font-bold mb-4"
-          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both" }}
+          className="mb-5 flex min-h-10 items-center justify-center gap-x-2 text-xl font-bold sm:text-2xl md:text-3xl"
+          style={{
+            animation:
+              "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both",
+          }}
         >
           <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             I&apos;m
@@ -134,33 +110,40 @@ function Hero() {
         </div>
 
         <p
-          className="text-base sm:text-lg md:text-xl text-base-content/60 mb-8 sm:mb-10 max-w-xl mx-auto"
-          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both" }}
+          className="mx-auto mb-9 max-w-2xl text-base leading-relaxed text-base-content/65 sm:text-lg md:text-xl"
+          style={{
+            animation:
+              "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both",
+          }}
         >
-          Full-Stack Developer &amp; SOC Analyst L1 — crafting and securing
-          digital experiences.
+          Full-stack developer and SOC Analyst L1 focused on clean interfaces,
+          secure workflows, and dependable digital experiences.
         </p>
 
-        {/* CTA buttons */}
         <div
-          className="flex gap-4 justify-center flex-wrap"
-          style={{ animation: "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both" }}
+          className="flex flex-wrap justify-center gap-3"
+          style={{
+            animation:
+              "fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both",
+          }}
         >
           <a
             href="#projects"
-            className="btn btn-primary transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
+            className="btn btn-primary rounded-xl transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
           >
             View My Work
+            <ArrowDown size={16} />
           </a>
           <a
             href="#contact"
-            className="btn btn-outline transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-lg hover:shadow-base-content/10"
+            className="btn btn-outline rounded-xl transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:shadow-lg hover:shadow-base-content/10"
           >
             Get In Touch
+            <Send size={16} />
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

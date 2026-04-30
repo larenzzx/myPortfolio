@@ -267,7 +267,7 @@ export const Projects = () => {
       : allProjects.filter((p) => p.group === "academic");
 
   return (
-    <div className="bg-base-200 px-4 py-16">
+    <section className="bg-base-200 px-4 py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl">
         <SectionTitle id="projects" title="Projects" />
 
@@ -281,7 +281,7 @@ export const Projects = () => {
                 className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeTab === id
                     ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
-                    : "bg-base-200 text-base-content/70 hover:bg-base-300 hover:text-base-content"
+                    : "border border-base-content/10 bg-base-100/70 text-base-content/70 hover:bg-base-100 hover:text-base-content"
                 }`}
               >
                 <Icon size={13} strokeWidth={2} />
@@ -362,6 +362,6 @@ export const Projects = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

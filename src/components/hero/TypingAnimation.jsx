@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
+const texts = ["Larenz", "a Web Developer", "a SOC Analyst"];
+
 const TypingAnimation = () => {
-  const texts = ["Larenz", "a Web Developer", "a SOC Analyst"];
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);

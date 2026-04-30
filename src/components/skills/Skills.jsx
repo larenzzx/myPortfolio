@@ -124,20 +124,12 @@ export const Skills = () => {
   ];
 
   return (
-    <div className="bg-base-100 px-4 py-16">
+    <section className="bg-base-100 px-4 py-16 lg:py-24">
       <div className="container mx-auto">
         <SectionTitle id="skills" title="Skills" />
 
         <div className="mx-auto max-w-5xl">
-          {/* Outer card */}
           <div className="relative overflow-hidden rounded-3xl border border-base-content/10 bg-gradient-to-br from-base-100/95 to-base-200/90 shadow-2xl shadow-base-content/10">
-            {/* Decorative orbs */}
-            <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-br from-primary/15 to-secondary/15 blur-3xl motion-safe:animate-pulse" />
-            <div
-              className="pointer-events-none absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-gradient-to-br from-accent/15 to-info/15 blur-3xl motion-safe:animate-pulse"
-              style={{ animationDelay: "1s" }}
-            />
-
             <div className="relative p-4 sm:p-6 md:p-10 lg:p-14">
               <SkillInfo info="Skills & Technologies" />
 
@@ -151,7 +143,7 @@ export const Skills = () => {
                       className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
                         activeTab === id
                           ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
-                          : "bg-base-200 text-base-content/70 hover:bg-base-300 hover:text-base-content"
+                          : "border border-base-content/10 bg-base-100 text-base-content/70 hover:bg-base-200 hover:text-base-content"
                       }`}
                     >
                       <Icon size={13} strokeWidth={2} />
@@ -198,6 +190,6 @@ export const Skills = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

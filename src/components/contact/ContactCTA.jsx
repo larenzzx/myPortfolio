@@ -186,6 +186,7 @@ export const ContactMe = () => {
                 id="message"
                 name="message"
                 rows={4}
+                maxLength={500}
                 className={`textarea textarea-bordered w-full resize-none focus:textarea-primary transition-all duration-200 ${
                   errors.message ? "textarea-error" : ""
                 }`}
@@ -216,7 +217,7 @@ export const ContactMe = () => {
                 {isLoading ? (
                   <>
                     <span className="loading loading-spinner loading-sm" />
-                    Sending…
+                    Sending...
                   </>
                 ) : (
                   <>

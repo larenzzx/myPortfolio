@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ZoomIn, X, ExternalLink, Download } from "lucide-react";
 
 export const CertificateCard = ({ cert, config, index = 0 }) => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   /* ── Keyboard / scroll lock ─────────────────────────────── */
   const openModal = () => {
@@ -25,7 +31,7 @@ export const CertificateCard = ({ cert, config, index = 0 }) => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${cert.title}.png`;
+      a.download = `${cert.title}.${cert.isPdf ? "pdf" : "png"}`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {
@@ -38,10 +44,10 @@ export const CertificateCard = ({ cert, config, index = 0 }) => {
   return (
     <>
       <div
-        className="intersect-once intersect:motion-translate-y-in-[18px] intersect:motion-duration-[0.5s] intersect:motion-ease-spring-smooth"
+        className="intersect-once h-full intersect:motion-translate-y-in-[18px] intersect:motion-duration-[0.5s] intersect:motion-ease-spring-smooth"
         style={{ animationDelay: `${Math.min(index * 50, 300)}ms` }}
       >
-          <div className="group flex h-full flex-col gap-3 rounded-2xl border border-base-content/10 bg-base-100 p-5 transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5">
+          <div className="group flex h-full flex-col gap-3 rounded-2xl border border-base-content/10 bg-base-100 p-5 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5">
 
             {/* Header row: category badge + year */}
             <div className="flex items-center justify-between">
