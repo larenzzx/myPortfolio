@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Chatbot } from "../chatbot/Chatbot";
 import { Footer } from "../Footer";
 import { MobileNav } from "./MobileNav";
 import { Sidebar } from "./Sidebar";
@@ -47,6 +48,7 @@ export const DashboardLayout = ({ children }) => {
           <Footer />
         </div>
       </main>
+      <Chatbot />
     </div>
   );
 };

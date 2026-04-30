@@ -7,6 +7,19 @@ import reactRefresh from "eslint-plugin-react-refresh";
 export default [
   { ignores: ["dist"] },
   {
+    files: ["netlify/functions/**/*.js"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      globals: {
+        ...globals.node,
+        fetch: "readonly",
+      },
+      parserOptions: {
+        sourceType: "module",
+      },
+    },
+  },
+  {
     files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,
