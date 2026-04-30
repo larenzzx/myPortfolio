@@ -44,7 +44,7 @@ const experiences = [
     title: "Cybersecurity Analyst",
     subtitle: "SOC Analyst L1",
     company: "Aetas Security",
-    location: "Remote",
+    location: "On-site",
     period: "Nov 2025 - Present",
     current: true,
     Icon: Shield,
@@ -87,7 +87,7 @@ const experiences = [
     accent: "accent",
     bullets: [
       "Installed and configured operating systems, software, and games",
-      "Performed reprogramming, bug fixes, and hardware maintenance for PCs and cafe systems",
+      "Performed reprogramming, bug fixes, and hardware maintenance for PCs/Laptops",
       "Set up and managed LAN environments",
     ],
     tags: ["OS Installation", "Hardware", "LAN Setup", "Networking"],
