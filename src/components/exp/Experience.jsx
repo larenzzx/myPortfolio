@@ -1,10 +1,7 @@
-import { useRef, useState, useEffect } from "react";
-import { Shield, Code2, Monitor, MapPin, Calendar } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Calendar, Code2, MapPin, Monitor, Shield } from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
 
-/* ------------------------------------------------------------------
-   Scroll-reveal — fires once, animates only opacity + transform
------------------------------------------------------------------- */
 const RevealItem = ({ children, delay = 0 }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -17,7 +14,7 @@ const RevealItem = ({ children, delay = 0 }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
     const el = ref.current;
     if (el) observer.observe(el);
@@ -30,10 +27,10 @@ const RevealItem = ({ children, delay = 0 }) => {
       style={{
         transitionDelay: `${delay}ms`,
         transitionProperty: "opacity, transform",
-        transitionDuration: "480ms",
+        transitionDuration: "420ms",
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transform: visible ? "translateY(0)" : "translateY(16px)",
       }}
     >
       {children}
@@ -41,9 +38,6 @@ const RevealItem = ({ children, delay = 0 }) => {
   );
 };
 
-/* ------------------------------------------------------------------
-   Experience data
------------------------------------------------------------------- */
 const experiences = [
   {
     id: 1,
@@ -79,7 +73,7 @@ const experiences = [
       "Develop responsive interfaces using React, Tailwind CSS, JavaScript, PHP, and database-backed workflows when needed",
       "Prepare projects for production by testing, configuring hosting, and deploying sites online",
     ],
-    tags: ["React", "Tailwind CSS", "JavaScript", "PHP", "MySQL", "Deployment"],
+    tags: ["React", "Tailwind CSS", "JavaScript", "PHP", "MySQL", "Python", "Django", "Deployment"],
   },
   {
     id: 3,
@@ -100,162 +94,119 @@ const experiences = [
   },
 ];
 
-/* ------------------------------------------------------------------
-   Accent config — 100% DaisyUI tokens
------------------------------------------------------------------- */
 const accentCfg = {
   primary: {
-    dot: "bg-primary shadow-lg shadow-primary/30",
-    dotRing: "ring-4 ring-primary/20",
-    iconColor: "text-primary-content",
-    border: "border-l-4 border-primary",
-    cardBg: "bg-base-100",
-    glow: "shadow-primary/10",
-    headerIcon: "bg-primary/10 text-primary",
+    icon: "bg-primary/10 text-primary",
+    dot: "bg-primary text-primary-content shadow-primary/25",
     tagClass: "badge-primary",
-    bullet: "bg-primary",
-    periodBg: "bg-primary/10 text-primary",
+    meta: "bg-primary/10 text-primary",
   },
   secondary: {
-    dot: "bg-base-300",
-    dotRing: "",
-    iconColor: "text-base-content/60",
-    border: "border-l-4 border-secondary/50",
-    cardBg: "bg-base-100",
-    glow: "shadow-base-content/5",
-    headerIcon: "bg-secondary/10 text-secondary",
+    icon: "bg-secondary/10 text-secondary",
+    dot: "bg-secondary text-secondary-content shadow-secondary/25",
     tagClass: "badge-secondary",
-    bullet: "bg-secondary",
-    periodBg: "bg-secondary/10 text-secondary",
+    meta: "bg-secondary/10 text-secondary",
   },
   accent: {
-    dot: "bg-base-300",
-    dotRing: "",
-    iconColor: "text-base-content/60",
-    border: "border-l-4 border-accent/50",
-    cardBg: "bg-base-100",
-    glow: "shadow-base-content/5",
-    headerIcon: "bg-accent/10 text-accent",
+    icon: "bg-accent/10 text-accent",
+    dot: "bg-accent text-accent-content shadow-accent/25",
     tagClass: "badge-accent",
-    bullet: "bg-accent",
-    periodBg: "bg-accent/10 text-accent",
+    meta: "bg-accent/10 text-accent",
   },
 };
 
-/* ------------------------------------------------------------------
-   Main component
------------------------------------------------------------------- */
 export const Experience = () => {
   return (
-    <section className="bg-base-200 px-4 py-16 lg:py-24">
-      <div className="container mx-auto max-w-3xl">
-        <SectionTitle id="exp" title="Experience" />
+    <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
+      <SectionTitle id="exp" title="Experience" />
 
-        {/* Timeline container */}
-        <div className="relative">
-          {/* Vertical connector line */}
-          <div className="absolute left-[19px] top-5 bottom-5 w-px bg-gradient-to-b from-primary via-base-content/20 to-transparent" />
+      <div className="relative">
+        <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px bg-base-content/10 md:block" />
 
-          <div className="space-y-8">
-            {experiences.map((exp, i) => {
-              const cfg = accentCfg[exp.accent];
+        <div className="grid gap-5">
+          {experiences.map((exp, index) => {
+            const cfg = accentCfg[exp.accent];
 
-              return (
-                <RevealItem key={exp.id} delay={i * 80}>
-                  <div className="flex gap-3 sm:gap-5">
-                    {/* ── Dot ── */}
-                    <div className="relative flex-shrink-0 pt-5">
-                      <div
-                        className={`flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full ${cfg.dot} ${cfg.dotRing} z-10`}
-                      >
-                        <exp.Icon
-                          size={16}
-                          className={cfg.iconColor}
-                          strokeWidth={2}
-                        />
-                      </div>
-                    </div>
-
-                    {/* ── Card ── */}
+            return (
+              <RevealItem key={exp.id} delay={index * 80}>
+                <article className="grid gap-4 md:grid-cols-[2rem_minmax(0,1fr)]">
+                  <div className="relative hidden md:block">
                     <div
-                      className={`flex-1 rounded-2xl ${cfg.border} ${cfg.cardBg} shadow-md ${cfg.glow} transition-all duration-300 ease-spring hover:shadow-xl hover:-translate-y-0.5 overflow-hidden`}
+                      className={`absolute left-0 top-5 z-10 flex h-8 w-8 items-center justify-center rounded-xl shadow-lg ${cfg.dot}`}
                     >
-                      {/* Card header */}
-                      <div className="flex items-start justify-between gap-2 px-4 sm:px-5 pt-4 sm:pt-5 pb-3 sm:pb-4">
-                        <div className="flex items-start gap-2 sm:gap-3 min-w-0">
-                          {/* Role icon badge */}
-                          <div
-                            className={`hidden sm:flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${cfg.headerIcon}`}
-                          >
-                            <exp.Icon size={18} strokeWidth={1.8} />
-                          </div>
+                      <exp.Icon size={16} strokeWidth={2} />
+                    </div>
+                  </div>
 
-                          <div className="min-w-0">
-                            {/* Title + subtitle */}
-                            <h3 className="text-base font-bold leading-tight text-base-content sm:text-lg">
-                              {exp.title}
-                            </h3>
-                            <p className="text-sm font-medium text-base-content/55">
-                              {exp.subtitle}
-                            </p>
-
-                            {/* Company + location row */}
-                            <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                              <span className="flex items-center gap-1 text-xs text-base-content/50">
-                                <MapPin size={11} strokeWidth={2} />
-                                {exp.company}
-                              </span>
-                              <span className="flex items-center gap-1 text-xs text-base-content/50">
-                                <Calendar size={11} strokeWidth={2} />
-                                {exp.period}
-                              </span>
-                            </div>
-                          </div>
+                  <div className="overflow-hidden rounded-2xl border border-base-content/10 bg-base-100 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md">
+                    <div className="grid gap-4 p-5 lg:grid-cols-[minmax(0,1fr)_auto]">
+                      <div className="flex min-w-0 items-start gap-3">
+                        <div
+                          className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${cfg.icon}`}
+                        >
+                          <exp.Icon size={18} strokeWidth={1.8} />
                         </div>
 
-                        {/* Present badge — top-right */}
+                        <div className="min-w-0">
+                          <h3 className="text-lg font-bold leading-tight text-base-content">
+                            {exp.title}
+                          </h3>
+                          <p className="mt-1 text-sm font-medium text-base-content/60">
+                            {exp.subtitle}
+                          </p>
+                          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                            <span className="inline-flex items-center gap-1.5 text-xs text-base-content/50">
+                              <MapPin size={11} strokeWidth={2} />
+                              {exp.company}
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 text-xs text-base-content/50">
+                              <Calendar size={11} strokeWidth={2} />
+                              {exp.period}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap items-start gap-2 lg:justify-end">
                         {exp.current && (
-                          <span className="badge badge-primary badge-sm flex-shrink-0 mt-0.5 font-medium">
+                          <span className="badge badge-primary badge-sm flex-shrink-0 font-medium">
                             Present
                           </span>
                         )}
-                      </div>
-
-                      {/* Divider */}
-                      <div className="mx-4 sm:mx-5 h-px bg-base-content/8" />
-
-                      {/* Bullets */}
-                      <ul className="space-y-2 px-4 sm:px-5 py-3 sm:py-4">
-                        {exp.bullets.map((bullet, bi) => (
-                          <li
-                            key={bi}
-                            className="flex items-start gap-2.5 text-sm text-base-content/70"
-                          >
-                            <span
-                              className={`mt-[7px] h-1.5 w-1.5 flex-shrink-0 rounded-full ${cfg.bullet} opacity-70`}
-                            />
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 px-4 sm:px-5 pb-4 sm:pb-5">
-                        {exp.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className={`badge badge-outline badge-sm ${cfg.tagClass} font-normal`}
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                        <span className={`badge badge-sm ${cfg.meta}`}>
+                          {exp.location}
+                        </span>
                       </div>
                     </div>
+
+                    <div className="h-px bg-base-content/10" />
+
+                    <ul className="grid gap-2 p-5 md:grid-cols-2">
+                      {exp.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="rounded-xl bg-base-200/60 p-3 text-sm leading-relaxed text-base-content/70"
+                        >
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-wrap gap-1.5 px-5 pb-5">
+                      {exp.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className={`badge badge-outline badge-sm ${cfg.tagClass} font-normal`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </RevealItem>
-              );
-            })}
-          </div>
+                </article>
+              </RevealItem>
+            );
+          })}
         </div>
       </div>
     </section>

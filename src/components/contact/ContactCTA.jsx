@@ -62,21 +62,22 @@ export const ContactMe = () => {
   };
 
   return (
-    <div className="mx-auto w-full max-w-2xl">
-      <div className="card border border-base-content/10 bg-base-100 shadow-xl">
-        <div className="card-body p-6 sm:p-8">
-          {/* Header */}
-          <div className="mb-6 text-center">
-            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary">
+    <div className="w-full">
+      <div className="rounded-2xl border border-base-content/10 bg-base-100 shadow-sm">
+        <div className="p-5 sm:p-6">
+          <div className="mb-6 flex items-center gap-4 border-b border-base-content/10 pb-5">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary text-primary-content">
               <svg className="h-7 w-7 text-primary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-base-content">Send a Message</h3>
-            <p className="mt-1 text-sm text-base-content/60">
-              Fill out the form and I&apos;ll get back to you soon.
-            </p>
+            <div>
+              <h3 className="text-xl font-bold text-base-content">Send a Message</h3>
+              <p className="mt-1 text-sm text-base-content/60">
+                Fill out the form and I&apos;ll get back to you soon.
+              </p>
+            </div>
           </div>
 
           {/* Success / error alerts */}

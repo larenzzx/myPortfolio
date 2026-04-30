@@ -86,7 +86,7 @@ const About = () => {
   );
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-base-100 via-base-200/40 to-base-100">
+    <section className="relative overflow-hidden rounded-3xl border border-base-content/10 bg-base-100 shadow-sm">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -96,10 +96,10 @@ const About = () => {
         }}
       />
 
-      <div className="container relative mx-auto px-4 py-16 lg:py-24">
+      <div className="relative px-5 py-10 sm:px-8 lg:px-10">
         <SectionTitle id="about" title="About Me" />
 
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[0.85fr_1.15fr]">
           <div
             ref={imageRef}
             className={`flex flex-col items-center gap-8 transition-all duration-500 ease-spring ${

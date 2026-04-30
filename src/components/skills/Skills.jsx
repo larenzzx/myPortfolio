@@ -124,13 +124,13 @@ export const Skills = () => {
   ];
 
   return (
-    <section className="bg-base-100 px-4 py-16 lg:py-24">
-      <div className="container mx-auto">
+    <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
+      <div>
         <SectionTitle id="skills" title="Skills" />
 
-        <div className="mx-auto max-w-5xl">
-          <div className="relative overflow-hidden rounded-3xl border border-base-content/10 bg-gradient-to-br from-base-100/95 to-base-200/90 shadow-2xl shadow-base-content/10">
-            <div className="relative p-4 sm:p-6 md:p-10 lg:p-14">
+        <div>
+          <div className="relative overflow-hidden rounded-2xl border border-base-content/10 bg-base-200/60">
+            <div className="relative p-4 sm:p-6 md:p-8">
               <SkillInfo info="Skills & Technologies" />
 
               {/* Scrollable tab bar */}

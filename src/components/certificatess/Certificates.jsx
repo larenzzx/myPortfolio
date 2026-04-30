@@ -397,8 +397,8 @@ export const Certificates = () => {
   );
 
   return (
-    <section className="bg-base-100 px-4 py-16 lg:py-24">
-      <div className="container mx-auto max-w-7xl">
+    <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
+      <div>
         <SectionTitle id="certs" title="Certificates" />
 
         {/* Filter tabs */}
