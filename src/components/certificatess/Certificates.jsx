@@ -44,7 +44,7 @@ import mastercard from "../../assets/mastercardCybersecurityJobSimulation.pdf";
 /* ----------------------------------------------------------------
    Category config
 ---------------------------------------------------------------- */
-export const CATEGORY_CONFIG = {
+const CATEGORY_CONFIG = {
   "web-dev": {
     label: "Web Dev",
     Icon: Code2,
@@ -167,7 +167,7 @@ const certificates = [
     isPdf: true,
   },
   {
-    title: "CC: Certified in Cybersecurity — Final Assessment",
+    title: "CC: Certified in Cybersecurity - Final Assessment",
     issuer: "ISC2",
     year: "2025",
     category: "cybersecurity",
@@ -397,7 +397,7 @@ export const Certificates = () => {
   );
 
   return (
-    <div className="bg-base-100 px-4 py-16">
+    <section className="bg-base-100 px-4 py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl">
         <SectionTitle id="certs" title="Certificates" />
 
@@ -411,7 +411,7 @@ export const Certificates = () => {
                 className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeTab === id
                     ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
-                    : "bg-base-200 text-base-content/70 hover:bg-base-300 hover:text-base-content"
+                    : "border border-base-content/10 bg-base-100 text-base-content/70 hover:bg-base-200 hover:text-base-content"
                 }`}
               >
                 <Icon size={13} strokeWidth={2} />
@@ -438,6 +438,6 @@ export const Certificates = () => {
         {/* Stats */}
         <StatsBar certs={certificates} />
       </div>
-    </div>
+    </section>
   );
 };

@@ -7,39 +7,23 @@ import {
   faLinkedin,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import { Clock, Mail, MapPin } from "lucide-react";
 
 const contactInfo = [
   {
-    icon: (
-      <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
+    icon: Mail,
     label: "Email",
     value: "marklarenztabotabo@gmail.com",
     href: "mailto:marklarenztabotabo@gmail.com",
   },
   {
-    icon: (
-      <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    icon: MapPin,
     label: "Location",
     value: "Zamboanga City, Philippines",
     href: null,
   },
   {
-    icon: (
-      <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
+    icon: Clock,
     label: "Response Time",
     value: "Usually within 24 hours",
     href: null,
@@ -71,7 +55,7 @@ const socialLinks = [
 
 export const Contact = () => {
   return (
-    <div className="bg-base-200 px-4 py-16">
+    <section className="bg-base-200 px-4 py-16 lg:py-24">
       <div className="container mx-auto max-w-6xl">
         <SectionTitle id="contact" title="Contact Me" />
 
@@ -85,20 +69,21 @@ export const Contact = () => {
               <p className="text-sm leading-relaxed text-base-content/70 sm:text-base">
                 I&apos;m always open to new opportunities and interesting
                 projects. Whether you have something in mind or just want to
-                connect — I&apos;d love to hear from you.
+                connect. I&apos;d love to hear from you.
               </p>
             </div>
 
             {/* Contact detail rows */}
             <div className="space-y-3">
               {contactInfo.map((item, i) => {
+                const Icon = item.icon;
                 const Inner = (
                   <div
                     key={i}
                     className="flex items-center gap-4 rounded-xl bg-base-100 p-4 transition-colors duration-200 hover:bg-base-300"
                   >
                     <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                      {item.icon}
+                      <Icon className="h-5 w-5 text-primary" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs text-base-content/50">{item.label}</p>
@@ -148,6 +133,6 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

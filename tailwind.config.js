@@ -1,3 +1,7 @@
+import daisyui from "daisyui";
+import intersect from "tailwindcss-intersect";
+import motion from "tailwindcss-motion";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -16,24 +20,24 @@ export default {
       },
     },
     fontFamily: {
-      Inter: ['Poppins', 'serif'],
+      Inter: ["Inter", "Poppins", "sans-serif"],
     },
     extend: {
       animation: {
-        'blink': 'blink 0.7s infinite'
+        blink: "blink 0.7s infinite",
       },
       keyframes: {
         blink: {
-          '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0 },
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0 },
         },
       },
     },
   },
   plugins: [
-    require('daisyui'), 
-    require('tailwindcss-motion'),
-    require('tailwindcss-intersect') 
+    daisyui,
+    motion,
+    intersect,
   ],
   daisyui: {
     themes: ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", 
