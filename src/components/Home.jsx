@@ -272,7 +272,7 @@ export const Home = () => {
               Featured project slot is empty
             </p>
             <p className="mt-2 text-sm leading-relaxed text-base-content/55">
-              This area is reserved for the project you want to highlight soon.
+              ....
             </p>
           </div>
         </div>
