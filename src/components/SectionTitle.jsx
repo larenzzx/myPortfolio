@@ -19,32 +19,23 @@ export const SectionTitle = ({ title, id, eyebrow }) => {
   }, []);
 
   return (
-    <div ref={ref} id={id} className="mb-10 scroll-mt-24 text-center">
-      <span
-        className={`mb-3 inline-block font-mono text-xs uppercase tracking-widest text-primary transition-all duration-500 ease-spring ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-        }`}
-      >
-        {"// "}
-        {eyebrow ?? title.toLowerCase().replace(/\s+/g, "-")}
-      </span>
-
-      <h2
-        className={`text-3xl font-bold text-base-content transition-all delay-100 duration-700 ease-spring sm:text-4xl md:text-5xl ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-      >
-        {title}
-      </h2>
-
-      <div
-        className={`mt-4 flex items-center justify-center gap-2 transition-all duration-700 ease-spring delay-200 ${
-          visible ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
-        <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-        <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary" />
+    <div
+      ref={ref}
+      id={id}
+      className={`mb-7 scroll-mt-24 border-b border-base-content/10 pb-5 transition-all duration-500 ease-spring ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+      }`}
+    >
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <span className="inline-flex rounded-lg border border-primary/20 bg-primary/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-primary">
+            {eyebrow ?? title.toLowerCase().replace(/\s+/g, "-")}
+          </span>
+          <h2 className="mt-3 text-2xl font-bold tracking-normal text-base-content sm:text-3xl">
+            {title}
+          </h2>
+        </div>
+        <div className="hidden h-px flex-1 bg-base-content/10 sm:block" />
       </div>
     </div>
   );

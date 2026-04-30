@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const ProjectCard = ({
   projectImg,
@@ -14,6 +15,7 @@ export const ProjectCard = ({
   category,
   year,
   isExperience = false,
+  slug,
   index = 0,
 }) => {
   return (
@@ -80,7 +82,18 @@ export const ProjectCard = ({
 
           <div className="flex-1" />
 
-          <div className="flex items-center gap-2 border-t border-base-content/8 pt-4">
+          <div className="grid gap-2 border-t border-base-content/8 pt-4">
+            {slug && (
+              <Link
+                to={`/projects/${slug}`}
+                className="btn btn-primary btn-sm w-full gap-1.5 transition-colors duration-150"
+              >
+                <FileText size={13} strokeWidth={2} />
+                Details
+              </Link>
+            )}
+
+            <div className="flex items-center gap-2">
             <a
               href={link}
               target="_blank"
@@ -106,6 +119,7 @@ export const ProjectCard = ({
                 No Demo
               </span>
             )}
+            </div>
           </div>
         </div>
       </div>
