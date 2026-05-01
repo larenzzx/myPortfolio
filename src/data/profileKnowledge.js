@@ -1,14 +1,30 @@
 export const profileKnowledge = {
   name: "Mark Larenz Tabotabo",
+  preferredName: "Mark Tabotabo",
   role: "Freelance Web Developer & Cybersecurity Analyst",
   title: "Full-stack developer and SOC Analyst L1",
   shortBio:
     "Full-stack developer and SOC Analyst L1 focused on clean interfaces, secure workflows, and dependable digital experiences.",
+  education: {
+    school: "Western Mindanao State University (WMSU)",
+    degree: "Bachelor of Science in Information Technology (BSIT)",
+    graduationYear: "2025",
+  },
+  professionalSummary:
+    "Mark is a freelance web developer with full-stack, frontend, maintenance, and deployment experience. He also works full-time on-site as a SOC Analyst L1, so his work combines practical web development with cybersecurity awareness and IT operations experience.",
   about: [
     "I'm a freelance web developer who builds full-stack web applications, frontend interfaces, and practical web solutions for clients.",
     "I help improve existing projects by fixing bugs, refining UI, adding features, and preparing sites for online deployment.",
-    "Alongside freelance development, I work as a SOC Analyst L1 at Aetas Security, monitoring threats, responding to incidents, and supporting enterprise IT operations.",
+    "Alongside freelance development, I work full-time on-site as a SOC Analyst L1 at Aetas Security, monitoring threats, responding to incidents, and supporting enterprise IT operations.",
   ],
+  availability: {
+    status:
+      "Available for freelance commissions only because Mark currently works full-time on-site as a SOC Analyst.",
+    workTypes: ["Freelance", "Commission work", "Remote freelance projects"],
+    remote: true,
+    basedIn: "Philippines",
+    preferredContact: "Email",
+  },
   skills: {
     frontend: [
       "HTML5",
@@ -53,7 +69,7 @@ export const profileKnowledge = {
       title: "Cybersecurity Analyst",
       subtitle: "SOC Analyst L1",
       company: "Aetas Security",
-      location: "Remote",
+      location: "On-site",
       period: "Nov 2025 - Present",
       bullets: [
         "Monitor and triage security alerts across client environments",
@@ -184,25 +200,7 @@ export const profileKnowledge = {
       live: "https://larenzzx.github.io/sunnyside/",
     },
   ],
-  certificates: [
-    "HTML Fundamentals - Simplilearn - 2024",
-    "Introduction to Front End Development - Simplilearn - 2024",
-    "JavaScript for Beginners - Simplilearn - 2024",
-    "ReactJS for Beginners - Simplilearn - 2024",
-    "Responsive Web Design - freeCodeCamp - 2024",
-    "JavaScript Algorithms and Data Structures - freeCodeCamp - 2024",
-    "ISC2 CC domain certificates and final assessment - 2025",
-    "Fortinet Certified Fundamentals in Cybersecurity - 2025",
-    "Cybersecurity Course Completion - Fortinet - 2025",
-    "KnowBe4 Security Awareness - 2026",
-    "Threat Intelligence Completion - Fortinet - 2025",
-    "Vulnerability Management - Qualys - 2025",
-    "Datacom Cybersecurity Job Simulation - Forage - 2025",
-    "Mastercard Cybersecurity Job Simulation - Forage - 2025",
-    "Microsoft Learn cybersecurity, Microsoft 365, Entra, endpoint management, Azure, and cloud modules - 2025",
-    "Computer Systems Servicing - TESDA - 2023",
-    "Claude Code in Action - Anthropic - 2026",
-  ],
+  certificates: [],
   contact: {
     email: "marklarenztabotabo@gmail.com",
     location: "Zamboanga City, Philippines",
@@ -217,5 +215,34 @@ export const profileKnowledge = {
     resume:
       "https://drive.google.com/file/d/1TFzqWQv-S9QFWLDtgO7pb68jxfOtW6Yp/view?usp=sharing",
   },
-  interests: ["Web development", "Cybersecurity", "IT systems"],
+  interests: [
+    "Web development",
+    "Cybersecurity",
+    "IT systems",
+    "Watching anime",
+    "Hiking",
+    "Running",
+    "Learning about tech",
+  ],
+  commonAnswers: {
+    developerType:
+      "Mark is a freelance web developer who can work on full-stack web applications, frontend interfaces, existing-site improvements, and deployment. He also works as a SOC Analyst L1, which gives him a security-focused mindset when building and maintaining systems.",
+    strongestSkills:
+      "Mark's strongest technical skills are React, Tailwind CSS, JavaScript, HTML5, CSS3, PHP, MySQL, Python, Django, Git, GitHub, cybersecurity operations, alert triage, incident response, Wazuh, Microsoft Defender, Qualys VMDR, OSINT tools, Entra ID, Intune, Exchange, SharePoint, Datto RMM, OS configuration, hardware maintenance, LAN/network setup, and VM setup.",
+    tellMeAboutMark:
+      "Mark Larenz Tabotabo is a freelance web developer and SOC Analyst L1 based in the Philippines. He builds full-stack web applications, frontend interfaces, and practical web solutions for clients. He also improves existing projects by fixing bugs, refining UI, adding features, and preparing sites for deployment. His cybersecurity work helps him approach projects with security, reliability, and maintainability in mind.",
+    technologies:
+      "Mark uses frontend tools like HTML5, CSS3, JavaScript, Tailwind CSS, React, DaisyUI, HeadlessUI, ChartJS, SweetAlert2, SwiperJS, DataTablesJS, Git, and GitHub. For backend work, he uses Python, Django, PHP, and MySQL. He also works with cybersecurity and IT tools such as Wazuh, Microsoft Defender, OSINT tools, Qualys VMDR, Entra ID, Intune, Exchange, SharePoint, Datto RMM, LAN/network setup, and VM setup.",
+    availability:
+      "Mark is available for commissions and freelance projects. He currently works full-time on-site as a SOC Analyst, so freelance availability should be discussed through email.",
+  },
+  responseGuidance: [
+    "If asked where Mark graduated, answer Western Mindanao State University (WMSU).",
+    "If asked what course or degree Mark took, answer Bachelor of Science in Information Technology (BSIT).",
+    "If asked when Mark graduated, answer 2025.",
+    "If asked about certifications, awards, achievements, best project, why to hire Mark, preferred industries, or what makes him different, say that information is not listed in the portfolio yet.",
+    "If asked whether Mark is available for work, say he is available for freelance commissions only because he currently works full-time on-site as a SOC Analyst.",
+    "If asked how to contact Mark, recommend email first.",
+    "Do not claim a best project or rank projects unless the user asks for a general list of portfolio projects.",
+  ],
 };

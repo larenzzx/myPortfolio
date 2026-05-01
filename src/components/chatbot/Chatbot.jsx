@@ -5,7 +5,7 @@ const initialMessages = [
   {
     role: "assistant",
     content:
-      "Hi, I can answer questions about Mark's profile, skills, experience, projects, certificates, and contact information.",
+      "Hi, I can answer questions about Mark's profile, education, skills, experience, availability, projects, and contact information.",
   },
 ];
 
