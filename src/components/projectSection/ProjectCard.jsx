@@ -93,32 +93,36 @@ export const ProjectCard = ({
               </Link>
             )}
 
-            <div className="flex items-center gap-2">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline btn-sm flex-1 gap-1.5 transition-colors duration-150"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-              Code
-            </a>
-
-            {liveView ? (
+            <div className="grid grid-cols-2 gap-2">
               <a
-                href={liveLink}
+                href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary btn-sm flex-1 gap-1.5 transition-colors duration-150"
+                className="btn btn-outline btn-sm min-w-0 gap-1.5 px-2 text-xs transition-colors duration-150 sm:text-sm"
               >
-                <ExternalLink size={13} strokeWidth={2} />
-                Live Demo
+                <FontAwesomeIcon icon={faGithub} className="shrink-0" />
+                <span className="truncate">Code</span>
               </a>
-            ) : (
-              <span className="btn btn-sm pointer-events-none flex-1 cursor-default opacity-40 btn-ghost">
-                No Demo
-              </span>
-            )}
+
+              {liveView ? (
+                <a
+                  href={liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-sm min-w-0 gap-1.5 px-2 text-xs transition-colors duration-150 sm:text-sm"
+                >
+                  <ExternalLink
+                    size={13}
+                    strokeWidth={2}
+                    className="shrink-0"
+                  />
+                  <span className="truncate">Live Demo</span>
+                </a>
+              ) : (
+                <span className="btn btn-ghost btn-sm pointer-events-none min-w-0 cursor-default px-2 text-xs opacity-40 sm:text-sm">
+                  <span className="truncate">No Demo</span>
+                </span>
+              )}
             </div>
           </div>
         </div>

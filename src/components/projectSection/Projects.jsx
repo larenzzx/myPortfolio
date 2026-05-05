@@ -84,7 +84,7 @@ export const Projects = () => {
             count={experienceProjects.length}
             color="bg-warning/15 text-warning"
           />
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {freelanceList.map((project, index) => (
               <ProjectCard key={project.slug} index={index} {...project} />
             ))}
@@ -101,7 +101,7 @@ export const Projects = () => {
             count={academicProjects.length}
             color="bg-info/15 text-info"
           />
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {academicList.map((project, index) => (
               <ProjectCard key={project.slug} index={index} {...project} />
             ))}
