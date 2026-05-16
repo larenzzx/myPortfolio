@@ -214,7 +214,7 @@ const About = () => {
             </div>
 
             <div>
-              <Button link="#contact" btn="Let's Work Together" />
+              <Button link="/contact" btn="Let's Work Together" />
             </div>
           </div>
         </div>
