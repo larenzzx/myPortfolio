@@ -42,6 +42,7 @@ import github from "../../assets/github-mark.svg";
 import pythonLogo from "../../assets/python.svg";
 import phpLogo from "../../assets/php.svg";
 import mysqlLogo from "../../assets/mysql.svg";
+import postgresqlLogo from "../../assets/postgresql.svg";
 
 /* ----------------------------------------------------------------
    Skill data per category — stagger delay capped at 60ms per item
@@ -70,6 +71,7 @@ const CATEGORIES = {
     { logo: "https://svgl.app/library/django.svg", name: "Django", type: "img" },
     { logo: phpLogo, name: "PHP", type: "img" },
     { logo: mysqlLogo, name: "MySQL", type: "img" },
+    { logo: postgresqlLogo, name: "PostgreSQL", type: "img" },
   ]),
   cyber: buildSkills([
     { logo: <Shield size={32} />, name: "Security Ops", type: "lucide" },

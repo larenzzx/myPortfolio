@@ -89,15 +89,17 @@ export const ProjectDetail = () => {
               </div>
             </div>
             <div className="grid gap-2">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline btn-sm w-full rounded-xl"
-              >
-                <Github size={15} />
-                View Code
-              </a>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-sm w-full rounded-xl"
+                >
+                  <Github size={15} />
+                  View Code
+                </a>
+              )}
               {project.liveView && project.liveLink && (
                 <a
                   href={project.liveLink}

@@ -12,11 +12,13 @@ import ecom from "../../assets/ecommerce.svg";
 import crimson from "../../assets/crimsonquest.svg";
 import todo from "../../assets/todolist.svg";
 import pokemon from "../../assets/pokemon.svg";
+import cyberguideai from "../../assets/cyberguideai.svg";
 import html from "../../assets/html5.svg";
 import css from "../../assets/css.svg";
 import js from "../../assets/javascript.svg";
 import php from "../../assets/php.svg";
 import mysql from "../../assets/mysql.svg";
+import postgresql from "../../assets/postgresql.svg";
 import tailwind from "../../assets/tailwindcss.svg";
 import daisy from "../../assets/daisyui.svg";
 import react from "../../assets/react_dark.svg";
@@ -27,6 +29,8 @@ const tech = {
   js: { logo: js, name: "JavaScript" },
   php: { logo: php, name: "PHP" },
   mysql: { logo: mysql, name: "MySQL" },
+  postgresql: { logo: postgresql, name: "PostgreSQL" },
+  django: { logo: "https://svgl.app/library/django.svg", name: "Django" },
   tailwind: { logo: tailwind, name: "Tailwind CSS" },
   daisy: { logo: daisy, name: "DaisyUI" },
   react: { logo: react, name: "React" },
@@ -38,6 +42,26 @@ const withTech = (items) => ({
 });
 
 export const experienceProjects = [
+  {
+    slug: "cyberguide-ai",
+    projectImg: cyberguideai,
+    projectTitle: "CyberGuide AI",
+    projectRole: "Full Stack Developer",
+    category: "Personal",
+    year: "2026",
+    link: "https://github.com/larenzzx/cyberguideai.git",
+    liveView: true,
+    liveLink: "https://cyberguideai.onrender.com/",
+    isExperience: true,
+    featured: true,
+    caseStudy: {
+      problem:
+        "SOC analysts, helpdesk users, IT administrators, and cybersecurity learners need a focused workspace for operational guidance and investigation workflows.",
+      outcome:
+        "Built a Django assistant that combines AI guidance with threat intelligence lookup, IOC extraction, phishing email analysis, user access management, and admin approval workflows.",
+    },
+    ...withTech([tech.django, tech.postgresql, tech.tailwind, tech.daisy]),
+  },
   {
     slug: "client-portfolio-janrey",
     projectImg: journey,
@@ -73,7 +97,7 @@ export const experienceProjects = [
     year: "2025",
     link: "https://github.com/erich411/Portfolio",
     liveView: true,
-    liveLink: "https://erichramos.netlify.app/",
+    liveLink: "https://portfolio-iota-sand-35.vercel.app/",
     isExperience: true,
     ...withTech([tech.react, tech.tailwind]),
   },
@@ -141,7 +165,6 @@ export const academicProjects = [
     link: "https://github.com/larenzzx/oneZamboanga_capstone",
     liveView: false,
     isExperience: false,
-    featured: true,
     caseStudy: {
       problem:
         "Evacuation center management needs organized digital workflows for records, coordination, and access to information.",
@@ -153,12 +176,13 @@ export const academicProjects = [
   {
     slug: "pokedex-battle-simulation",
     projectImg: pokemon,
-    projectTitle: "Pokedex with Battle Simulation",
+    projectTitle: "PokeHub",
     projectRole: "Individual Project",
     category: "IT142",
     year: "2025",
     link: "https://github.com/larenzzx/reactPokedex.git",
-    liveView: false,
+    liveView: true,
+    liveLink: "https://poke-hub-six.vercel.app/",
     isExperience: false,
     caseStudy: {
       problem:

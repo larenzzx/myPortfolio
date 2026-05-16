@@ -41,7 +41,7 @@ export const profileKnowledge = {
       "Git",
       "GitHub",
     ],
-    backend: ["Python", "Django", "PHP", "MySQL"],
+    backend: ["Python", "Django", "PHP", "MySQL", "PostgreSQL"],
     cybersecurity: [
       "Security Ops",
       "Alert Triage",
@@ -105,6 +105,17 @@ export const profileKnowledge = {
     },
   ],
   projects: [
+    {
+      title: "CyberGuide AI",
+      role: "Full Stack Developer",
+      category: "Personal",
+      year: "2026",
+      stack: ["Django", "PostgreSQL", "Tailwind CSS", "DaisyUI"],
+      code: "https://github.com/larenzzx/cyberguideai.git",
+      live: "https://cyberguideai.onrender.com/",
+      summary:
+        "CyberGuide AI is a Django cybersecurity, networking, Microsoft tools, and IT/helpdesk operations assistant with AI chat, threat intelligence lookup, IOC extraction, phishing analysis, and user access management workflows.",
+    },
     {
       title: "One Zamboanga: Evacuation Center Management System",
       role: "Full Stack Developer",
@@ -228,11 +239,11 @@ export const profileKnowledge = {
     developerType:
       "Mark is a freelance web developer who can work on full-stack web applications, frontend interfaces, existing-site improvements, and deployment. He also works as a SOC Analyst L1, which gives him a security-focused mindset when building and maintaining systems.",
     strongestSkills:
-      "Mark's strongest technical skills are React, Tailwind CSS, JavaScript, HTML5, CSS3, PHP, MySQL, Python, Django, Git, GitHub, cybersecurity operations, alert triage, incident response, Wazuh, Microsoft Defender, Qualys VMDR, OSINT tools, Entra ID, Intune, Exchange, SharePoint, Datto RMM, OS configuration, hardware maintenance, LAN/network setup, and VM setup.",
+      "Mark's strongest technical skills are React, Tailwind CSS, JavaScript, HTML5, CSS3, PHP, MySQL, PostgreSQL, Python, Django, Git, GitHub, cybersecurity operations, alert triage, incident response, Wazuh, Microsoft Defender, Qualys VMDR, OSINT tools, Entra ID, Intune, Exchange, SharePoint, Datto RMM, OS configuration, hardware maintenance, LAN/network setup, and VM setup.",
     tellMeAboutMark:
       "Mark Larenz Tabotabo is a freelance web developer and SOC Analyst L1 based in the Philippines. He builds full-stack web applications, frontend interfaces, and practical web solutions for clients. He also improves existing projects by fixing bugs, refining UI, adding features, and preparing sites for deployment. His cybersecurity work helps him approach projects with security, reliability, and maintainability in mind.",
     technologies:
-      "Mark uses frontend tools like HTML5, CSS3, JavaScript, Tailwind CSS, React, DaisyUI, HeadlessUI, ChartJS, SweetAlert2, SwiperJS, DataTablesJS, Git, and GitHub. For backend work, he uses Python, Django, PHP, and MySQL. He also works with cybersecurity and IT tools such as Wazuh, Microsoft Defender, OSINT tools, Qualys VMDR, Entra ID, Intune, Exchange, SharePoint, Datto RMM, LAN/network setup, and VM setup.",
+      "Mark uses frontend tools like HTML5, CSS3, JavaScript, Tailwind CSS, React, DaisyUI, HeadlessUI, ChartJS, SweetAlert2, SwiperJS, DataTablesJS, Git, and GitHub. For backend work, he uses Python, Django, PHP, MySQL, and PostgreSQL. He also works with cybersecurity and IT tools such as Wazuh, Microsoft Defender, OSINT tools, Qualys VMDR, Entra ID, Intune, Exchange, SharePoint, Datto RMM, LAN/network setup, and VM setup.",
     availability:
       "Mark is available for commissions and freelance projects. He currently works full-time on-site as a SOC Analyst, so freelance availability should be discussed through email.",
   },

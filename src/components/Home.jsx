@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import TypingAnimation from "./hero/TypingAnimation";
+import { ProjectCard } from "./projectSection/ProjectCard";
+import { featuredProject } from "./projectSection/projectData";
 
 const overviewCards = [
   {
@@ -104,7 +106,7 @@ const valueCards = [
 
 const focusItems = [
   { label: "Frontend", value: "React, Tailwind CSS, JavaScript", Icon: Code2 },
-  { label: "Backend", value: "PHP, MySQL, Python, Django", Icon: Database },
+  { label: "Backend", value: "Python, Django, PostgreSQL, PHP, MySQL", Icon: Database },
   { label: "Credentials", value: "Web development, cybersecurity, IT, and AI certificates", Icon: FileCheck2 },
 ];
 
@@ -258,22 +260,56 @@ export const Home = () => {
               Featured Project
             </p>
             <h2 className="mt-2 text-2xl font-bold text-base-content">
-              Coming Soon
+              {featuredProject.projectTitle}
             </h2>
           </div>
+          <Link to="/projects" className="btn btn-outline btn-sm rounded-xl">
+            View Projects
+            <ArrowRight size={14} />
+          </Link>
         </div>
 
-        <div className="grid min-h-64 place-items-center rounded-2xl border border-dashed border-base-content/20 bg-base-200/40 p-6 text-center">
-          <div className="max-w-md">
-            <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-base-100 text-primary">
-              <Layers3 size={20} />
+        <div className="grid gap-5 lg:grid-cols-[minmax(18rem,24rem)_1fr]">
+          <ProjectCard {...featuredProject} />
+          <div className="rounded-2xl border border-base-content/10 bg-base-200/50 p-5">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+                <Layers3 size={18} />
+              </div>
+              <div>
+                <p className="text-xs text-base-content/45">
+                  {featuredProject.category} Project
+                </p>
+                <p className="text-sm font-bold text-base-content">
+                  {featuredProject.projectRole}
+                </p>
+              </div>
             </div>
-            <p className="mt-4 text-sm font-semibold text-base-content">
-              Featured project slot is empty
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-base-content/55">
-              ....
-            </p>
+
+            {featuredProject.caseStudy && (
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm font-bold text-base-content">Focus</p>
+                  <p className="mt-1 text-sm leading-relaxed text-base-content/65">
+                    {featuredProject.caseStudy.problem}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-base-content">Built</p>
+                  <p className="mt-1 text-sm leading-relaxed text-base-content/65">
+                    {featuredProject.caseStudy.outcome}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {featuredProject.techNames?.map((name) => (
+                <span key={name} className="badge badge-outline">
+                  {name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>

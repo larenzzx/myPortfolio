@@ -94,15 +94,21 @@ export const ProjectCard = ({
             )}
 
             <div className="grid grid-cols-2 gap-2">
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline btn-sm min-w-0 gap-1.5 px-2 text-xs transition-colors duration-150 sm:text-sm"
-              >
-                <FontAwesomeIcon icon={faGithub} className="shrink-0" />
-                <span className="truncate">Code</span>
-              </a>
+              {link ? (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-sm min-w-0 gap-1.5 px-2 text-xs transition-colors duration-150 sm:text-sm"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="shrink-0" />
+                  <span className="truncate">Code</span>
+                </a>
+              ) : (
+                <span className="btn btn-ghost btn-sm pointer-events-none min-w-0 cursor-default px-2 text-xs opacity-40 sm:text-sm">
+                  <span className="truncate">No Code</span>
+                </span>
+              )}
 
               {liveView ? (
                 <a
