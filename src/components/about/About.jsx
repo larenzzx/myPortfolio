@@ -133,10 +133,13 @@ const About = () => {
 
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="badge badge-primary badge-sm font-mono">
-                  &lt; Freelance Web Dev /&gt;
+                  &lt; Web Dev /&gt;
                 </span>
                 <span className="badge badge-secondary badge-sm font-mono">
                   [ SOC L1 ]
+                </span>
+                <span className="badge badge-accent badge-sm font-mono">
+                  [ AI Enthusiast ]
                 </span>
               </div>
             </div>
@@ -168,32 +171,30 @@ const About = () => {
                 Mark Larenz Tabotabo
               </h1>
               <p className="mt-2 text-lg font-medium text-primary sm:text-xl">
-                Freelance Web Developer & Cybersecurity Analyst
+                SOC Analyst L1 | Freelance Web Developer | AI Enthusiast
               </p>
             </div>
 
             <div className="space-y-4 text-sm leading-relaxed text-base-content/75 sm:text-base">
               <p>
-                I&apos;m a freelance web developer who builds full-stack web
-                applications, frontend interfaces, and practical web solutions
-                for clients. I also help improve existing projects by fixing bugs,
-                refining UI, adding features, and preparing sites for online
-                deployment.
-              </p>
-              <p>
-                My work usually covers the full delivery flow: understanding the
-                client&apos;s problem, designing a responsive interface, building
-                the frontend or backend pieces needed, testing the result, and
-                hosting or deploying the project so it is ready to use.
-              </p>
-              <p>
-                Alongside freelance development, I work as a{" "}
+                I&apos;m a{" "}
                 <span className="font-semibold text-primary">
                   SOC Analyst L1 at Aetas Security
-                </span>
-                , monitoring threats, responding to incidents, and supporting
-                enterprise IT operations. That cybersecurity background helps me
-                build with security, reliability, and maintainability in mind.
+                </span>, working on threat monitoring, 
+                incident response, and supporting enterprise security operations. 
+                This role has strengthened my foundation in security, reliability, 
+                and structured problem-solving.
+              </p>
+              <p>
+                Alongside my full-time role, I occasionally do freelance web development, 
+                building both full-stack applications and frontend projects like portfolio websites, 
+                landing pages, and responsive UIs. I also take on tasks involving improving existing systems 
+                or developing complete web solutions from scratch, including deployment.
+              </p>
+              <p>
+                Currently, I&apos;m transitioning deeper into AI—exploring AI infrastructure, 
+                automation, and intelligent systems. I’m actively building and experimenting 
+                with tools and workflows that merge software development with AI-driven solutions.
               </p>
             </div>
 
@@ -201,7 +202,7 @@ const About = () => {
               <StatCard
                 icon={Code2}
                 value={`${yearsWebDev}+`}
-                label="Years Freelance Dev"
+                label="Years Web Dev"
                 color="primary"
               />
               <StatCard

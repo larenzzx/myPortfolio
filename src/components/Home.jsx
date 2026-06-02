@@ -11,6 +11,7 @@ import {
   MonitorCog,
   ShieldCheck,
   UserRound,
+  Cpu,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import TypingAnimation from "./hero/TypingAnimation";
@@ -85,12 +86,12 @@ const valueCards = [
     title: "Build",
     label: "Web Development",
     description:
-      "Full-stack web applications, frontend interfaces, practical web solutions, bug fixes, UI refinement, features, hosting, and deployment.",
+      "Full-stack web development, responsive interfaces, user-friendly designs, deployment, and bug fixes. Occasionally taking freelance projects.",
     Icon: Code2,
   },
   {
     title: "Defend",
-    label: "Cybersecurity",
+    label: "SOC Analyst",
     description:
       "Threat monitoring, incident response, security alert triage, Wazuh, Microsoft Defender for Endpoint, Qualys VMDR, and OSINT tools.",
     Icon: ShieldCheck,
@@ -128,12 +129,16 @@ export const Home = () => {
                 <ShieldCheck size={14} />
                 [ SOC Analyst ]
               </span>
+              <span className="inline-flex items-center gap-2 rounded-xl border border-accent/20 bg-accent/10 px-3 py-2 font-mono text-xs font-semibold text-accent">
+                <Cpu size={14} />
+                [ AI Enthusiast ]
+              </span>
             </div>
 
             <h1 className="max-w-4xl text-4xl font-bold leading-[1.05] tracking-normal text-base-content sm:text-5xl xl:text-6xl">
               I build for the web.
               <br />
-              <span className="text-primary">I defend it too.</span>
+              <span className="text-primary">I'm diving deep into AI.</span>
             </h1>
 
             <div className="mt-5 flex min-h-10 items-center gap-x-2 text-xl font-bold sm:text-2xl">
@@ -142,8 +147,7 @@ export const Home = () => {
             </div>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-base-content/65 sm:text-lg">
-              Full-stack developer and SOC Analyst L1 focused on clean interfaces,
-              secure workflows, and dependable digital experiences.
+              Developer and SOC Analyst L1 with a growing passion for AI infrastructure, automation, and building smarter systems.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -198,10 +202,10 @@ export const Home = () => {
         <div className="rounded-3xl border border-base-content/10 bg-base-100 p-5 shadow-sm sm:p-6">
           <div className="mb-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
-              What I Bring
+              What I Know
             </p>
             <h2 className="mt-2 text-2xl font-bold text-base-content">
-              Development, security, and IT in one workflow
+              Skills across development, security, and IT
             </h2>
           </div>
 

@@ -3,7 +3,7 @@ import { Code2, Shield, Monitor, Cpu, Award, LayoutGrid } from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
 import { CertificateCard } from "./CertificateCard";
 
-/* ── Existing certificates (images) ──────────────────────── */
+
 import htmlCert from "../../assets/htmlCert.png";
 import frontCert from "../../assets/frontCert.png";
 import jsCert from "../../assets/jsCert.png";
@@ -11,6 +11,7 @@ import reactCert from "../../assets/reactCert.png";
 import webCert from "../../assets/webCert.png";
 import dataStruc from "../../assets/dataStruc.png";
 import tesda from "../../assets/tesda.png";
+import googleio from "../../assets/googleio.jpg";
 
 /* ── Microsoft Learn (images) ────────────────────────────── */
 import msLearn1 from "../../assets/MircrosoftLearn-1.png";
@@ -38,6 +39,8 @@ import fortinet from "../../assets/Fortinet Certified Fundamentals in Cybersecur
 import threatCompletion from "../../assets/Threat_Completion_Certificate.pdf";
 import vulnMgmt from "../../assets/VulnerabilityManagement.pdf";
 import claudeCode from "../../assets/claude-code-in-action.pdf";
+import claude101 from "../../assets/claude101.pdf";
+import aifluency from "../../assets/AI-fluency.pdf";
 import datacom from "../../assets/datacomJobSimulation.pdf";
 import mastercard from "../../assets/mastercardCybersecurityJobSimulation.pdf";
 
@@ -325,11 +328,34 @@ const certificates = [
 
   /* ── AI ── */
   {
+    title: "Google I/O Extended",
+    issuer: "Google",
+    year: "2025",
+    category: "ai",
+    image: googleio,
+  },
+  {
     title: "Claude Code in Action",
     issuer: "Anthropic",
     year: "2026",
     category: "ai",
     image: claudeCode,
+    isPdf: true,
+  },
+  {
+    title: "Claude 101",
+    issuer: "Anthropic",
+    year: "2026",
+    category: "ai",
+    image: claude101,
+    isPdf: true,
+  },
+  {
+    title: "AI Fluency: Framework & Foundations",
+    issuer: "Anthropic",
+    year: "2026",
+    category: "ai",
+    image: aifluency,
     isPdf: true,
   },
 ];

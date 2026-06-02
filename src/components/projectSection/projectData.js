@@ -13,6 +13,7 @@ import crimson from "../../assets/crimsonquest.svg";
 import todo from "../../assets/todolist.svg";
 import pokemon from "../../assets/pokemon.svg";
 import cyberguideai from "../../assets/cyberguideai.svg";
+import supplyinventory from "../../assets/supplyinventory.svg";
 import html from "../../assets/html5.svg";
 import css from "../../assets/css.svg";
 import js from "../../assets/javascript.svg";
@@ -74,6 +75,19 @@ export const experienceProjects = [
     liveLink: "https://portfolio-iota-sand-35.vercel.app/",
     isExperience: true,
     ...withTech([tech.react, tech.tailwind]),
+  },
+  {
+    slug: "supply-office-inventory",
+    projectImg: supplyinventory,
+    projectTitle: "WMSU Supply Office Inventory System",
+    projectRole: "Full Stack Developer",
+    category: "Freelance",
+    year: "2026",
+    link: "https://github.com/larenzzx/wmsu-supply-office-inventory.git",
+    liveView: true,
+    isExperience: true,
+    liveLink: "https://wmsu-supplyoffice.infinityfreeapp.com/",
+    ...withTech([tech.html, tech.css, tech.js, tech.php, tech.mysql]),
   },
   {
     slug: "client-portfolio-janrey",
