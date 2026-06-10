@@ -15,6 +15,7 @@ import pokemon from "../../assets/pokemon.svg";
 import cyberguideai from "../../assets/cyberguideai.svg";
 import supplyinventory from "../../assets/supplyinventory.svg";
 import devfocus from "../../assets/DevFocus.svg";
+import gitcraft from "../../assets/GitCraft.svg";
 import html from "../../assets/html5.svg";
 import css from "../../assets/css.svg";
 import js from "../../assets/javascript.svg";
@@ -26,6 +27,7 @@ import daisy from "../../assets/daisyui.svg";
 import react from "../../assets/react_dark.svg";
 import typescript from "../../assets/typescript.svg";
 import shadcn from "../../assets/shadcn-ui.svg";
+import vite from "../../assets/vite.svg";
 
 const tech = {
   html: { logo: html, name: "HTML5" },
@@ -40,6 +42,7 @@ const tech = {
   react: { logo: react, name: "React" },
   typescript: { logo: typescript, name: "TypeScript" },
   shadcn: { logo: shadcn, name: "shadcn/ui" },
+  vite: { logo: vite, name: "Vite" },
 };
 
 const withTech = (items) => ({
@@ -85,7 +88,26 @@ export const experienceProjects = [
       outcome:
         "Created a premium Glassmorphism bento-style dashboard combining Pomodoro timers, ambient soundscapes, sprint task lists, and visual focus metrics.",
     },
-    ...withTech([tech.react, tech.typescript, tech.tailwind, tech.shadcn]),
+    ...withTech([tech.react, tech.vite, tech.typescript, tech.tailwind, tech.shadcn]),
+  },
+  {
+    slug: "gitcraft",
+    projectImg: gitcraft,
+    projectTitle: "GitCraft",
+    projectRole: "Frontend Developer",
+    category: "Personal",
+    year: "2026",
+    link: "https://github.com/larenzzx/GitCraft.git",
+    liveView: true,
+    liveLink: "https://git-craft.vercel.app/",
+    isExperience: true,
+    caseStudy: {
+      problem:
+        "Version control can be intimidating for beginners, and command-line mistakes can feel costly.",
+      outcome:
+        "Built an interactive Git & GitHub sandbox simulator combining a local visual workspace, live commit trees, an in-browser CLI terminal, and structured training academies.",
+    },
+    ...withTech([tech.react, tech.vite, tech.tailwind]),
   },
   {
     slug: "client-portfolio-erich",
@@ -98,7 +120,7 @@ export const experienceProjects = [
     liveView: true,
     liveLink: "https://portfolio-iota-sand-35.vercel.app/",
     isExperience: true,
-    ...withTech([tech.react, tech.tailwind]),
+    ...withTech([tech.react, tech.vite, tech.tailwind]),
   },
   {
     slug: "supply-office-inventory",
@@ -124,7 +146,7 @@ export const experienceProjects = [
     liveView: true,
     liveLink: "https://przvlllportfolio.netlify.app/",
     isExperience: true,
-    ...withTech([tech.react, tech.tailwind]),
+    ...withTech([tech.react, tech.vite, tech.tailwind]),
   },
   {
     slug: "client-portfolio-jhon",
@@ -137,7 +159,7 @@ export const experienceProjects = [
     liveView: true,
     liveLink: "https://jondinorodrigo.netlify.app/",
     isExperience: true,
-    ...withTech([tech.react, tech.tailwind]),
+    ...withTech([tech.react, tech.vite, tech.tailwind]),
   },
   {
     slug: "pokedex-freelance",
@@ -149,7 +171,7 @@ export const experienceProjects = [
     link: "https://github.com/ziaramelon/minipokedex",
     liveView: false,
     isExperience: true,
-    ...withTech([tech.react, tech.tailwind, tech.daisy]),
+    ...withTech([tech.react, tech.vite, tech.tailwind, tech.daisy]),
   },
   {
     slug: "task-manager",
@@ -162,7 +184,7 @@ export const experienceProjects = [
     liveView: true,
     liveLink: "https://reacttodolistproj.netlify.app/",
     isExperience: true,
-    ...withTech([tech.react, tech.tailwind]),
+    ...withTech([tech.react, tech.vite, tech.tailwind]),
   },
   {
     slug: "weather-app",
@@ -228,7 +250,7 @@ export const academicProjects = [
       outcome:
         "Created an individual project combining a Pokedex interface with battle simulation behavior.",
     },
-    ...withTech([tech.react, tech.tailwind, tech.daisy]),
+    ...withTech([tech.react, tech.vite, tech.tailwind, tech.daisy]),
   },
   {
     slug: "react-todo-list",
@@ -241,7 +263,7 @@ export const academicProjects = [
     liveView: true,
     liveLink: "https://larenzzx-react-todolist.netlify.app/",
     isExperience: false,
-    ...withTech([tech.react, tech.tailwind, tech.daisy]),
+    ...withTech([tech.react, tech.vite, tech.tailwind, tech.daisy]),
   },
   {
     slug: "portfolio-website",

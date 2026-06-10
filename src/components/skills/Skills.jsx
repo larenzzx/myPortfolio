@@ -39,6 +39,7 @@ import swipeLogo from "../../assets/swiper-logo.svg";
 import dataTable from "../../assets/datatables.svg";
 import gitLogo from "../../assets/git.svg";
 import github from "../../assets/github-mark.svg";
+import viteLogo from "../../assets/vite.svg";
 
 // backend logos
 import pythonLogo from "../../assets/python.svg";
@@ -65,6 +66,7 @@ const CATEGORIES = {
     { logo: typescriptLogo, name: "TypeScript", type: "img" },
     { logo: tailwindLogo, name: "Tailwind CSS", type: "img" },
     { logo: reactLogo, name: "React", type: "img" },
+    { logo: viteLogo, name: "Vite", type: "img" },
     { logo: daisyLogo, name: "DaisyUI", type: "img" },
     { logo: shadcnLogo, name: "shadcn/ui", type: "img" },
     { logo: headlessLogo, name: "HeadlessUI", type: "img" },
