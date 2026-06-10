@@ -9,6 +9,13 @@ const initialMessages = [
   },
 ];
 
+const suggestions = [
+  { label: "🔍 View Projects", query: "Show me Mark's portfolio projects" },
+  { label: "💼 Available for work?", query: "Are you available for freelance commissions?" },
+  { label: "📧 Get Contact Info", query: "How can I contact Mark?" },
+  { label: "📄 Get Resume", query: "Where can I download Mark's resume?" },
+];
+
 const ChatMessage = ({ message }) => {
   const isUser = message.role === "user";
 
@@ -70,8 +77,8 @@ const ChatbotPanel = ({ onClose }) => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading, error]);
 
-  const sendMessage = async () => {
-    const text = input.trim();
+  const sendMessage = async (overrideText) => {
+    const text = (typeof overrideText === "string" ? overrideText : input).trim();
     if (!text || isLoading) return;
 
     setMessages((current) => [...current, { role: "user", content: text }]);
@@ -134,11 +141,28 @@ const ChatbotPanel = ({ onClose }) => {
           <X size={18} />
         </button>
       </header>
-
       <div className="flex-1 space-y-3 overflow-y-auto p-4">
         {messages.map((message, index) => (
           <ChatMessage key={`${message.role}-${index}`} message={message} />
         ))}
+
+        {messages.length === 1 && (
+          <div className="mt-4 space-y-2">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-base-content/40">Suggested Questions</p>
+            <div className="flex flex-wrap gap-1.5">
+              {suggestions.map((chip) => (
+                <button
+                  key={chip.label}
+                  type="button"
+                  onClick={() => sendMessage(chip.query)}
+                  className="rounded-xl border border-base-content/10 bg-base-100 px-3 py-1.5 text-xs text-base-content/75 transition-colors hover:border-primary/45 hover:bg-base-200"
+                >
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {isLoading && (
           <div className="flex justify-start">

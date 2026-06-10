@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -11,29 +10,6 @@ import Button from "../Button";
 import { SectionTitle } from "../SectionTitle";
 import myImg from "../../assets/profilePic.jpg";
 import myLogo from "../../assets/logoLarenz.png";
-
-const useScrollReveal = () => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    const el = ref.current;
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return [ref, visible];
-};
 
 const statStyles = {
   primary: "bg-primary/10 text-primary",
@@ -75,8 +51,6 @@ const socialLinks = [
 ];
 
 const About = () => {
-  const [imageRef, imageVisible] = useScrollReveal();
-  const [contentRef, contentVisible] = useScrollReveal();
   const yearsWebDev = Math.max(
     1,
     Math.floor(
@@ -101,10 +75,7 @@ const About = () => {
 
         <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[0.85fr_1.15fr]">
           <div
-            ref={imageRef}
-            className={`flex flex-col items-center gap-8 transition-all duration-500 ease-spring ${
-              imageVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
+            className="intersect-once flex flex-col items-center gap-8 transition-all duration-500 ease-spring intersect:motion-translate-y-in-[32px] intersect:motion-fade-in"
           >
             <div className="group relative">
               <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-20 blur-xl transition-opacity duration-500 group-hover:opacity-30" />
@@ -161,10 +132,7 @@ const About = () => {
           </div>
 
           <div
-            ref={contentRef}
-            className={`flex flex-col gap-6 transition-all delay-100 duration-500 ease-spring ${
-              contentVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
+            className="intersect-once flex flex-col gap-6 transition-all duration-500 ease-spring intersect:motion-translate-y-in-[32px] intersect:motion-fade-in intersect:motion-delay-100"
           >
             <div>
               <h1 className="text-2xl font-bold text-base-content sm:text-3xl md:text-4xl lg:text-5xl">
