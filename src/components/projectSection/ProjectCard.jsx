@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -18,12 +19,27 @@ export const ProjectCard = ({
   slug,
   index = 0,
 }) => {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+  };
+
   return (
     <div
       className="intersect-once h-full intersect:motion-translate-y-in-[18px] intersect:motion-duration-[0.55s] intersect:motion-ease-spring-smooth"
       style={{ animationDelay: `${Math.min(index * 60, 300)}ms` }}
     >
-      <div className="group relative flex h-full transform-gpu flex-col overflow-hidden rounded-2xl border border-base-content/10 bg-base-100 shadow-sm transition-[transform,border-color,box-shadow] duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md">
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        className="group relative flex h-full transform-gpu flex-col overflow-hidden rounded-2xl border border-base-content/10 bg-base-100 shadow-sm transition-[transform,border-color,box-shadow] duration-200 ease-out will-change-transform hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md spotlight-card"
+      >
         <div className="relative aspect-[16/10] overflow-hidden bg-base-200">
           <img
             src={projectImg}

@@ -1,45 +1,8 @@
-import { useRef, useState, useEffect, useMemo } from "react";
-
 export const SkillLogo = ({ logos, tooltip, delay = 0, type = "img" }) => {
-  const ref = useRef(null);
-
-  // Respect prefers-reduced-motion — start visible immediately if reduced
-  const prefersReduced = useMemo(
-    () =>
-      typeof window !== "undefined"
-        ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        : false,
-    []
-  );
-
-  const [visible, setVisible] = useState(prefersReduced);
-
-  useEffect(() => {
-    if (prefersReduced) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
-    );
-    const el = ref.current;
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, [prefersReduced]);
-
   return (
     <div
-      ref={ref}
-      className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-base-content/10 bg-base-200 p-4 transition-all duration-300 ease-spring hover:-translate-y-1 hover:border-primary/30 hover:shadow-md hover:shadow-primary/20"
-      style={
-        visible
-          ? { animation: `skillEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms both` }
-          : { opacity: 0, transform: "translateY(8px)" }
-      }
+      className="group flex flex-col items-center justify-center gap-2 rounded-xl border border-base-content/10 bg-base-200 p-4 transition-all duration-300 ease-spring hover:-translate-y-1 hover:border-primary/30 hover:shadow-md hover:shadow-primary/20 intersect-once intersect:motion-translate-y-in-[8px] intersect:motion-fade-in intersect:motion-duration-[450ms] motion-reduce:motion-none"
+      style={{ animationDelay: `${delay}ms` }}
     >
       {/* Icon container — fixed size guarantees centering uniformity */}
       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center">

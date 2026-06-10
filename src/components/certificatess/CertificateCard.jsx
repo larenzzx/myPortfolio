@@ -1,8 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ZoomIn, X, ExternalLink, Download } from "lucide-react";
 
 export const CertificateCard = ({ cert, config, index = 0 }) => {
   const [open, setOpen] = useState(false);
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    cardRef.current.style.setProperty("--mouse-x", `${x}px`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}px`);
+  };
 
   useEffect(() => {
     return () => {
@@ -47,7 +57,11 @@ export const CertificateCard = ({ cert, config, index = 0 }) => {
         className="intersect-once h-full intersect:motion-translate-y-in-[18px] intersect:motion-duration-[0.5s] intersect:motion-ease-spring-smooth"
         style={{ animationDelay: `${Math.min(index * 50, 300)}ms` }}
       >
-          <div className="group flex h-full flex-col gap-3 rounded-2xl border border-base-content/10 bg-base-100 p-5 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5">
+          <div
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            className="group relative flex h-full flex-col gap-3 rounded-2xl border border-base-content/10 bg-base-100 p-5 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5 spotlight-card"
+          >
 
             {/* Header row: category badge + year */}
             <div className="flex items-center justify-between">

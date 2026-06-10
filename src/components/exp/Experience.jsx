@@ -1,37 +1,11 @@
-import { useEffect, useRef, useState } from "react";
 import { Calendar, Code2, MapPin, Monitor, Shield } from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
 
 const RevealItem = ({ children, delay = 0 }) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-    );
-    const el = ref.current;
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div
-      ref={ref}
-      style={{
-        transitionDelay: `${delay}ms`,
-        transitionProperty: "opacity, transform",
-        transitionDuration: "420ms",
-        transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(16px)",
-      }}
+      className="intersect-once intersect:motion-translate-y-in-[16px] intersect:motion-fade-in intersect:motion-duration-[420ms] intersect:motion-ease-spring-smooth"
+      style={{ animationDelay: `${delay}ms` }}
     >
       {children}
     </div>
