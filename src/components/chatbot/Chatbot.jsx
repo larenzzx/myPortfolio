@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Bot, Loader2, MessageCircle, Send, X } from "lucide-react";
+import { profileKnowledge } from "../../data/profileKnowledge.js";
 
 const initialMessages = [
   {
@@ -16,19 +17,198 @@ const suggestions = [
   { label: "📄 Get Resume", query: "Where can I download Mark's resume?" },
 ];
 
+const renderLinks = (text, isUser) => {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = linkRegex.exec(text)) !== null) {
+    const [_, linkText, linkUrl] = match;
+    const matchIndex = match.index;
+    
+    if (matchIndex > lastIndex) {
+      parts.push(text.substring(lastIndex, matchIndex));
+    }
+    
+    parts.push(
+      <a
+        key={matchIndex}
+        href={linkUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`underline font-semibold transition-opacity hover:opacity-80 break-all ${
+          isUser ? "text-white" : "text-primary"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {linkText}
+      </a>
+    );
+    
+    lastIndex = linkRegex.lastIndex;
+  }
+  
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+  
+  return parts.length > 0 ? parts : text;
+};
+
+const renderInlineCode = (text, isUser) => {
+  const codeParts = text.split(/`([^`]+)`/g);
+  return codeParts.map((part, index) => {
+    if (index % 2 === 1) {
+      return (
+        <code
+          key={index}
+          className={`rounded px-1.5 py-0.5 text-xs font-mono break-all ${
+            isUser ? "bg-primary-focus/30 text-white" : "bg-base-300 text-base-content"
+          }`}
+        >
+          {part}
+        </code>
+      );
+    }
+    return renderLinks(part, isUser);
+  });
+};
+
+const renderInlineMarkdown = (text, isUser) => {
+  const boldParts = text.split(/\*\*([^*]+)\*\*/g);
+  return boldParts.map((part, index) => {
+    if (index % 2 === 1) {
+      return (
+        <strong key={index} className="font-bold">
+          {renderInlineCode(part, isUser)}
+        </strong>
+      );
+    }
+    return renderInlineCode(part, isUser);
+  });
+};
+
+const formatMessageContent = (content, isUser) => {
+  if (!content) return "";
+  
+  const paragraphs = content.split("\n\n");
+  
+  return paragraphs.map((para, paraIdx) => {
+    const lines = para.split("\n");
+    const renderedLines = [];
+    let currentList = [];
+    
+    lines.forEach((line, lineIdx) => {
+      const trimmed = line.trim();
+      const isBullet = trimmed.startsWith("- ") || trimmed.startsWith("* ");
+      
+      if (isBullet) {
+        currentList.push(trimmed.replace(/^[-*]\s+/, ""));
+      } else {
+        if (currentList.length > 0) {
+          renderedLines.push(
+            <ul key={`list-${lineIdx}`} className="list-disc pl-5 my-1.5 space-y-1">
+              {currentList.map((item, itemIdx) => (
+                <li key={itemIdx} className="break-words">
+                  {renderInlineMarkdown(item, isUser)}
+                </li>
+              ))}
+            </ul>
+          );
+          currentList = [];
+        }
+        
+        if (trimmed) {
+          renderedLines.push(
+            <div key={`text-${lineIdx}`} className="break-words mb-1 last:mb-0">
+              {renderInlineMarkdown(trimmed, isUser)}
+            </div>
+          );
+        } else {
+          renderedLines.push(<div key={`br-${lineIdx}`} className="h-2" />);
+        }
+      }
+    });
+    
+    if (currentList.length > 0) {
+      renderedLines.push(
+        <ul key={`list-end`} className="list-disc pl-5 my-1.5 space-y-1">
+          {currentList.map((item, itemIdx) => (
+            <li key={itemIdx} className="break-words">
+              {renderInlineMarkdown(item, isUser)}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+    
+    return (
+      <div key={paraIdx} className="mb-3 last:mb-0">
+        {renderedLines}
+      </div>
+    );
+  });
+};
+
+const getLocalFallbackReply = (text) => {
+  const query = text.toLowerCase();
+  
+  if (query.includes("project") || query.includes("portfolio")) {
+    const list = profileKnowledge.projects
+      .map(p => `- **${p.title}** (${p.year}): ${p.summary || p.role} [Stack: ${p.stack.join(", ")}]`)
+      .join("\n");
+    return `Here are some of Mark's projects:\n\n${list}`;
+  }
+  
+  if (query.includes("available") || query.includes("availability") || query.includes("hire") || query.includes("work")) {
+    return profileKnowledge.commonAnswers.availability;
+  }
+  
+  if (query.includes("contact") || query.includes("email") || query.includes("social") || query.includes("facebook") || query.includes("instagram") || query.includes("linkedin")) {
+    return `You can contact Mark via:\n\n- **Email**: ${profileKnowledge.contact.email}\n- **GitHub**: [GitHub Link](${profileKnowledge.contact.github})\n- **LinkedIn**: [LinkedIn Link](${profileKnowledge.contact.linkedin})\n- **Facebook**: [Facebook Link](${profileKnowledge.contact.facebook})`;
+  }
+  
+  if (query.includes("resume") || query.includes("cv")) {
+    return `You can download Mark's resume here:\n[Download Resume PDF](${profileKnowledge.contact.resume})`;
+  }
+  
+  if (query.includes("skill") || query.includes("tech") || query.includes("stack") || query.includes("logo")) {
+    return `Mark's skills include:\n\n- **Frontend**: ${profileKnowledge.skills.frontend.join(", ")}\n- **Backend**: ${profileKnowledge.skills.backend.join(", ")}\n- **Cybersecurity**: ${profileKnowledge.skills.cybersecurity.join(", ")}\n- **IT Systems**: ${profileKnowledge.skills.itSystems.join(", ")}`;
+  }
+  
+  if (query.includes("education") || query.includes("degree") || query.includes("school") || query.includes("college") || query.includes("graduate") || query.includes("wmsu")) {
+    return `Mark graduated from **${profileKnowledge.education.school}** in ${profileKnowledge.education.graduationYear} with a **${profileKnowledge.education.degree}**.`;
+  }
+  
+  if (query.includes("experience") || query.includes("job") || query.includes("work") || query.includes("soc") || query.includes("analyst") || query.includes("company")) {
+    const expList = profileKnowledge.experience
+      .map(e => `- **${e.title}** (${e.company}, ${e.period}): ${e.bullets.join(", ")}`)
+      .join("\n");
+    return `Here is a summary of Mark's experience:\n\n${expList}`;
+  }
+  
+  if (query.includes("hello") || query.includes("hi") || query.includes("hey") || query.includes("help")) {
+    return `Hello! ${profileKnowledge.commonAnswers.tellMeAboutMark}`;
+  }
+  
+  // Default general response
+  return profileKnowledge.commonAnswers.tellMeAboutMark;
+};
+
 const ChatMessage = ({ message }) => {
   const isUser = message.role === "user";
 
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+        className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed break-words [word-break:break-word] ${
           isUser
             ? "bg-primary text-primary-content"
             : "border border-base-content/10 bg-base-200 text-base-content"
         }`}
       >
-        {message.content}
+        {formatMessageContent(message.content, isUser)}
       </div>
     </div>
   );
@@ -106,11 +286,14 @@ const ChatbotPanel = ({ onClose }) => {
         { role: "assistant", content: data.reply },
       ]);
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Unable to send message. Please try again.",
-      );
+      console.warn("Chatbot Netlify function unavailable or returned an error, using local fallback:", err);
+      // Wait slightly to simulate assistant processing
+      await new Promise((resolve) => setTimeout(resolve, 600));
+      const fallbackReply = getLocalFallbackReply(text);
+      setMessages((current) => [
+        ...current,
+        { role: "assistant", content: fallbackReply },
+      ]);
     } finally {
       setIsLoading(false);
     }
