@@ -1,4 +1,4 @@
-import { Menu, Palette, X } from "lucide-react";
+import { Menu, Palette, X, Search } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { navItems, themes } from "./navItems";
 import logo from "../../assets/logoLarenz.png";
@@ -10,6 +10,7 @@ export const MobileNav = ({
   onClose,
   onToggle,
   onThemeChange,
+  onCommandOpen,
 }) => {
   return (
     <>
@@ -25,15 +26,25 @@ export const MobileNav = ({
               Mark Larenz
             </span>
           </NavLink>
-          <button
-            type="button"
-            onClick={onToggle}
-            className="btn btn-ghost btn-sm min-h-10 rounded-xl border border-base-content/10"
-            aria-label="Toggle navigation"
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={onCommandOpen}
+              className="btn btn-ghost btn-sm min-h-10 w-10 p-0 rounded-xl border border-base-content/10"
+              aria-label="Open search menu"
+            >
+              <Search size={18} />
+            </button>
+            <button
+              type="button"
+              onClick={onToggle}
+              className="btn btn-ghost btn-sm min-h-10 rounded-xl border border-base-content/10"
+              aria-label="Toggle navigation"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </header>
 

@@ -135,10 +135,10 @@ export const Home = () => {
               </span>
             </div>
 
-            <h1 className="max-w-4xl text-3xl font-bold leading-[1.05] tracking-normal text-base-content sm:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
-              I build for the web.
+            <h1 className="max-w-4xl text-2xl font-black leading-[1.25] tracking-tight text-base-content sm:text-3xl md:text-5xl xl:text-6xl">
+              I build <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">web applications</span>.
               <br />
-              <span className="text-primary">I'm diving deep into AI.</span>
+              I automate <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">workflows</span>.
             </h1>
 
             <div className="mt-5 flex min-h-10 items-center gap-x-2 text-lg font-bold sm:text-xl xl:text-xl 2xl:text-2xl">

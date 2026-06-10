@@ -19,6 +19,7 @@ export const navItems = [
 ];
 
 export const themes = [
+  "system",
   "night",
   "corporate",
   "business",

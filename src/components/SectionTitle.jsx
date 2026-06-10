@@ -1,30 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-
 export const SectionTitle = ({ title, id, eyebrow }) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div
-      ref={ref}
       id={id}
-      className={`mb-7 scroll-mt-24 border-b border-base-content/10 pb-5 transition-all duration-500 ease-spring ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-      }`}
+      className="mb-7 scroll-mt-24 border-b border-base-content/10 pb-5 transition-all duration-500 ease-spring intersect-once intersect:motion-translate-y-in-[12px] intersect:motion-fade-in"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>

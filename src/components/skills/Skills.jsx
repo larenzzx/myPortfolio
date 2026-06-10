@@ -27,9 +27,11 @@ import {
 import htmlLogo from "../../assets/html5.svg";
 import cssLogo from "../../assets/css.svg";
 import jsLogo from "../../assets/javascript.svg";
+import typescriptLogo from "../../assets/typescript.svg";
 import tailwindLogo from "../../assets/tailwindcss.svg";
 import reactLogo from "../../assets/react_dark.svg";
 import daisyLogo from "../../assets/daisyui.svg";
+import shadcnLogo from "../../assets/shadcn-ui.svg";
 import headlessLogo from "../../assets/headlessui.svg";
 import chartLogo from "../../assets/chartjs.svg";
 import sweetLogo from "../../assets/SweetAlert2.png";
@@ -44,6 +46,11 @@ import phpLogo from "../../assets/php.svg";
 import mysqlLogo from "../../assets/mysql.svg";
 import postgresqlLogo from "../../assets/postgresql.svg";
 
+// it systems logos
+import linuxLogo from "../../assets/linux.svg";
+import hermesLogo from "../../assets/hermes.svg";
+import openclawLogo from "../../assets/openclaw.svg";
+
 /* ----------------------------------------------------------------
    Skill data per category — stagger delay capped at 60ms per item
 ---------------------------------------------------------------- */
@@ -55,9 +62,11 @@ const CATEGORIES = {
     { logo: htmlLogo, name: "HTML5", type: "img" },
     { logo: cssLogo, name: "CSS3", type: "img" },
     { logo: jsLogo, name: "JavaScript", type: "img" },
+    { logo: typescriptLogo, name: "TypeScript", type: "img" },
     { logo: tailwindLogo, name: "Tailwind CSS", type: "img" },
     { logo: reactLogo, name: "React", type: "img" },
     { logo: daisyLogo, name: "DaisyUI", type: "img" },
+    { logo: shadcnLogo, name: "shadcn/ui", type: "img" },
     { logo: headlessLogo, name: "HeadlessUI", type: "img" },
     { logo: chartLogo, name: "ChartJS", type: "img" },
     { logo: sweetLogo, name: "SweetAlert2", type: "img" },
@@ -84,6 +93,9 @@ const CATEGORIES = {
     { logo: <AlertTriangle size={32} />, name: "Threat Analysis", type: "lucide" },
   ]),
   it: buildSkills([
+    { logo: linuxLogo, name: "Linux", type: "img" },
+    { logo: hermesLogo, name: "Hermes Agent", type: "img" },
+    { logo: openclawLogo, name: "OpenClaw", type: "img" },
     { logo: <Users size={32} />, name: "Entra ID", type: "lucide" },
     { logo: <Smartphone size={32} />, name: "Intune", type: "lucide" },
     { logo: <Mail size={32} />, name: "Exchange", type: "lucide" },
