@@ -122,6 +122,17 @@ export const profileKnowledge = {
         "CyberGuide AI is a Django cybersecurity, networking, Microsoft tools, and IT/helpdesk operations assistant with AI chat, threat intelligence lookup, IOC extraction, phishing analysis, and user access management workflows.",
     },
     {
+      title: "DevFocus",
+      role: "Frontend Developer",
+      category: "Personal",
+      year: "2026",
+      stack: ["React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+      code: "https://github.com/larenzzx/DevFocus.git",
+      live: "https://devfocus-sigma.vercel.app/",
+      summary:
+        "DevFocus is a premium, bento-style productivity dashboard for developers featuring timed focus intervals, ambient noise synthesis, task management, and live performance analytics in a responsive glassmorphic bento grid.",
+    },
+    {
       title: "One Zamboanga: Evacuation Center Management System",
       role: "Full Stack Developer",
       category: "Capstone",

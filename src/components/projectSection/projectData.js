@@ -14,6 +14,7 @@ import todo from "../../assets/todolist.svg";
 import pokemon from "../../assets/pokemon.svg";
 import cyberguideai from "../../assets/cyberguideai.svg";
 import supplyinventory from "../../assets/supplyinventory.svg";
+import devfocus from "../../assets/DevFocus.svg";
 import html from "../../assets/html5.svg";
 import css from "../../assets/css.svg";
 import js from "../../assets/javascript.svg";
@@ -23,6 +24,8 @@ import postgresql from "../../assets/postgresql.svg";
 import tailwind from "../../assets/tailwindcss.svg";
 import daisy from "../../assets/daisyui.svg";
 import react from "../../assets/react_dark.svg";
+import typescript from "../../assets/typescript.svg";
+import shadcn from "../../assets/shadcn-ui.svg";
 
 const tech = {
   html: { logo: html, name: "HTML5" },
@@ -35,6 +38,8 @@ const tech = {
   tailwind: { logo: tailwind, name: "Tailwind CSS" },
   daisy: { logo: daisy, name: "DaisyUI" },
   react: { logo: react, name: "React" },
+  typescript: { logo: typescript, name: "TypeScript" },
+  shadcn: { logo: shadcn, name: "shadcn/ui" },
 };
 
 const withTech = (items) => ({
@@ -62,6 +67,25 @@ export const experienceProjects = [
         "Built a Django assistant that combines AI guidance with threat intelligence lookup, IOC extraction, phishing email analysis, user access management, and admin approval workflows.",
     },
     ...withTech([tech.django, tech.postgresql, tech.tailwind, tech.daisy]),
+  },
+  {
+    slug: "devfocus",
+    projectImg: devfocus,
+    projectTitle: "DevFocus",
+    projectRole: "Frontend Developer",
+    category: "Personal",
+    year: "2026",
+    link: "https://github.com/larenzzx/DevFocus.git",
+    liveView: true,
+    liveLink: "https://devfocus-sigma.vercel.app/",
+    isExperience: true,
+    caseStudy: {
+      problem:
+        "Developers need a unified, distraction-free environment to track sprints, focus using Pomodoro timers, and block out noise without shifting tabs.",
+      outcome:
+        "Created a premium Glassmorphism bento-style dashboard combining Pomodoro timers, ambient soundscapes, sprint task lists, and visual focus metrics.",
+    },
+    ...withTech([tech.react, tech.typescript, tech.tailwind, tech.shadcn]),
   },
   {
     slug: "client-portfolio-erich",
