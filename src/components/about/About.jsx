@@ -8,7 +8,7 @@ import {
 import { Code2, Layers, Shield } from "lucide-react";
 import Button from "../Button";
 import { SectionTitle } from "../SectionTitle";
-import myImg from "../../assets/profilePic.jpg";
+import myImg from "../../assets/profilePic.png";
 import myLogo from "../../assets/logoLarenz.png";
 
 const statStyles = {
