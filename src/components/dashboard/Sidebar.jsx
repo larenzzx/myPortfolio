@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, FileText, Palette, Search } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { navItems, themes } from "./navItems";
 import logo from "../../assets/logoLarenz.png";
 
@@ -119,15 +119,13 @@ export const Sidebar = ({ activePath, currentTheme, onThemeChange, onCommandOpen
           </div>
         </div>
 
-        <a
-          href="https://drive.google.com/file/d/1TFzqWQv-S9QFWLDtgO7pb68jxfOtW6Yp/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/resume"
           className="btn btn-primary btn-sm w-full rounded-xl"
         >
           <FileText size={15} />
           Resume
-        </a>
+        </Link>
       </div>
     </aside>
   );

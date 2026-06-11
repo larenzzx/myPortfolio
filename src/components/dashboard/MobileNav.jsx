@@ -1,5 +1,5 @@
-import { Menu, Palette, X, Search } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { Menu, Palette, X, Search, FileText } from "lucide-react";
+import { NavLink, Link } from "react-router-dom";
 import { navItems, themes } from "./navItems";
 import logo from "../../assets/logoLarenz.png";
 
@@ -99,6 +99,17 @@ export const MobileNav = ({
             );
           })}
         </nav>
+
+        <div className="mt-4">
+          <Link
+            to="/resume"
+            onClick={onClose}
+            className="btn btn-primary btn-sm w-full rounded-xl flex items-center justify-center gap-2"
+          >
+            <FileText size={15} />
+            Resume
+          </Link>
+        </div>
 
         <div className="mt-6 rounded-2xl border border-base-content/10 bg-base-200/60 p-4">
           <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">

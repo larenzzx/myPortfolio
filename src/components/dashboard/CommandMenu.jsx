@@ -102,7 +102,7 @@ export const CommandMenu = ({ isOpen, onClose, currentTheme, onThemeChange }) =>
       category: "Actions",
       label: "Download / Open Resume",
       icon: FileText,
-      action: () => window.open(profileKnowledge.contact.resume, "_blank"),
+      action: () => navigate("/resume"),
     });
 
     return items;

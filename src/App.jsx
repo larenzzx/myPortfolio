@@ -11,6 +11,7 @@ import {
   SkillsPage,
 } from "./components/pages/SectionPages";
 import { ProjectDetail } from "./components/projectSection/ProjectDetail";
+import { ResumePage } from "./components/pages/ResumePage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/resume" element={<ResumePage />} />
         </Routes>
       </DashboardLayout>
     </ObserverProvider>
