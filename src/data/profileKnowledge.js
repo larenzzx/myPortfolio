@@ -252,7 +252,7 @@ export const profileKnowledge = {
     instagram:
       "https://www.instagram.com/larenzzzx?igsh=MW1uMXNwdW9hZGowYw%3D%3D&utm_source=qr",
     resume:
-      "https://drive.google.com/file/d/1TFzqWQv-S9QFWLDtgO7pb68jxfOtW6Yp/view?usp=sharing",
+      "/Tabotabo_resume.pdf",
   },
   interests: [
     "Web development",
