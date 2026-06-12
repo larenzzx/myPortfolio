@@ -60,7 +60,7 @@ export const experienceProjects = [
     year: "2026",
     link: "https://github.com/larenzzx/cyberguideai.git",
     liveView: true,
-    liveLink: "https://cyberguideai.onrender.com/",
+    liveLink: "https://larenzzx.pythonanywhere.com/",
     isExperience: true,
     featured: true,
     caseStudy: {
