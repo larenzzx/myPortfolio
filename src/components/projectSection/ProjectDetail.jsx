@@ -1,11 +1,33 @@
+import { useState, useEffect } from "react";
 import { ExternalLink, Github, Layers3, MoveLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { SectionTitle } from "../SectionTitle";
-import { getProjectBySlug } from "./projectData";
+import { getProjectBySlug, fetchProjectsFromSupabase } from "./projectData";
 
 export const ProjectDetail = () => {
   const { slug } = useParams();
-  const project = getProjectBySlug(slug);
+  const [project, setProject] = useState(() => getProjectBySlug(slug));
+  const [loading, setLoading] = useState(!project);
+
+  useEffect(() => {
+    fetchProjectsFromSupabase().then((data) => {
+      if (data && data.length > 0) {
+        const found = data.find((p) => p.slug === slug);
+        if (found) {
+          setProject(found);
+        }
+      }
+      setLoading(false);
+    });
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-20 shadow-sm sm:px-8 lg:px-10 flex justify-center items-center">
+        <span className="loading loading-spinner loading-md text-primary"></span>
+      </section>
+    );
+  }
 
   if (!project) {
     return (
@@ -36,20 +58,9 @@ export const ProjectDetail = () => {
               {project.year && (
                 <span className="badge badge-outline badge-sm">{project.year}</span>
               )}
-              <span className="badge badge-outline badge-sm">
-                {project.projectRole}
-              </span>
             </div>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl bg-base-100 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
-                  Role
-                </p>
-                <p className="mt-2 text-sm font-semibold text-base-content">
-                  {project.projectRole}
-                </p>
-              </div>
               <div className="rounded-2xl bg-base-100 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
                   Type
@@ -58,6 +69,16 @@ export const ProjectDetail = () => {
                   {project.category}
                 </p>
               </div>
+              {project.year && (
+                <div className="rounded-2xl bg-base-100 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
+                    Year
+                  </p>
+                  <p className="mt-2 text-sm font-semibold text-base-content">
+                    {project.year}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="mt-6">

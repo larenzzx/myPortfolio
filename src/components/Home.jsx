@@ -13,10 +13,11 @@ import {
   UserRound,
   Cpu,
 } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TypingAnimation from "./hero/TypingAnimation";
 import { ProjectCard } from "./projectSection/ProjectCard";
-import { featuredProject } from "./projectSection/projectData";
+import { featuredProject, fetchProjectsFromSupabase } from "./projectSection/projectData";
 
 const overviewCards = [
   {
@@ -112,6 +113,19 @@ const focusItems = [
 ];
 
 export const Home = () => {
+  const [featured, setFeatured] = useState(featuredProject);
+
+  useEffect(() => {
+    fetchProjectsFromSupabase().then((data) => {
+      if (data && data.length > 0) {
+        const found = data.find((p) => p.featured) || data[0];
+        if (found) {
+          setFeatured(found);
+        }
+      }
+    });
+  }, []);
+
   return (
     <div className="grid gap-6">
       <section className="relative overflow-hidden rounded-3xl border border-base-content/10 bg-base-100 shadow-sm">
@@ -264,7 +278,7 @@ export const Home = () => {
               Featured Project
             </p>
             <h2 className="mt-2 text-2xl font-bold text-base-content">
-              {featuredProject.projectTitle}
+              {featured.projectTitle}
             </h2>
           </div>
           <Link to="/projects" className="btn btn-outline btn-sm rounded-xl">
@@ -274,41 +288,38 @@ export const Home = () => {
         </div>
 
         <div className="grid gap-5 lg:grid-cols-[minmax(16rem,20rem)_1fr] 2xl:grid-cols-[minmax(18rem,24rem)_1fr]">
-          <ProjectCard {...featuredProject} />
+          <ProjectCard {...featured} />
           <div className="rounded-2xl border border-base-content/10 bg-base-200/50 p-5">
             <div className="mb-4 flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
                 <Layers3 size={18} />
               </div>
               <div>
-                <p className="text-xs text-base-content/45">
-                  {featuredProject.category} Project
-                </p>
                 <p className="text-sm font-bold text-base-content">
-                  {featuredProject.projectRole}
+                  {featured.category} Project
                 </p>
               </div>
             </div>
 
-            {featuredProject.caseStudy && (
+            {featured.caseStudy && (
               <div className="space-y-4">
                 <div>
                   <p className="text-sm font-bold text-base-content">Focus</p>
                   <p className="mt-1 text-sm leading-relaxed text-base-content/65">
-                    {featuredProject.caseStudy.problem}
+                    {featured.caseStudy.problem}
                   </p>
                 </div>
                 <div>
                   <p className="text-sm font-bold text-base-content">Built</p>
                   <p className="mt-1 text-sm leading-relaxed text-base-content/65">
-                    {featuredProject.caseStudy.outcome}
+                    {featured.caseStudy.outcome}
                   </p>
                 </div>
               </div>
             )}
 
             <div className="mt-5 flex flex-wrap gap-2">
-              {featuredProject.techNames?.map((name) => (
+              {featured.techNames?.map((name) => (
                 <span key={name} className="badge badge-outline">
                   {name}
                 </span>

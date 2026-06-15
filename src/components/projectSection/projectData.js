@@ -28,6 +28,46 @@ import react from "../../assets/react_dark.svg";
 import typescript from "../../assets/typescript.svg";
 import shadcn from "../../assets/shadcn-ui.svg";
 import vite from "../../assets/vite.svg";
+import { supabase } from "../../lib/supabaseClient";
+
+// Registry of project preview images
+export const PROJECT_IMGS = {
+  "cyberguide-ai": cyberguideai,
+  "devfocus": devfocus,
+  "gitcraft": gitcraft,
+  "client-portfolio-erich": erich,
+  "supply-office-inventory": supplyinventory,
+  "client-portfolio-janrey": journey,
+  "client-portfolio-jhon": jhon,
+  "pokedex-freelance": pokedex,
+  "task-manager": todoo,
+  "weather-app": weatherApp,
+  "sunny-landing-page": sunnyside,
+  "one-zamboanga": capstone,
+  "pokedex-battle-simulation": pokemon,
+  "react-todo-list": todo,
+  "portfolio-website": elective,
+  "wesmaardec-event-management": se,
+  "ecovariety": ecom,
+  "crimsonquest": crimson,
+};
+
+// Registry of technology logo images
+export const TECH_RESOLVER = {
+  "HTML5": html,
+  "CSS3": css,
+  "JavaScript": js,
+  "PHP": php,
+  "MySQL": mysql,
+  "PostgreSQL": postgresql,
+  "Django": "https://svgl.app/library/django.svg",
+  "Tailwind CSS": tailwind,
+  "DaisyUI": daisy,
+  "React": react,
+  "TypeScript": typescript,
+  "shadcn/ui": shadcn,
+  "Vite": vite,
+};
 
 const tech = {
   html: { logo: html, name: "HTML5" },
@@ -332,3 +372,86 @@ export const featuredProject =
 
 export const getProjectBySlug = (slug) =>
   allProjects.find((project) => project.slug === slug);
+
+export const fetchProjectsFromSupabase = async () => {
+  // Start with a copy of all static local projects
+  let projectsList = [...allProjects];
+
+  try {
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("year", { ascending: false });
+
+    if (error) throw error;
+
+    if (data) {
+      data.forEach((p) => {
+        // Self-heal/clean strings from any formatting linebreaks/spaces
+        const cleanSlug = p.slug ? p.slug.replace(/\s+/g, "") : "";
+        const cleanImageUrl = p.image_url ? p.image_url.replace(/\s+/g, "") : "";
+        const cleanLink = p.link ? p.link.replace(/\s+/g, "") : null;
+        const cleanLiveLink = p.live_link ? p.live_link.replace(/\s+/g, "") : null;
+        
+        const techStack = (p.stack || []).map((name) => {
+          const cleanName = name ? name.trim().replace(/\s+/g, " ") : "";
+          return TECH_RESOLVER[cleanName] || cleanName;
+        });
+        const techNames = (p.stack || []).map(name => name ? name.trim().replace(/\s+/g, " ") : "");
+
+        const projectObj = {
+          slug: cleanSlug,
+          projectImg: PROJECT_IMGS[cleanImageUrl] || cleanImageUrl,
+          projectTitle: p.project_title ? p.project_title.trim().replace(/\s+/g, " ") : "",
+          projectRole: "",
+          category: p.category ? p.category.trim().replace(/\s+/g, " ") : "",
+          year: p.year ? p.year.replace(/\s+/g, "") : "",
+          link: cleanLink,
+          liveView: !!p.live_view,
+          liveLink: cleanLiveLink,
+          isExperience: !!p.is_experience,
+          featured: !!p.featured,
+          caseStudy: (p.case_study_problem || p.case_study_outcome) ? {
+            problem: p.case_study_problem ? p.case_study_problem.trim().replace(/\s+/g, " ") : "",
+            outcome: p.case_study_outcome ? p.case_study_outcome.trim().replace(/\s+/g, " ") : "",
+          } : null,
+          techStack,
+          techNames,
+          group: p.is_experience ? "freelance" : "academic",
+          created_at: p.created_at
+        };
+
+        if (p.is_deleted) {
+          // If soft deleted in database, remove from visible list
+          projectsList = projectsList.filter((item) => item.slug !== p.slug);
+        } else {
+          const existingIndex = projectsList.findIndex((item) => item.slug === p.slug);
+          if (existingIndex > -1) {
+            // Replace static details with database edits
+            projectsList[existingIndex] = projectObj;
+          } else {
+            // Append new projects added in admin panel
+            projectsList.push(projectObj);
+          }
+        }
+      });
+    }
+  } catch (err) {
+    console.warn("Failed to fetch projects from Supabase, using local fallback:", err.message);
+  }
+
+  // Sort projects: year descending (primary), created_at descending (secondary)
+  projectsList.sort((a, b) => {
+    const yearA = parseInt(a.year) || 0;
+    const yearB = parseInt(b.year) || 0;
+    if (yearB !== yearA) {
+      return yearB - yearA;
+    }
+
+    const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+    const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+    return dateB - dateA;
+  });
+
+  return projectsList;
+};

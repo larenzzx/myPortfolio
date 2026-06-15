@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 import { ExternalLink, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -73,10 +73,6 @@ export const ProjectCard = ({
             <h3 className="line-clamp-2 text-base font-bold leading-snug text-base-content transition-colors duration-200 group-hover:text-primary">
               {projectTitle}
             </h3>
-            <div className="mt-1 flex items-center gap-1.5 text-xs text-base-content/50">
-              <FontAwesomeIcon icon={faUser} className="text-[10px]" />
-              <span>{projectRole}</span>
-            </div>
           </div>
 
           <div className="flex flex-wrap gap-1.5">

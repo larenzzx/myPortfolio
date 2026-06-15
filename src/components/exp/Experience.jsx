@@ -1,5 +1,17 @@
-import { Calendar, Code2, MapPin, Monitor, Shield } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, MapPin } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
+import { supabase } from "../../lib/supabaseClient";
+
+const resolveLucideIcon = (name, size = 18) => {
+  const IconComponent = LucideIcons[name];
+  if (IconComponent) {
+    return <IconComponent size={size} strokeWidth={1.8} />;
+  }
+  const DefaultIcon = LucideIcons.Briefcase;
+  return <DefaultIcon size={size} strokeWidth={1.8} />;
+};
 
 const RevealItem = ({ children, delay = 0 }) => {
   return (
@@ -12,7 +24,7 @@ const RevealItem = ({ children, delay = 0 }) => {
   );
 };
 
-const experiences = [
+const STATIC_EXPERIENCES = [
   {
     id: 1,
     title: "Cybersecurity Analyst",
@@ -21,7 +33,7 @@ const experiences = [
     location: "On-site",
     period: "Nov 2025 - Present",
     current: true,
-    Icon: Shield,
+    Icon: "Shield",
     accent: "primary",
     bullets: [
       "Monitor and triage security alerts across client environments",
@@ -39,7 +51,7 @@ const experiences = [
     location: "Remote",
     period: "2024 - Present",
     current: true,
-    Icon: Code2,
+    Icon: "Code2",
     accent: "secondary",
     bullets: [
       "Build full-stack web applications, frontend apps, portfolios, dashboards, and landing pages for client commissions",
@@ -57,7 +69,7 @@ const experiences = [
     location: "On-site",
     period: "Prior",
     current: false,
-    Icon: Monitor,
+    Icon: "Monitor",
     accent: "accent",
     bullets: [
       "Installed and configured operating systems, software, and games",
@@ -90,6 +102,91 @@ const accentCfg = {
 };
 
 export const Experience = () => {
+  const [experienceList, setExperienceList] = useState(STATIC_EXPERIENCES);
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("experiences")
+          .select("*")
+          .order("created_at", { ascending: true });
+
+        if (error) throw error;
+
+        if (data) {
+          let mergedExps = [...STATIC_EXPERIENCES];
+
+          data.forEach((e) => {
+            const expObj = {
+              id: e.id,
+              title: e.title,
+              subtitle: e.subtitle,
+              company: e.company,
+              location: e.location,
+              period: e.period,
+              current: !!e.current,
+              accent: e.accent,
+              Icon: e.icon_name,
+              bullets: e.bullets || [],
+              tags: e.tags || [],
+              created_at: e.created_at
+            };
+
+            if (e.is_deleted) {
+              // Remove if deleted
+              mergedExps = mergedExps.filter(
+                (item) => item.title !== e.title || item.company !== e.company
+              );
+            } else {
+              const existingIndex = mergedExps.findIndex(
+                (item) => item.id === e.id || (item.title === e.title && item.company === e.company)
+              );
+              if (existingIndex > -1) {
+                mergedExps[existingIndex] = { ...mergedExps[existingIndex], ...expObj };
+              } else {
+                mergedExps.push(expObj);
+              }
+            }
+          });
+
+          const getStartYear = (period) => {
+            if (!period) return 0;
+            if (period.toLowerCase() === "prior") return 2020;
+            const matches = period.match(/\b\d{4}\b/g);
+            if (matches && matches.length > 0) {
+              return parseInt(matches[0]);
+            }
+            return 0;
+          };
+
+          mergedExps.sort((a, b) => {
+            // 1. Current roles first
+            if (a.current !== b.current) {
+              return a.current ? -1 : 1;
+            }
+            // 2. Start year descending
+            const yearA = getStartYear(a.period);
+            const yearB = getStartYear(b.period);
+            if (yearB !== yearA) {
+              return yearB - yearA;
+            }
+            // 3. Database creation time descending
+            const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+            const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+            return dateB - dateA;
+          });
+
+          setExperienceList(mergedExps);
+        }
+      } catch (err) {
+        console.warn("Failed to fetch experiences from Supabase, using local fallback:", err.message);
+      }
+    };
+
+    fetchExperiences();
+  }, []);
+
   return (
     <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
       <SectionTitle id="exp" title="Experience" />
@@ -98,8 +195,8 @@ export const Experience = () => {
         <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px bg-base-content/10 md:block" />
 
         <div className="grid gap-5">
-          {experiences.map((exp, index) => {
-            const cfg = accentCfg[exp.accent];
+          {experienceList.map((exp, index) => {
+            const cfg = accentCfg[exp.accent] || accentCfg.primary;
 
             return (
               <RevealItem key={exp.id} delay={index * 80}>
@@ -108,7 +205,7 @@ export const Experience = () => {
                     <div
                       className={`absolute left-0 top-5 z-10 flex h-8 w-8 items-center justify-center rounded-xl shadow-lg ${cfg.dot}`}
                     >
-                      <exp.Icon size={16} strokeWidth={2} />
+                      {resolveLucideIcon(exp.Icon, 16)}
                     </div>
                   </div>
 
@@ -118,7 +215,7 @@ export const Experience = () => {
                         <div
                           className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${cfg.icon}`}
                         >
-                          <exp.Icon size={18} strokeWidth={1.8} />
+                          {resolveLucideIcon(exp.Icon, 18)}
                         </div>
 
                         <div className="min-w-0">

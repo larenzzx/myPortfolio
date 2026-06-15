@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Code2, Shield, Monitor, Cpu, Award, LayoutGrid } from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
 import { CertificateCard } from "./CertificateCard";
@@ -44,6 +44,47 @@ import aifluency from "../../assets/AI-fluency.pdf";
 import datacom from "../../assets/datacomJobSimulation.pdf";
 import mastercard from "../../assets/mastercardCybersecurityJobSimulation.pdf";
 
+import { supabase } from "../../lib/supabaseClient";
+
+// Registry of local file resources (images & PDFs)
+export const LOCAL_ASSETS = {
+  htmlCert,
+  frontCert,
+  jsCert,
+  reactCert,
+  webCert,
+  dataStruc,
+  tesda,
+  googleio,
+  msLearn1,
+  msLearn2,
+  msLearn3,
+  msLearn4,
+  msLearn5,
+  msLearn6,
+  msLearn7,
+  msLearn8,
+  msLearn9,
+  msLearn10,
+  msLearn11,
+  ccFinal,
+  courseCompletion,
+  cyberCourseCompletion,
+  domain1,
+  domain2,
+  domain3,
+  domain4,
+  domain5,
+  fortinet,
+  threatCompletion,
+  vulnMgmt,
+  claudeCode,
+  claude101,
+  aifluency,
+  datacom,
+  mastercard
+};
+
 /* ----------------------------------------------------------------
    Category config
 ---------------------------------------------------------------- */
@@ -83,7 +124,7 @@ const CATEGORY_CONFIG = {
 /* ----------------------------------------------------------------
    Certificate data
 ---------------------------------------------------------------- */
-const certificates = [
+const STATIC_CERTIFICATES = [
   /* ── Web Development ── */
   {
     title: "HTML Fundamentals",
@@ -361,18 +402,6 @@ const certificates = [
 ];
 
 /* ----------------------------------------------------------------
-   Filter tabs
----------------------------------------------------------------- */
-const TABS = [
-  { id: "all", label: "All", Icon: LayoutGrid },
-  ...Object.entries(CATEGORY_CONFIG).map(([id, cfg]) => ({
-    id,
-    label: cfg.label,
-    Icon: cfg.Icon,
-  })),
-];
-
-/* ----------------------------------------------------------------
    Stats bar
 ---------------------------------------------------------------- */
 const StatsBar = ({ certs }) => {
@@ -412,14 +441,68 @@ const StatsBar = ({ certs }) => {
 ---------------------------------------------------------------- */
 export const Certificates = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const [certsList, setCertsList] = useState(STATIC_CERTIFICATES);
+
+  useEffect(() => {
+    const fetchCerts = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("certificates")
+          .select("*")
+          .order("year", { ascending: false });
+
+        if (error) throw error;
+
+        if (data) {
+          let mergedCerts = [...STATIC_CERTIFICATES];
+
+          data.forEach((c) => {
+            const cleanImageUrl = c.image_url ? c.image_url.trim().replace(/^"|"$/g, "").replace(/\s+/g, "") : "";
+            const certObj = {
+              title: c.title ? c.title.trim().replace(/\s+/g, " ") : "",
+              issuer: c.issuer ? c.issuer.trim().replace(/\s+/g, " ") : "",
+              year: c.year ? c.year.trim().replace(/\s+/g, "") : "",
+              category: c.category ? c.category.trim().replace(/\s+/g, "") : "",
+              image: LOCAL_ASSETS[cleanImageUrl] || cleanImageUrl,
+              isPdf: !!c.is_pdf,
+            };
+
+            if (c.is_deleted) {
+              mergedCerts = mergedCerts.filter((item) => item.title !== c.title);
+            } else {
+              const existingIndex = mergedCerts.findIndex((item) => item.title === c.title);
+              if (existingIndex > -1) {
+                mergedCerts[existingIndex] = certObj;
+              } else {
+                mergedCerts.push(certObj);
+              }
+            }
+          });
+
+          setCertsList(mergedCerts);
+        }
+      } catch (err) {
+        console.warn("Failed to fetch certificates from Supabase, using local fallback:", err.message);
+      }
+    };
+
+    fetchCerts();
+  }, []);
 
   const visible =
     activeTab === "all"
-      ? certificates
-      : certificates.filter((c) => c.category === activeTab);
+      ? certsList
+      : certsList.filter((c) => c.category === activeTab);
 
-  const activeTabs = TABS.filter(
-    (t) => t.id === "all" || certificates.some((c) => c.category === t.id)
+  const activeTabs = [
+    { id: "all", label: "All", Icon: LayoutGrid },
+    ...Object.entries(CATEGORY_CONFIG).map(([id, cfg]) => ({
+      id,
+      label: cfg.label,
+      Icon: cfg.Icon,
+    })),
+  ].filter(
+    (t) => t.id === "all" || certsList.some((c) => c.category === t.id)
   );
 
   return (
@@ -462,7 +545,7 @@ export const Certificates = () => {
         </div>
 
         {/* Stats */}
-        <StatsBar certs={certificates} />
+        <StatsBar certs={certsList} />
       </div>
     </section>
   );
