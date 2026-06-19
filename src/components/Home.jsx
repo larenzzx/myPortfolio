@@ -118,7 +118,7 @@ export const Home = () => {
         <div className="absolute inset-0 hero-grid-bg opacity-20" />
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
 
-        <div className="relative grid gap-8 p-5 sm:p-8 xl:grid-cols-[minmax(0,1fr)_24rem] xl:p-10">
+        <div className="relative grid gap-6 p-5 sm:p-8 2xl:grid-cols-[minmax(0,1fr)_24rem] xl:p-8 2xl:p-10">
           <div>
             <div className="mb-6 flex flex-wrap gap-2">
               <span className="inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-primary/10 px-3 py-2 font-mono text-xs font-semibold text-primary">
@@ -135,13 +135,13 @@ export const Home = () => {
               </span>
             </div>
 
-            <h1 className="max-w-4xl text-4xl font-bold leading-[1.05] tracking-normal text-base-content sm:text-5xl xl:text-6xl">
+            <h1 className="max-w-4xl text-3xl font-bold leading-[1.05] tracking-normal text-base-content sm:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
               I build for the web.
               <br />
               <span className="text-primary">I'm diving deep into AI.</span>
             </h1>
 
-            <div className="mt-5 flex min-h-10 items-center gap-x-2 text-xl font-bold sm:text-2xl">
+            <div className="mt-5 flex min-h-10 items-center gap-x-2 text-lg font-bold sm:text-xl xl:text-xl 2xl:text-2xl">
               <span className="text-base-content/55">I&apos;m</span>
               <TypingAnimation />
             </div>
@@ -162,7 +162,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <aside className="rounded-2xl border border-base-content/10 bg-base-200/70 p-5">
+          <aside className="rounded-2xl border border-base-content/10 bg-base-200/70 p-4 sm:p-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
               Profile Summary
             </p>
@@ -198,7 +198,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+      <section className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="rounded-3xl border border-base-content/10 bg-base-100 p-5 shadow-sm sm:p-6">
           <div className="mb-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
@@ -232,7 +232,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <aside className="rounded-3xl border border-base-content/10 bg-base-100 p-5 shadow-sm sm:p-6">
+        <aside className="rounded-3xl border border-base-content/10 bg-base-100 p-4 sm:p-5 shadow-sm lg:p-6">
           <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
             Focus Stack
           </p>
@@ -273,7 +273,7 @@ export const Home = () => {
           </Link>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(18rem,24rem)_1fr]">
+        <div className="grid gap-5 lg:grid-cols-[minmax(16rem,20rem)_1fr] 2xl:grid-cols-[minmax(18rem,24rem)_1fr]">
           <ProjectCard {...featuredProject} />
           <div className="rounded-2xl border border-base-content/10 bg-base-200/50 p-5">
             <div className="mb-4 flex items-center gap-3">
@@ -318,7 +318,7 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_22rem]">
+      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_18rem] 2xl:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="rounded-3xl border border-base-content/10 bg-base-100 p-5 shadow-sm sm:p-6">
           <div className="mb-5 flex items-center justify-between gap-3">
             <div>
@@ -331,7 +331,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
             {workspaceLinks.map(({ label, description, path, Icon }) => (
               <Link
                 key={label}
@@ -356,7 +356,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <aside className="rounded-3xl border border-base-content/10 bg-base-100 p-5 shadow-sm sm:p-6">
+        <aside className="rounded-3xl border border-base-content/10 bg-base-100 p-4 sm:p-5 shadow-sm lg:p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-base-content/45">
