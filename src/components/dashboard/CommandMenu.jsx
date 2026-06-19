@@ -2,15 +2,26 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, Monitor, Palette, FileText, ArrowRight, X } from "lucide-react";
 import { navItems, themes } from "./navItems";
-import { allProjects } from "../projectSection/projectData";
+import { allProjects, fetchProjectsFromSupabase } from "../projectSection/projectData";
 import { profileKnowledge } from "../../data/profileKnowledge";
 
 export const CommandMenu = ({ isOpen, onClose, currentTheme, onThemeChange }) => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [projectList, setProjectList] = useState(allProjects);
   const inputRef = useRef(null);
   const listRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      fetchProjectsFromSupabase().then((data) => {
+        if (data && data.length > 0) {
+          setProjectList(data);
+        }
+      });
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -86,7 +97,7 @@ export const CommandMenu = ({ isOpen, onClose, currentTheme, onThemeChange }) =>
     });
 
     // 3. Projects list
-    allProjects.forEach((proj) => {
+    projectList.forEach((proj) => {
       items.push({
         id: `project-${proj.slug}`,
         category: "Projects",

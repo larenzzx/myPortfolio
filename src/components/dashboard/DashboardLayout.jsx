@@ -59,6 +59,18 @@ export const DashboardLayout = ({ children }) => {
     setIsMobileOpen(false);
   };
 
+  const isAdmin = location.pathname.startsWith("/admin");
+
+  if (isAdmin) {
+    return (
+      <div className="min-h-screen bg-base-300 text-base-content">
+        <main className="min-h-screen">
+          {children}
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-base-200 text-base-content">
       <Sidebar

@@ -12,6 +12,7 @@ import {
 } from "./components/pages/SectionPages";
 import { ProjectDetail } from "./components/projectSection/ProjectDetail";
 import { ResumePage } from "./components/pages/ResumePage";
+import { AdminPage } from "./components/admin/AdminPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/resume" element={<ResumePage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </DashboardLayout>
     </ObserverProvider>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Briefcase, GraduationCap, LayoutGrid } from "lucide-react";
 import { SectionTitle } from "../SectionTitle";
 import { ProjectCard } from "./ProjectCard";
@@ -6,6 +6,7 @@ import {
   academicProjects,
   allProjects,
   experienceProjects,
+  fetchProjectsFromSupabase
 } from "./projectData";
 
 const GroupHeading = ({ icon: Icon, title, description, count, color }) => (
@@ -37,20 +38,32 @@ const TABS = [
 
 export const Projects = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const [projectList, setProjectList] = useState(allProjects);
 
-  const liveCount = allProjects.filter((project) => project.liveView).length;
+  useEffect(() => {
+    fetchProjectsFromSupabase().then((data) => {
+      if (data && data.length > 0) {
+        setProjectList(data);
+      }
+    });
+  }, []);
+
+  const freelanceProjectsList = projectList.filter((project) => project.group === "freelance");
+  const academicProjectsList = projectList.filter((project) => project.group === "academic");
+
+  const liveCount = projectList.filter((project) => project.liveView).length;
   const showFreelance = activeTab === "all" || activeTab === "freelance";
   const showAcademic = activeTab === "all" || activeTab === "academic";
 
   const freelanceList =
     activeTab === "all"
-      ? experienceProjects
-      : allProjects.filter((project) => project.group === "freelance");
+      ? freelanceProjectsList
+      : projectList.filter((project) => project.group === "freelance");
 
   const academicList =
     activeTab === "all"
-      ? academicProjects
-      : allProjects.filter((project) => project.group === "academic");
+      ? academicProjectsList
+      : projectList.filter((project) => project.group === "academic");
 
   return (
     <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
@@ -81,7 +94,7 @@ export const Projects = () => {
             icon={Briefcase}
             title="Personal & Freelance"
             description="Independent client work, collaborations, and self-initiated builds"
-            count={experienceProjects.length}
+            count={freelanceProjectsList.length}
             color="bg-warning/15 text-warning"
           />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -98,7 +111,7 @@ export const Projects = () => {
             icon={GraduationCap}
             title="Academic Projects"
             description="University coursework, capstone, and learning-driven builds"
-            count={academicProjects.length}
+            count={academicProjectsList.length}
             color="bg-info/15 text-info"
           />
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -113,17 +126,17 @@ export const Projects = () => {
         <div className="grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
           {[
             {
-              value: allProjects.length,
+              value: projectList.length,
               label: "Total Projects",
               color: "text-primary",
             },
             {
-              value: experienceProjects.length,
+              value: freelanceProjectsList.length,
               label: "Personal & Freelance",
               color: "text-warning",
             },
             {
-              value: academicProjects.length,
+              value: academicProjectsList.length,
               label: "Academic",
               color: "text-info",
             },
