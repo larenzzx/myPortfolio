@@ -147,7 +147,7 @@ const About = () => {
               <p>
                 I&apos;m a{" "}
                 <span className="font-semibold text-primary">
-                  SOC Analyst L1 at Aetas Security
+                  SOC Analyst L1 at Aetas Global Innovations
                 </span>, working on threat monitoring, 
                 incident response, and supporting enterprise security operations. 
                 This role has strengthened my foundation in security, reliability, 
