@@ -35,9 +35,9 @@ const TypingAnimation = () => {
   }, [charIndex, isDeleting, index]);
 
   return (
-    <div className="flex items-center bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+    <div className="flex items-center bg-gradient-to-r from-build to-support bg-clip-text text-transparent">
       <span>{text}</span>
-      <span className="ml-1 h-8 w-1 animate-blink bg-secondary md:h-12"></span>
+      <span className="ml-1 h-8 w-1 animate-blink bg-build md:h-12"></span>
     </div>
   );
 };

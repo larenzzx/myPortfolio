@@ -92,32 +92,32 @@ const CATEGORY_CONFIG = {
   "web-dev": {
     label: "Web Dev",
     Icon: Code2,
-    colorClass: "text-warning",
-    badgeClass: "border-warning/40 bg-warning/10 text-warning",
+    colorClass: "text-build",
+    badgeClass: "border-build/15 bg-build/5 text-build",
   },
   cybersecurity: {
     label: "Cybersecurity",
     Icon: Shield,
-    colorClass: "text-error",
-    badgeClass: "border-error/40 bg-error/10 text-error",
+    colorClass: "text-defend",
+    badgeClass: "border-defend/15 bg-defend/5 text-defend",
   },
   "it-admin": {
     label: "IT & Systems",
     Icon: Monitor,
-    colorClass: "text-info",
-    badgeClass: "border-info/40 bg-info/10 text-info",
+    colorClass: "text-support",
+    badgeClass: "border-support/15 bg-support/5 text-support",
   },
   ai: {
     label: "AI",
     Icon: Cpu,
-    colorClass: "text-success",
-    badgeClass: "border-success/40 bg-success/10 text-success",
+    colorClass: "text-support",
+    badgeClass: "border-support/15 bg-support/5 text-support",
   },
   general: {
     label: "General",
     Icon: Award,
-    colorClass: "text-primary",
-    badgeClass: "border-primary/40 bg-primary/10 text-primary",
+    colorClass: "text-ink",
+    badgeClass: "border-gray-200 dark:border-gray-800 bg-bg text-ink",
   },
 };
 
@@ -413,21 +413,21 @@ const StatsBar = ({ certs }) => {
     .filter((c) => c.count > 0);
 
   return (
-    <div className="rounded-2xl border border-base-content/10 bg-base-100/60 p-5 backdrop-blur-sm">
+    <div className="rounded-2xl border border-gray-200/50 dark:border-gray-800/50 bg-gray-50/10 dark:bg-gray-950/5 p-5">
       <div className="flex flex-wrap items-center justify-center gap-6">
         <div className="text-center">
-          <div className="text-2xl font-bold text-primary">{certs.length}</div>
-          <div className="text-xs uppercase tracking-wider text-base-content/50">
+          <div className="text-2xl font-bold text-ink">{certs.length}</div>
+          <div className="text-[10px] uppercase font-mono tracking-wider text-gray-400">
             Total
           </div>
         </div>
-        <div className="hidden h-8 w-px bg-base-content/10 sm:block" />
+        <div className="hidden h-8 w-px bg-gray-200 dark:bg-gray-800 sm:block" />
         {byCategory.map(({ label, colorClass, count, Icon }) => (
           <div key={label} className="flex items-center gap-2">
             <Icon size={14} className={colorClass} strokeWidth={2} />
             <div>
               <span className={`text-sm font-bold ${colorClass}`}>{count}</span>
-              <span className="ml-1 text-xs text-base-content/50">{label}</span>
+              <span className="ml-1 text-xs text-gray-500">{label}</span>
             </div>
           </div>
         ))}
@@ -506,27 +506,36 @@ export const Certificates = () => {
   );
 
   return (
-    <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
+    <section className="rounded-2xl border border-gray-200/60 dark:border-gray-800/60 bg-bg px-5 py-10 shadow-sm sm:px-8 lg:px-10">
       <div>
         <SectionTitle id="certs" title="Certificates" />
 
         {/* Filter tabs */}
         <div className="no-scrollbar -mx-4 mb-10 overflow-x-auto px-4 sm:mx-0 sm:px-0">
           <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap sm:justify-center">
-            {activeTabs.map(({ id, label, Icon }) => (
-              <button
-                key={id}
-                onClick={() => setActiveTab(id)}
-                className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                  activeTab === id
-                    ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
-                    : "border border-base-content/10 bg-base-100 text-base-content/70 hover:bg-base-200 hover:text-base-content"
-                }`}
-              >
-                <Icon size={13} strokeWidth={2} />
-                {label}
-              </button>
-            ))}
+            {activeTabs.map(({ id, label, Icon }) => {
+              const active = activeTab === id;
+              let activeStyle = "";
+              if (active) {
+                if (id === "all" || id === "web-dev") activeStyle = "bg-build text-bg font-semibold";
+                else if (id === "cybersecurity") activeStyle = "bg-defend text-bg font-semibold";
+                else activeStyle = "bg-support text-bg font-semibold";
+              }
+              return (
+                <button
+                  key={id}
+                  onClick={() => setActiveTab(id)}
+                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 border ${
+                    active
+                      ? activeStyle
+                      : "border-gray-200 dark:border-gray-800 bg-bg text-gray-500 hover:bg-gray-100/70 hover:text-ink"
+                  }`}
+                >
+                  <Icon size={13} strokeWidth={2} />
+                  {label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
