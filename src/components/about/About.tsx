@@ -6,30 +6,29 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { Code2, Layers, Shield } from "lucide-react";
-import Button from "../Button";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { SectionTitle } from "../SectionTitle";
 import myImg from "../../assets/profilePic.png";
-import myLogo from "../../assets/logoLarenz.png";
 
-const statStyles = {
-  primary: "bg-primary/10 text-primary",
-  secondary: "bg-secondary/10 text-secondary",
-  accent: "bg-accent/10 text-accent",
-};
-
-const StatCard = ({ icon: Icon, value, label, color }) => (
-  <div className="flex flex-col items-center gap-1.5 rounded-2xl border border-base-content/10 bg-base-100/75 p-3 text-center shadow-sm sm:p-4">
-    <div className={`grid h-9 w-9 place-items-center rounded-xl ${statStyles[color]}`}>
-      <Icon size={17} />
+const StatCard = ({ icon: Icon, value, label, color }) => {
+  let customTone = "bg-support/5 text-support border-support/10";
+  if (color === "primary") customTone = "bg-build/5 text-build border-build/20";
+  else if (color === "secondary") customTone = "bg-defend/5 text-defend border-defend/20";
+  return (
+    <div className="flex flex-col items-center gap-1.5 rounded-2xl border border-gray-200/50 dark:border-gray-800/50 bg-bg p-3 text-center shadow-sm sm:p-4">
+      <div className={`grid h-9 w-9 place-items-center rounded-xl border ${customTone}`}>
+        <Icon size={17} />
+      </div>
+      <span className="text-lg font-bold sm:text-xl text-ink">
+        {value}
+      </span>
+      <span className="text-[10px] leading-snug text-gray-400 sm:text-xs font-mono">
+        {label}
+      </span>
     </div>
-    <span className={`text-lg font-bold sm:text-xl ${statStyles[color].split(" ")[1]}`}>
-      {value}
-    </span>
-    <span className="text-[10px] leading-snug text-base-content/60 sm:text-xs">
-      {label}
-    </span>
-  </div>
-);
+  );
+};
 
 const socialLinks = [
   { icon: faGithub, url: "https://github.com/larenzzx", name: "GitHub" },
@@ -60,56 +59,38 @@ const About = () => {
   );
 
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-base-content/10 bg-base-100 shadow-sm">
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--bc) / 0.03) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--bc) / 0.03) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
-
+    <section className="relative overflow-hidden rounded-2xl border border-gray-200/60 dark:border-gray-800/60 bg-bg">
       <div className="relative px-5 py-10 sm:px-8 lg:px-10">
         <SectionTitle id="about" title="About Me" />
 
-        <div className="grid grid-cols-1 items-start gap-10 xl:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div
-            className="intersect-once flex flex-col items-center gap-8 transition-all duration-500 ease-spring intersect:motion-translate-y-in-[32px] intersect:motion-fade-in"
+            className="intersect-once flex flex-col items-center gap-8 intersect:motion-translate-y-in-[32px] intersect:motion-fade-in"
           >
             <div className="group relative">
-              <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-20 blur-xl transition-opacity duration-500 group-hover:opacity-30" />
-              <div className="motion-safe:animate-spin-slow absolute -inset-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-60" />
-              <div className="relative rounded-full bg-base-100 p-1">
+              <div className="relative rounded-full border border-gray-200 dark:border-gray-800 p-2 bg-bg shadow-md">
                 <img
                   src={myImg}
                   alt="Mark Larenz Tabotabo"
-                  className="h-56 w-56 rounded-full object-cover shadow-2xl transition-all duration-500 group-hover:scale-[1.03] sm:h-64 sm:w-64 md:h-72 md:w-72"
+                  className="h-56 w-56 rounded-full object-cover transition-all duration-500 group-hover:scale-[1.02] sm:h-64 sm:w-64 md:h-72 md:w-72"
                   loading="lazy"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="flex items-center gap-3">
-                <img
-                  src={myLogo}
-                  alt="Mark Larenz brand logo"
-                  className="h-10 w-10 rounded-xl object-cover shadow-lg ring-2 ring-primary/30"
-                />
-                <span className="text-sm font-medium text-base-content/70">
-                  marklarenztabotabo
-                </span>
-              </div>
+            <div className="flex flex-col items-center gap-2 text-center">
+              <span className="text-sm font-bold text-ink font-serif text-lg tracking-tight">
+                Mark Larenz Tabotabo
+              </span>
 
               <div className="flex flex-wrap justify-center gap-2">
-                <span className="badge badge-primary badge-sm font-mono">
+                <span className="border border-build/20 bg-build/5 px-2.5 py-1 rounded-md text-xs font-mono text-build">
                   &lt; Web Dev /&gt;
                 </span>
-                <span className="badge badge-secondary badge-sm font-mono">
+                <span className="border border-defend/20 bg-defend/5 px-2.5 py-1 rounded-md text-xs font-mono text-defend">
                   [ SOC L1 ]
                 </span>
-                <span className="badge badge-accent badge-sm font-mono">
+                <span className="border border-support/20 bg-support/5 px-2.5 py-1 rounded-md text-xs font-mono text-support">
                   [ AI Enthusiast ]
                 </span>
               </div>
@@ -122,7 +103,7 @@ const About = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-base-content/10 bg-base-100/70 text-base-content/70 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary hover:text-primary-content hover:shadow-md hover:shadow-primary/20"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 bg-bg text-gray-400 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-ink hover:text-ink"
                   aria-label={`Visit my ${social.name} profile`}
                 >
                   <FontAwesomeIcon icon={social.icon} className="text-lg" />
@@ -132,21 +113,21 @@ const About = () => {
           </div>
 
           <div
-            className="intersect-once flex flex-col gap-6 transition-all duration-500 ease-spring intersect:motion-translate-y-in-[32px] intersect:motion-fade-in intersect:motion-delay-100"
+            className="intersect-once flex flex-col gap-6 intersect:motion-translate-y-in-[32px] intersect:motion-fade-in intersect:motion-delay-100"
           >
             <div>
-              <h1 className="text-2xl font-bold text-base-content sm:text-3xl md:text-4xl lg:text-5xl">
+              <h1 className="text-2xl font-bold text-ink sm:text-3xl md:text-4xl lg:text-5xl font-serif">
                 Mark Larenz Tabotabo
               </h1>
-              <p className="mt-2 text-lg font-medium text-primary sm:text-xl">
+              <p className="mt-2 text-lg font-medium text-build sm:text-xl font-mono">
                 SOC Analyst L1 | Freelance Web Developer | AI Enthusiast
               </p>
             </div>
 
-            <div className="space-y-4 text-sm leading-relaxed text-base-content/75 sm:text-base">
+            <div className="space-y-4 text-sm leading-relaxed text-gray-500 sm:text-base">
               <p>
                 I&apos;m a{" "}
-                <span className="font-semibold text-primary">
+                <span className="font-semibold text-defend">
                   SOC Analyst L1 at Aetas Security
                 </span>, working on threat monitoring, 
                 incident response, and supporting enterprise security operations. 
@@ -182,8 +163,10 @@ const About = () => {
               <StatCard icon={Layers} value="4" label="Skill Areas" color="accent" />
             </div>
 
-            <div>
-              <Button link="/contact" btn="Let's Work Together" />
+            <div className="mt-2">
+              <Button asChild>
+                <Link to="/contact">Let's Work Together</Link>
+              </Button>
             </div>
           </div>
         </div>

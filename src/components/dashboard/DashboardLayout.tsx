@@ -11,7 +11,7 @@ export const DashboardLayout = ({ children }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(
-    () => localStorage.getItem("theme") || "system",
+    () => localStorage.getItem("theme") || "light",
   );
 
   useEffect(() => {
@@ -19,9 +19,13 @@ export const DashboardLayout = ({ children }) => {
       let resolvedTheme = theme;
       if (theme === "system") {
         const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        resolvedTheme = isDark ? "night" : "corporate";
+        resolvedTheme = isDark ? "dark" : "light";
       }
       document.documentElement.setAttribute("data-theme", resolvedTheme);
+      document.documentElement.classList.toggle(
+        "dark",
+        resolvedTheme === "dark" || resolvedTheme === "cyber-night"
+      );
     };
 
     applyTheme(currentTheme);
@@ -30,8 +34,9 @@ export const DashboardLayout = ({ children }) => {
     if (currentTheme === "system") {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       const listener = (e) => {
-        const resolvedTheme = e.matches ? "night" : "corporate";
+        const resolvedTheme = e.matches ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", resolvedTheme);
+        document.documentElement.classList.toggle("dark", resolvedTheme === "dark");
       };
       mediaQuery.addEventListener("change", listener);
       return () => mediaQuery.removeEventListener("change", listener);
@@ -55,15 +60,23 @@ export const DashboardLayout = ({ children }) => {
   }, []);
 
   const changeTheme = (theme) => {
-    setCurrentTheme(theme);
-    setIsMobileOpen(false);
+    if (!document.startViewTransition) {
+      setCurrentTheme(theme);
+      setIsMobileOpen(false);
+      return;
+    }
+
+    document.startViewTransition(() => {
+      setCurrentTheme(theme);
+      setIsMobileOpen(false);
+    });
   };
 
   const isAdmin = location.pathname.startsWith("/admin");
 
   if (isAdmin) {
     return (
-      <div className="min-h-screen bg-base-300 text-base-content">
+      <div className="min-h-screen bg-bg text-ink">
         <main className="min-h-screen">
           {children}
         </main>
@@ -72,29 +85,37 @@ export const DashboardLayout = ({ children }) => {
   }
 
   return (
-    <div className="min-h-screen bg-base-200 text-base-content">
-      <Sidebar
-        activePath={location.pathname}
-        currentTheme={currentTheme}
-        onThemeChange={changeTheme}
-        onCommandOpen={() => setIsCommandOpen(true)}
-      />
-      <MobileNav
-        activePath={location.pathname}
-        currentTheme={currentTheme}
-        isOpen={isMobileOpen}
-        onClose={() => setIsMobileOpen(false)}
-        onToggle={() => setIsMobileOpen((open) => !open)}
-        onThemeChange={changeTheme}
-        onCommandOpen={() => setIsCommandOpen(true)}
-      />
+    <div className="min-h-screen bg-bg text-ink relative overflow-x-hidden font-sans">
+      {/* Page-wide halftone backdrop */}
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 select-none">
+        <div className="halftone halftone-wide mask-tr absolute right-0 top-0 h-[70vh] w-[65vw]"></div>
+        <div className="halftone mask-bl absolute bottom-0 left-0 h-[60vh] w-[55vw]"></div>
+      </div>
 
-      <main className="min-h-screen pt-16 lg:ml-72 lg:pt-0">
-        <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
-          {children}
-          <Footer />
-        </div>
-      </main>
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <Sidebar
+          activePath={location.pathname}
+          currentTheme={currentTheme}
+          onThemeChange={changeTheme}
+          onCommandOpen={() => setIsCommandOpen(true)}
+        />
+        <MobileNav
+          activePath={location.pathname}
+          currentTheme={currentTheme}
+          isOpen={isMobileOpen}
+          onClose={() => setIsMobileOpen(false)}
+          onToggle={() => setIsMobileOpen((open) => !open)}
+          onThemeChange={changeTheme}
+          onCommandOpen={() => setIsCommandOpen(true)}
+        />
+
+        <main className="min-h-screen flex-1 pt-16 lg:ml-72 lg:pt-0">
+          <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
+            {children}
+            <Footer />
+          </div>
+        </main>
+      </div>
       <Chatbot />
       <CommandMenu
         isOpen={isCommandOpen}

@@ -368,9 +368,9 @@ export const allProjects = [
 ];
 
 export const featuredProject =
-  allProjects.find((project) => project.featured) ?? allProjects[0];
+  allProjects.find((project: any) => project.featured) ?? allProjects[0];
 
-export const getProjectBySlug = (slug) =>
+export const getProjectBySlug = (slug: string | undefined) =>
   allProjects.find((project) => project.slug === slug);
 
 export const fetchProjectsFromSupabase = async () => {
@@ -448,8 +448,8 @@ export const fetchProjectsFromSupabase = async () => {
       return yearB - yearA;
     }
 
-    const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
-    const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+    const dateA = (a as any).created_at ? new Date((a as any).created_at).getTime() : 0;
+    const dateB = (b as any).created_at ? new Date((b as any).created_at).getTime() : 0;
     return dateB - dateA;
   });
 

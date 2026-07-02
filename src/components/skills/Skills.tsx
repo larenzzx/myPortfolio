@@ -226,47 +226,56 @@ export const Skills = () => {
     {
       value: `${(categories.frontend?.length || 0) + (categories.backend?.length || 0)}+`,
       label: "Frontend + Backend",
-      color: "text-primary",
+      color: "text-build",
     },
     {
       value: `${(categories.cyber?.length || 0)}+`,
       label: "Cybersecurity Tools",
-      color: "text-secondary",
+      color: "text-defend",
     },
     {
       value: `${(categories.it?.length || 0)}+`,
       label: "IT & Systems Tools",
-      color: "text-accent",
+      color: "text-support",
     },
   ];
 
   return (
-    <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
+    <section className="rounded-2xl border border-gray-200/60 dark:border-gray-800/60 bg-bg px-5 py-10 shadow-sm sm:px-8 lg:px-10">
       <div>
         <SectionTitle id="skills" title="Skills" />
 
         <div>
-          <div className="relative overflow-hidden rounded-2xl border border-base-content/10 bg-base-200/60">
+          <div className="relative overflow-hidden rounded-2xl border border-gray-200/50 dark:border-gray-800/50 bg-gray-50/15 dark:bg-gray-950/5">
             <div className="relative p-4 sm:p-6 md:p-8">
               <SkillInfo info="Skills & Technologies" />
 
               {/* Scrollable tab bar */}
               <div className="no-scrollbar -mx-4 mb-8 overflow-x-auto px-4 sm:mx-0 sm:px-0">
                 <div className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
-                  {TABS.map(({ id, label, Icon }) => (
-                    <button
-                      key={id}
-                      onClick={() => setActiveTab(id)}
-                      className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                        activeTab === id
-                          ? "bg-primary text-primary-content shadow-sm shadow-primary/20"
-                          : "border border-base-content/10 bg-base-100 text-base-content/70 hover:bg-base-200 hover:text-base-content"
-                      }`}
-                    >
-                      <Icon size={13} strokeWidth={2} />
-                      {label}
-                    </button>
-                  ))}
+                  {TABS.map(({ id, label, Icon }) => {
+                    const active = activeTab === id;
+                    let activeStyle = "";
+                    if (active) {
+                      if (id === "frontend" || id === "backend") activeStyle = "bg-build text-bg font-semibold";
+                      else if (id === "cyber") activeStyle = "bg-defend text-bg font-semibold";
+                      else activeStyle = "bg-support text-bg font-semibold";
+                    }
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => setActiveTab(id)}
+                        className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 border ${
+                          active
+                            ? activeStyle
+                            : "border-gray-200 dark:border-gray-800 bg-bg text-gray-500 hover:bg-gray-100/70 hover:text-ink"
+                        }`}
+                      >
+                        <Icon size={13} strokeWidth={2} />
+                        {label}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -286,25 +295,22 @@ export const Skills = () => {
                 ))}
               </div>
             </div>
-
-            {/* Glass overlay */}
-            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-base-content/[0.02] via-transparent to-base-content/[0.02]" />
           </div>
+        </div>
 
-          {/* Stats row */}
-          <div className="mt-12 grid grid-cols-1 gap-4 opacity-70 sm:grid-cols-3">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl border border-base-content/10 bg-base-content/5 p-5 text-center backdrop-blur-sm"
-              >
-                <div className={`mb-1 text-2xl font-bold ${s.color}`}>
-                  {s.value}
-                </div>
-                <div className="text-sm text-base-content/60">{s.label}</div>
+        {/* Stats row */}
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-2xl border border-gray-200/50 dark:border-gray-800/50 bg-gray-50/10 dark:bg-gray-950/5 p-5 text-center"
+            >
+              <div className={`mb-1 text-2xl font-bold ${s.color}`}>
+                {s.value}
               </div>
-            ))}
-          </div>
+              <div className="text-xs text-gray-400 font-mono uppercase tracking-wider">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -82,22 +82,22 @@ const STATIC_EXPERIENCES = [
 
 const accentCfg = {
   primary: {
-    icon: "bg-primary/10 text-primary",
-    dot: "bg-primary text-primary-content shadow-primary/25",
-    tagClass: "badge-primary",
-    meta: "bg-primary/10 text-primary",
+    icon: "bg-defend/5 text-defend border border-defend/10",
+    dot: "bg-defend text-bg border border-defend/20 shadow-sm",
+    tagClass: "border-defend/15 text-defend bg-defend/5",
+    meta: "border border-defend/15 text-defend bg-defend/5",
   },
   secondary: {
-    icon: "bg-secondary/10 text-secondary",
-    dot: "bg-secondary text-secondary-content shadow-secondary/25",
-    tagClass: "badge-secondary",
-    meta: "bg-secondary/10 text-secondary",
+    icon: "bg-build/5 text-build border border-build/10",
+    dot: "bg-build text-bg border border-build/20 shadow-sm",
+    tagClass: "border-build/15 text-build bg-build/5",
+    meta: "border border-build/15 text-build bg-build/5",
   },
   accent: {
-    icon: "bg-accent/10 text-accent",
-    dot: "bg-accent text-accent-content shadow-accent/25",
-    tagClass: "badge-accent",
-    meta: "bg-accent/10 text-accent",
+    icon: "bg-support/5 text-support border border-support/10",
+    dot: "bg-support text-bg border border-support/20 shadow-sm",
+    tagClass: "border-support/15 text-support bg-support/5",
+    meta: "border border-support/15 text-support bg-support/5",
   },
 };
 
@@ -172,8 +172,8 @@ export const Experience = () => {
               return yearB - yearA;
             }
             // 3. Database creation time descending
-            const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
-            const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+            const dateA = (a as any).created_at ? new Date((a as any).created_at).getTime() : 0;
+            const dateB = (b as any).created_at ? new Date((b as any).created_at).getTime() : 0;
             return dateB - dateA;
           });
 
@@ -188,11 +188,11 @@ export const Experience = () => {
   }, []);
 
   return (
-    <section className="rounded-3xl border border-base-content/10 bg-base-100 px-5 py-10 shadow-sm sm:px-8 lg:px-10">
+    <section className="rounded-2xl border border-gray-200/60 dark:border-gray-800/60 bg-bg px-5 py-10 shadow-sm sm:px-8 lg:px-10">
       <SectionTitle id="exp" title="Experience" />
 
       <div className="relative">
-        <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px bg-base-content/10 md:block" />
+        <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px bg-gray-200/50 dark:bg-gray-800/50 md:block" />
 
         <div className="grid gap-5">
           {experienceList.map((exp, index) => {
@@ -203,13 +203,13 @@ export const Experience = () => {
                 <article className="grid gap-4 md:grid-cols-[2rem_minmax(0,1fr)]">
                   <div className="relative hidden md:block">
                     <div
-                      className={`absolute left-0 top-5 z-10 flex h-8 w-8 items-center justify-center rounded-xl shadow-lg ${cfg.dot}`}
+                      className={`absolute left-0 top-5 z-10 flex h-8 w-8 items-center justify-center rounded-xl shadow-sm ${cfg.dot}`}
                     >
                       {resolveLucideIcon(exp.Icon, 16)}
                     </div>
                   </div>
 
-                  <div className="overflow-hidden rounded-2xl border border-base-content/10 bg-base-100 shadow-sm transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md">
+                  <div className="overflow-hidden rounded-2xl border border-gray-200/40 dark:border-gray-800/40 bg-gray-50/15 dark:bg-gray-950/5 transition-all duration-300 ease-spring hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-gray-700 hover:shadow-sm">
                     <div className="grid gap-4 p-5 lg:grid-cols-[minmax(0,1fr)_auto]">
                       <div className="flex min-w-0 items-start gap-3">
                         <div
@@ -219,18 +219,18 @@ export const Experience = () => {
                         </div>
 
                         <div className="min-w-0">
-                          <h3 className="text-lg font-bold leading-tight text-base-content">
+                          <h3 className="text-lg font-bold leading-tight text-ink font-serif">
                             {exp.title}
                           </h3>
-                          <p className="mt-1 text-sm font-medium text-base-content/60">
+                          <p className="mt-1 text-sm font-medium text-gray-500 font-mono">
                             {exp.subtitle}
                           </p>
                           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-                            <span className="inline-flex items-center gap-1.5 text-xs text-base-content/50">
+                            <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 font-mono">
                               <MapPin size={11} strokeWidth={2} />
                               {exp.company}
                             </span>
-                            <span className="inline-flex items-center gap-1.5 text-xs text-base-content/50">
+                            <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 font-mono">
                               <Calendar size={11} strokeWidth={2} />
                               {exp.period}
                             </span>
@@ -240,23 +240,23 @@ export const Experience = () => {
 
                       <div className="flex flex-wrap items-start gap-2 lg:justify-end">
                         {exp.current && (
-                          <span className="badge badge-primary badge-sm flex-shrink-0 font-medium">
+                          <span className={`border px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold ${exp.accent === "primary" ? "border-defend/20 bg-defend/5 text-defend" : "border-build/20 bg-build/5 text-build"}`}>
                             Present
                           </span>
                         )}
-                        <span className={`badge badge-sm ${cfg.meta}`}>
+                        <span className={`border px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold ${cfg.meta}`}>
                           {exp.location}
                         </span>
                       </div>
                     </div>
 
-                    <div className="h-px bg-base-content/10" />
+                    <div className="h-px bg-gray-200/50 dark:bg-gray-800/50" />
 
                     <ul className="grid gap-2 p-5 md:grid-cols-2">
                       {exp.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="rounded-xl bg-base-200/60 p-3 text-sm leading-relaxed text-base-content/70"
+                          className="rounded-xl border border-gray-200/40 dark:border-gray-800/40 bg-bg p-3 text-sm leading-relaxed text-gray-500"
                         >
                           {bullet}
                         </li>
@@ -267,7 +267,7 @@ export const Experience = () => {
                       {exp.tags.map((tag) => (
                         <span
                           key={tag}
-                          className={`badge badge-outline badge-sm ${cfg.tagClass} font-normal`}
+                          className={`border px-2 py-0.5 rounded text-[10px] font-mono ${cfg.tagClass}`}
                         >
                           {tag}
                         </span>

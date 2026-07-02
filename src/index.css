@@ -1,49 +1,125 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply scroll-smooth;
+:root {
+  --bg: 255 255 255;
+  --ink: 10 10 10;
+  
+  --g50: 250 250 250;
+  --g100: 245 245 245;
+  --g200: 233 233 233;
+  --g300: 212 212 212;
+  --g400: 163 163 163;
+  --g500: 115 115 115;
+  --g600: 82 82 82;
+  --g700: 64 64 64;
+  --g800: 38 38 38;
+  --g900: 23 23 23;
+  --g950: 10 10 10;
+  
+  --accent-build: 0 102 255;
+  --accent-defend: 220 38 38;
+  --accent-support: 79 70 229;
+
+  --halftone: rgba(10, 10, 10, 0.08);
+  --grid: rgba(10, 10, 12, 0.06);
+  --sel-bg: #0a0a0a;
+  --sel-fg: #ffffff;
 }
+
+html.dark {
+  --bg: 11 11 12;
+  --ink: 228 228 231;
+
+  --g50: 18 18 20;
+  --g100: 24 24 27;
+  --g200: 32 32 36;
+  --g300: 45 45 50;
+  --g400: 142 142 147;
+  --g500: 174 174 178;
+  --g600: 199 199 204;
+  --g700: 218 218 222;
+  --g800: 228 228 232;
+  --g900: 235 235 240;
+  --g950: 244 244 245;
+
+  --accent-build: 59 130 246;
+  --accent-defend: 239 68 68;
+  --accent-support: 129 140 248;
+
+  --halftone: rgba(228, 228, 231, 0.05);
+  --grid: rgba(228, 228, 231, 0.07);
+  --sel-bg: #fafafa;
+  --sel-fg: #0b0b0c;
+}
+
+/* Custom Cyber Night theme (Minimalized Synthwave tribute) */
+html[data-theme="cyber-night"] {
+  --bg: 10 10 18;
+  --ink: 224 231 255;
+
+  --g50: 17 17 31;
+  --g100: 24 24 43;
+  --g200: 33 33 60;
+  --g300: 49 49 88;
+  --g400: 129 140 248;
+  --g500: 165 180 252;
+  --g600: 199 210 254;
+  --g700: 224 231 255;
+  --g800: 238 242 255;
+  --g900: 245 247 255;
+  --g950: 250 251 255;
+
+  --accent-build: 168 85 247;   /* Violet */
+  --accent-defend: 236 72 153;  /* Pink */
+  --accent-support: 59 130 246;  /* Blue */
+
+  --halftone: rgba(168, 85, 247, 0.06);
+  --grid: rgba(168, 85, 247, 0.09);
+  --sel-bg: #a855f7;
+  --sel-fg: #0a0a12;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    background-color: rgb(var(--bg));
+  }
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: 'Geist', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--sel-bg);
+    color: var(--sel-fg);
+  }
+}
+
+/* Halftone Dot Fields & Webkit Masks */
+.halftone {
+  background-image: radial-gradient(circle at center, var(--halftone) 1px, transparent 1.6px);
+  background-size: 9px 9px;
+}
+.halftone-wide {
+  background-size: 13px 13px;
+}
+.mask-tr {
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 100% 0%, #000 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse 80% 80% at 100% 0%, #000 0%, transparent 65%);
+}
+.mask-bl {
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 0% 100%, #000 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse 80% 80% at 0% 100%, #000 0%, transparent 65%);
+}
+
+
 
 .ease-spring {
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes skillEnter {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.skill-enter {
-  animation: skillEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skill-enter {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.hero-grid-bg {
-  background-image:
-    linear-gradient(hsl(var(--p) / 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--p) / 0.07) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-body {
-  @apply font-Inter;
 }
 @keyframes fade-in {
   from {
