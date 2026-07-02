@@ -134,17 +134,17 @@ export const Home = () => {
 
         <div className="relative grid gap-6 p-5 sm:p-8 lg:grid-cols-[minmax(0,1fr)_20rem] xl:grid-cols-[minmax(0,1fr)_24rem] xl:p-8 2xl:p-10">
           <div>
-            <div className="mb-6 flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 rounded-xl border border-build/20 bg-build/5 px-3 py-2 font-mono text-xs font-semibold text-build hover:bg-build/10 transition-colors">
-                <Code2 size={14} />
-                &lt; Web Developer /&gt;
+            <div className="mb-6 flex flex-wrap items-center gap-1 sm:gap-2">
+              <span className="inline-flex items-center gap-1 rounded-lg border border-build/20 bg-build/5 px-1.5 py-0.5 xs:px-2 xs:py-1 sm:px-3 sm:py-2 font-mono text-[9px] xs:text-[10px] sm:text-xs font-semibold text-build hover:bg-build/10 transition-colors">
+                <Code2 size={11} className="sm:size-[14px]" />
+                &lt; Web Dev /&gt;
               </span>
-              <span className="inline-flex items-center gap-2 rounded-xl border border-defend/20 bg-defend/5 px-3 py-2 font-mono text-xs font-semibold text-defend hover:bg-defend/10 transition-colors">
-                <ShieldCheck size={14} />
+              <span className="inline-flex items-center gap-1 rounded-lg border border-defend/20 bg-defend/5 px-1.5 py-0.5 xs:px-2 xs:py-1 sm:px-3 sm:py-2 font-mono text-[9px] xs:text-[10px] sm:text-xs font-semibold text-defend hover:bg-defend/10 transition-colors">
+                <ShieldCheck size={11} className="sm:size-[14px]" />
                 [ SOC Analyst ]
               </span>
-              <span className="inline-flex items-center gap-2 rounded-xl border border-support/20 bg-support/5 px-3 py-2 font-mono text-xs font-semibold text-support hover:bg-support/10 transition-colors">
-                <Cpu size={14} />
+              <span className="inline-flex items-center gap-1 rounded-lg border border-support/20 bg-support/5 px-1.5 py-0.5 xs:px-2 xs:py-1 sm:px-3 sm:py-2 font-mono text-[9px] xs:text-[10px] sm:text-xs font-semibold text-support hover:bg-support/10 transition-colors">
+                <Cpu size={11} className="sm:size-[14px]" />
                 [ AI Enthusiast ]
               </span>
             </div>
