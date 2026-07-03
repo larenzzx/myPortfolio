@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const texts = ["Larenz", "a Web Developer", "an AI Tinkerer"];
+const texts = ["Larenz", "a Web Developer", "an AI Automation Developer", "an AI Solutions Integrator"];
 
 const TypingAnimation = () => {
   const [index, setIndex] = useState(0);

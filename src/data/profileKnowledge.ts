@@ -1,26 +1,26 @@
 export const profileKnowledge = {
   name: "Mark Larenz Tabotabo",
   preferredName: "Mark Tabotabo",
-  role: "Freelance Web Developer & Cybersecurity Analyst",
-  title: "Full-stack developer and SOC Analyst L1",
+  role: "Freelance Web & AI Automation Developer & Cybersecurity Analyst",
+  title: "Freelance Web & AI Automation Developer and SOC Analyst L1",
   shortBio:
-    "Full-stack developer and SOC Analyst L1 focused on clean interfaces, secure workflows, and dependable digital experiences.",
+    "Freelance Web & AI Automation Developer and SOC Analyst L1 focused on robust web applications, secure intelligent workflows, and custom AI-driven integrations.",
   education: {
     school: "Western Mindanao State University (WMSU)",
     degree: "Bachelor of Science in Information Technology (BSIT)",
     graduationYear: "2025",
   },
   professionalSummary:
-    "Mark is a freelance web developer with full-stack, frontend, maintenance, and deployment experience. He also works full-time on-site as a SOC Analyst L1, so his work combines practical web development with cybersecurity awareness and IT operations experience.",
+    "Mark is a freelance Web & AI Automation Developer with experience building full-stack web applications, custom AI-driven workflows, and automated system integrations. He also works full-time on-site as a SOC Analyst L1, combining software development, AI solutions integration, and cybersecurity operations experience.",
   about: [
-    "I'm a freelance web developer who builds full-stack web applications, frontend interfaces, and practical web solutions for clients.",
-    "I help improve existing projects by fixing bugs, refining UI, adding features, and preparing sites for online deployment.",
-    "Alongside freelance development, I work full-time on-site as a SOC Analyst L1 at Aetas Security, monitoring threats, responding to incidents, and supporting enterprise IT operations.",
+    "I'm a freelance Web & AI Automation Developer who builds robust web applications, secure intelligent workflows, and custom AI-driven integrations.",
+    "I help clients optimize their systems through custom AI agents, automated pipelines, and responsive web applications.",
+    "Alongside freelance development, I work full-time on-site as a SOC Analyst L1 at Aetas Security, monitoring threat telemetry and supporting enterprise IT systems.",
   ],
   availability: {
     status:
-      "Available for freelance commissions only because Mark currently works full-time on-site as a SOC Analyst.",
-    workTypes: ["Freelance", "Commission work", "Remote freelance projects"],
+      "Available for freelance commissions and AI automation projects, as Mark currently works full-time on-site as a SOC Analyst.",
+    workTypes: ["Freelance", "Commission work", "Remote freelance projects", "AI Integrations"],
     remote: true,
     basedIn: "Philippines",
     preferredContact: "Email",
@@ -69,6 +69,14 @@ export const profileKnowledge = {
       "LAN / Network",
       "VM Setup",
     ],
+    aiAutomation: [
+      "LLM Integrations",
+      "AI Agents",
+      "Workflow Automation",
+      "Prompt Engineering",
+      "Custom Pipelines",
+      "API Orchestration",
+    ],
   },
   experience: [
     {
@@ -85,16 +93,16 @@ export const profileKnowledge = {
       ],
     },
     {
-      title: "Freelance Web Developer",
-      subtitle: "Full-stack, frontend, maintenance, and deployment",
+      title: "Freelance Web & AI Automation Developer",
+      subtitle: "Web applications, custom AI integrations, and workflow pipelines",
       company: "Independent",
       location: "Remote",
       period: "2024 - Present",
       bullets: [
-        "Build full-stack web applications, frontend apps, portfolios, dashboards, and landing pages for client commissions",
-        "Improve existing projects by fixing bugs, resolving errors, refining UI, and adding requested features",
-        "Develop responsive interfaces using React, Tailwind CSS, JavaScript, PHP, and database-backed workflows when needed",
-        "Prepare projects for production by testing, configuring hosting, and deploying sites online",
+        "Build full-stack web applications, secure intelligent workflows, custom AI-driven integrations, and dashboard systems",
+        "Develop automated system pipelines connecting large language models (LLMs) with databases, external APIs, and local operations",
+        "Improve existing codebases by fixing bugs, refining interfaces, adding features, and launching client applications online",
+        "Develop high-performance frontends using React, TypeScript, Vite, and database-backed backends using Python/Django, PHP, or Node.js",
       ],
     },
     {
@@ -265,22 +273,22 @@ export const profileKnowledge = {
   ],
   commonAnswers: {
     developerType:
-      "Mark is a freelance web developer who can work on full-stack web applications, frontend interfaces, existing-site improvements, and deployment. He also works as a SOC Analyst L1, which gives him a security-focused mindset when building and maintaining systems.",
+      "Mark is a freelance Web & AI Automation Developer who builds robust web applications, secure intelligent workflows, and custom AI-driven integrations. He also works full-time as a SOC Analyst L1, giving him a security-first perspective when building software.",
     strongestSkills:
-      "Mark's strongest technical skills are React, Tailwind CSS, JavaScript, HTML5, CSS3, PHP, MySQL, PostgreSQL, Python, Django, Git, GitHub, cybersecurity operations, alert triage, incident response, Wazuh, Microsoft Defender, Qualys VMDR, OSINT tools, Entra ID, Intune, Exchange, SharePoint, Datto RMM, OS configuration, hardware maintenance, LAN/network setup, and VM setup.",
+      "Mark's strongest technical skills are React, TypeScript, Python, Django, JavaScript, Tailwind CSS, LLM integrations, AI agents, custom workflow pipelines, API orchestration, cybersecurity operations, Wazuh, MS Defender, Qualys VMDR, incident response, and enterprise IT operations.",
     tellMeAboutMark:
-      "Mark Larenz Tabotabo is a freelance web developer and SOC Analyst L1 based in the Philippines. He builds full-stack web applications, frontend interfaces, and practical web solutions for clients. He also improves existing projects by fixing bugs, refining UI, adding features, and preparing sites for deployment. His cybersecurity work helps him approach projects with security, reliability, and maintainability in mind.",
+      "Mark Larenz Tabotabo is a freelance Web & AI Automation Developer and a full-time SOC Analyst L1 based in the Philippines. He focuses on developing custom AI workflow pipelines, full-stack web applications, and secure systems integrations. His background in cybersecurity and IT operations ensures that the digital systems he develops are reliable, secure, and performant.",
     technologies:
-      "Mark uses frontend tools like HTML5, CSS3, JavaScript, Tailwind CSS, React, DaisyUI, HeadlessUI, ChartJS, SweetAlert2, SwiperJS, DataTablesJS, Git, and GitHub. For backend work, he uses Python, Django, PHP, MySQL, and PostgreSQL. He also works with cybersecurity and IT tools such as Wazuh, Microsoft Defender, OSINT tools, Qualys VMDR, Entra ID, Intune, Exchange, SharePoint, Datto RMM, LAN/network setup, and VM setup.",
+      "Mark works with React, Vite, TypeScript, Tailwind CSS, Python, Django, PHP, MySQL, PostgreSQL, Git, and GitHub. He specializes in AI automation using LLM APIs, custom AI agents, and workflow routing pipelines. He also works with cybersecurity and system tools like Wazuh, Microsoft Defender, Qualys VMDR, Entra ID, Intune, Exchange, SharePoint, and Datto RMM.",
     availability:
-      "Mark is available for commissions and freelance projects. He currently works full-time on-site as a SOC Analyst, so freelance availability should be discussed through email.",
+      "Mark is available for freelance Web & AI Automation commissions and remote contract development. He works full-time on-site as a SOC Analyst, so freelance project scheduling and consultations should be initiated via email.",
   },
   responseGuidance: [
     "If asked where Mark graduated, answer Western Mindanao State University (WMSU).",
     "If asked what course or degree Mark took, answer Bachelor of Science in Information Technology (BSIT).",
     "If asked when Mark graduated, answer 2025.",
     "If asked about certifications, awards, achievements, best project, why to hire Mark, preferred industries, or what makes him different, say that information is not listed in the portfolio yet.",
-    "If asked whether Mark is available for work, say he is available for freelance commissions only because he currently works full-time on-site as a SOC Analyst.",
+    "If asked whether Mark is available for work, say he is available for freelance Web & AI Automation commissions only because he currently works full-time on-site as a SOC Analyst.",
     "If asked how to contact Mark, recommend email first.",
     "Do not claim a best project or rank projects unless the user asks for a general list of portfolio projects.",
   ],

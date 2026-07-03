@@ -51,7 +51,7 @@ export const ProjectCard = ({
           <img
             src={projectImg}
             alt={projectTitle}
-            className="h-full w-full object-cover grayscale opacity-70 transition-all duration-500 ease-spring group-hover:scale-[1.015] group-hover:grayscale-0 group-hover:opacity-100"
+            className="h-full w-full object-cover grayscale opacity-70 transition-all duration-500 ease-spring group-hover:scale-[1.04] group-hover:grayscale-0 group-hover:opacity-100"
             loading="lazy"
             decoding="async"
           />
