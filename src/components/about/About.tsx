@@ -120,7 +120,7 @@ const About = () => {
                 Mark Larenz Tabotabo
               </h1>
               <p className="mt-2 text-lg font-medium text-build sm:text-xl font-mono">
-                SOC Analyst L1 | Freelance Web Developer | AI Enthusiast
+                SOC Analyst L1 | Freelance Web & AI Automation Developer
               </p>
             </div>
 
@@ -141,9 +141,9 @@ const About = () => {
                 or developing complete web solutions from scratch, including deployment.
               </p>
               <p>
-                Currently, I&apos;m transitioning deeper into AI—exploring AI infrastructure, 
-                automation, and intelligent systems. I’m actively building and experimenting 
-                with tools and workflows that merge software development with AI-driven solutions.
+                Alongside development, I focus on AI integrations, designing intelligent agents, 
+                custom AI automations, and smart systems. I build projects and workflows that 
+                connect software engineering with secure AI-driven solutions.
               </p>
             </div>
 

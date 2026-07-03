@@ -109,8 +109,8 @@ export const DashboardLayout = ({ children }) => {
           onCommandOpen={() => setIsCommandOpen(true)}
         />
 
-        <main className="min-h-screen flex-1 pt-16 lg:ml-72 lg:pt-0">
-          <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
+        <main className="min-h-screen flex-1 pt-16 lg:ml-56 lg:pt-0">
+          <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
             {children}
             <Footer />
           </div>

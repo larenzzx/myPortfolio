@@ -20,6 +20,113 @@ import TypingAnimation from "./hero/TypingAnimation";
 import { ProjectCard } from "./projectSection/ProjectCard";
 import { featuredProject, fetchProjectsFromSupabase } from "./projectSection/projectData";
 
+const NeuralNetAnimation = () => {
+  const ROWS = 8;
+  const COLS = 32;
+
+  const generateRandomGrid = () => {
+    const grid = [];
+    for (let r = 0; r < ROWS; r++) {
+      const row = [];
+      for (let c = 0; c < COLS; c++) {
+        row.push(Math.random() < 0.25);
+      }
+      grid.push(row);
+    }
+    return grid;
+  };
+
+  const [grid, setGrid] = useState<boolean[][]>(() => generateRandomGrid());
+
+  useEffect(() => {
+    let active = true;
+
+    const countNeighbors = (g: boolean[][], r: number, c: number) => {
+      let neighbors = 0;
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          if (i === 0 && j === 0) continue;
+          const newR = r + i;
+          const newC = c + j;
+          if (newR >= 0 && newR < ROWS && newC >= 0 && newC < COLS) {
+            if (g[newR][newC]) neighbors++;
+          }
+        }
+      }
+      return neighbors;
+    };
+
+    const interval = setInterval(() => {
+      if (!active) return;
+
+      setGrid((prev) => {
+        const next = prev.map((row) => [...row]);
+        let totalLive = 0;
+        let changed = false;
+
+        for (let r = 0; r < ROWS; r++) {
+          for (let c = 0; c < COLS; c++) {
+            const neighbors = countNeighbors(prev, r, c);
+            const isAlive = prev[r][c];
+
+            if (isAlive) {
+              if (neighbors < 2 || neighbors > 3) {
+                next[r][c] = false;
+                changed = true;
+              } else {
+                next[r][c] = true;
+                totalLive++;
+              }
+            } else {
+              if (neighbors === 3) {
+                next[r][c] = true;
+                totalLive++;
+                changed = true;
+              }
+            }
+          }
+        }
+
+        if (!changed || totalLive < 4) {
+          return generateRandomGrid();
+        }
+        return next;
+      });
+    }, 350);
+
+    return () => {
+      active = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div className="w-full max-w-2xl h-24 flex items-center justify-start select-none font-mono py-2">
+      <div 
+        className="grid gap-[4px] p-1 select-none"
+        style={{ gridTemplateColumns: 'repeat(32, minmax(0, 1fr))' }}
+      >
+        {grid.map((row, r) =>
+          row.map((cell, c) => (
+            <div
+              key={`${r}-${c}`}
+              className="w-[6px] h-[6px] xs:w-2 xs:h-2 sm:w-2.5 sm:h-2.5 rounded-[1px] flex items-center justify-center transition-all duration-300"
+            >
+              <div
+                className={`transition-all duration-300 rounded-[1px] ${
+                  cell
+                    ? "w-full h-full bg-ink opacity-90 scale-100"
+                    : "w-[2px] h-[2px] bg-gray-200 dark:bg-gray-800 scale-75 opacity-40"
+                }`}
+              />
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
+
 const overviewCards = [
   {
     label: "Current Role",
@@ -86,23 +193,23 @@ const workspaceLinks = [
 const valueCards = [
   {
     title: "Build",
-    label: "Web Development",
+    label: "Web & AI Automation",
     description:
-      "Full-stack web development, responsive interfaces, user-friendly designs, deployment, and bug fixes. Occasionally taking freelance projects.",
+      "Freelance Web & AI Automation Developer. Building robust web apps, custom AI-driven solutions, and secure workflow automations.",
     Icon: Code2,
   },
   {
     title: "Defend",
     label: "SOC Analyst",
     description:
-      "Threat monitoring, incident response, security alert triage, Wazuh, Microsoft Defender for Endpoint, Qualys VMDR, and OSINT tools.",
+      "Full-time SOC Analyst L1. Managing threat monitoring, incident response, security alert triage, and enterprise safety.",
     Icon: ShieldCheck,
   },
   {
     title: "Support",
     label: "IT Operations",
     description:
-      "User provisioning, Intune device management, VM setup via Entra ID, Exchange, SharePoint, Datto RMM, OS configuration, hardware, LAN, and networking.",
+      "IT operations, systems configuration, user provisioning, device management, and secure networking setups.",
     Icon: MonitorCog,
   },
 ];
@@ -145,15 +252,13 @@ export const Home = () => {
               </span>
               <span className="inline-flex items-center gap-1 rounded-lg border border-support/20 bg-support/5 px-1.5 py-0.5 xs:px-2 xs:py-1 sm:px-3 sm:py-2 font-mono text-[9px] xs:text-[10px] sm:text-xs font-semibold text-support hover:bg-support/10 transition-colors">
                 <Cpu size={11} className="sm:size-[14px]" />
-                [ AI Enthusiast ]
+                [ AI & Automation ]
               </span>
             </div>
 
-            <h1 className="max-w-4xl text-2xl font-black leading-[1.25] tracking-tight text-ink sm:text-3xl md:text-5xl xl:text-6xl">
-              I build <span className="text-build font-extrabold">web applications</span>.
-              <br />
-              I automate <span className="text-defend font-extrabold">workflows</span>.
-            </h1>
+            <div className="mb-6 mt-2">
+              <NeuralNetAnimation />
+            </div>
 
             <div className="mt-5 flex min-h-10 items-center gap-x-2 text-lg font-bold sm:text-xl xl:text-xl 2xl:text-2xl">
               <span className="text-gray-400">I&apos;m</span>
@@ -161,7 +266,7 @@ export const Home = () => {
             </div>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-gray-500 sm:text-lg">
-              Developer and SOC Analyst L1 with a growing passion for AI infrastructure, automation, and building smarter systems.
+              Currently employed as a SOC Analyst L1 and working as a freelance Web & AI Automation Developer. I focus on developing robust web applications, secure intelligent workflows, and custom AI-driven integrations.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -233,7 +338,7 @@ export const Home = () => {
               What I Know
             </p>
             <h2 className="mt-2 text-2xl font-bold text-ink font-serif">
-              Skills across development, security, and IT
+              Skills across development, security, and AI automation
             </h2>
           </div>
 

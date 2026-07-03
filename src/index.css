@@ -18,9 +18,9 @@
   --g900: 23 23 23;
   --g950: 10 10 10;
   
-  --accent-build: 0 102 255;
-  --accent-defend: 220 38 38;
-  --accent-support: 79 70 229;
+  --accent-build: 10 10 10;
+  --accent-defend: 10 10 10;
+  --accent-support: 10 10 10;
 
   --halftone: rgba(10, 10, 10, 0.08);
   --grid: rgba(10, 10, 12, 0.06);
@@ -29,29 +29,29 @@
 }
 
 html.dark {
-  --bg: 11 11 12;
-  --ink: 228 228 231;
+  --bg: 12 12 15;
+  --ink: 244 244 245;
 
-  --g50: 18 18 20;
-  --g100: 24 24 27;
-  --g200: 32 32 36;
-  --g300: 45 45 50;
-  --g400: 142 142 147;
-  --g500: 174 174 178;
-  --g600: 199 199 204;
-  --g700: 218 218 222;
-  --g800: 228 228 232;
-  --g900: 235 235 240;
+  --g50: 24 24 27;
+  --g100: 30 30 34;
+  --g200: 42 42 48;
+  --g300: 58 58 66;
+  --g400: 138 138 146;
+  --g500: 160 160 168;
+  --g600: 180 180 188;
+  --g700: 200 200 207;
+  --g800: 220 222 227;
+  --g900: 234 235 238;
   --g950: 244 244 245;
 
-  --accent-build: 59 130 246;
-  --accent-defend: 239 68 68;
-  --accent-support: 129 140 248;
+  --accent-build: 244 244 245;
+  --accent-defend: 244 244 245;
+  --accent-support: 244 244 245;
 
-  --halftone: rgba(228, 228, 231, 0.05);
-  --grid: rgba(228, 228, 231, 0.07);
-  --sel-bg: #fafafa;
-  --sel-fg: #0b0b0c;
+  --halftone: rgba(244, 244, 245, 0.05);
+  --grid: rgba(244, 244, 245, 0.06);
+  --sel-bg: #f4f4f5;
+  --sel-fg: #0c0c0f;
 }
 
 /* Custom Cyber Night theme (Minimalized Synthwave tribute) */
@@ -71,19 +71,20 @@ html[data-theme="cyber-night"] {
   --g900: 245 247 255;
   --g950: 250 251 255;
 
-  --accent-build: 168 85 247;   /* Violet */
-  --accent-defend: 236 72 153;  /* Pink */
-  --accent-support: 59 130 246;  /* Blue */
+  --accent-build: 224 231 255;
+  --accent-defend: 224 231 255;
+  --accent-support: 224 231 255;
 
-  --halftone: rgba(168, 85, 247, 0.06);
-  --grid: rgba(168, 85, 247, 0.09);
-  --sel-bg: #a855f7;
+  --halftone: rgba(224, 231, 255, 0.05);
+  --grid: rgba(224, 231, 255, 0.07);
+  --sel-bg: #e0e7ff;
   --sel-fg: #0a0a12;
 }
 
 @layer base {
   html {
     @apply scroll-smooth;
+    font-size: 15px;
     background-color: rgb(var(--bg));
   }
   body {
@@ -276,3 +277,31 @@ html[data-theme="cyber-night"] {
 .spotlight-card:hover::after {
   opacity: 1;
 }
+
+/* Bryl-minimal Scrollbar style */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--g300));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--g400));
+}
+
+/* Bryl-minimal inline link decoration */
+.bryl-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--ink) / 0.25);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 200ms ease;
+}
+.bryl-link:hover {
+  text-decoration-color: rgba(var(--ink) / 1);
+}
+
