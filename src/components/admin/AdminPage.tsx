@@ -88,12 +88,12 @@ interface Experience {
 const themeSwal = (options: any) => {
   const { customClass, ...rest } = options;
   return Swal.fire({
-    background: "#0c0c0f", 
-    color: "#f4f4f6",      
+    background: "rgb(var(--bg))", 
+    color: "rgb(var(--ink))",      
     customClass: {
-      popup: "rounded-2xl border border-gray-200/20 dark:border-gray-800/30 bg-gray-950 p-6 shadow-2xl font-sans backdrop-blur-md",
+      popup: "rounded-2xl border border-gray-200 dark:border-gray-800 bg-bg text-ink p-6 shadow-2xl font-sans backdrop-blur-md",
       title: "text-lg font-bold font-serif text-ink",
-      htmlContainer: "text-xs text-gray-400 mt-2",
+      htmlContainer: "text-xs text-gray-500 dark:text-gray-400 mt-2",
       actions: "flex gap-2 justify-center mt-6 w-full",
       confirmButton: "inline-flex h-9 items-center justify-center rounded-xl bg-ink px-4 text-xs font-semibold text-bg hover:opacity-90 transition-opacity border border-gray-200/10 cursor-pointer active:scale-95",
       cancelButton: "inline-flex h-9 items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 bg-bg px-4 text-xs font-semibold text-ink hover:bg-gray-100/70 transition-colors cursor-pointer active:scale-95",
@@ -110,14 +110,16 @@ const themeToast = (options: any) => {
     toast: true,
     position: "top-end",
     showConfirmButton: false,
-    timer: options.timer || 2000,
-    background: "#0c0c0f", 
-    color: "#f4f4f6",      
+    timer: options.timer || 2500,
+    background: "rgb(var(--bg))", 
+    color: "rgb(var(--ink))",      
     customClass: {
-      popup: "rounded-xl border border-gray-200/20 dark:border-gray-800/30 bg-gray-950 shadow-xl font-sans py-2.5 px-4 backdrop-blur-md",
+      popup: "rounded-xl border border-gray-200 dark:border-gray-800 bg-bg text-ink shadow-2xl font-sans py-3 px-4 backdrop-blur-md",
       title: "text-xs font-semibold text-ink",
+      htmlContainer: "text-xs text-gray-500 font-sans",
       ...customClass
     },
+    buttonsStyling: false,
     ...rest
   });
 };

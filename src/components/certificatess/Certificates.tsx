@@ -401,6 +401,19 @@ const STATIC_CERTIFICATES = [
   },
 ];
 
+const sortCertificates = (list: any[]) => {
+  return [...list].sort((a, b) => {
+    const yearA = parseInt(a.year) || 0;
+    const yearB = parseInt(b.year) || 0;
+    if (yearB !== yearA) {
+      return yearB - yearA;
+    }
+    const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+    const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+    return dateB - dateA;
+  });
+};
+
 /* ----------------------------------------------------------------
    Stats bar
 ---------------------------------------------------------------- */
@@ -441,7 +454,7 @@ const StatsBar = ({ certs }) => {
 ---------------------------------------------------------------- */
 export const Certificates = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [certsList, setCertsList] = useState(STATIC_CERTIFICATES);
+  const [certsList, setCertsList] = useState(() => sortCertificates(STATIC_CERTIFICATES));
 
   useEffect(() => {
     const fetchCerts = async () => {
@@ -465,6 +478,7 @@ export const Certificates = () => {
               category: c.category ? c.category.trim().replace(/\s+/g, "") : "",
               image: LOCAL_ASSETS[cleanImageUrl] || cleanImageUrl,
               isPdf: !!c.is_pdf,
+              created_at: c.created_at,
             };
 
             if (c.is_deleted) {
@@ -472,14 +486,14 @@ export const Certificates = () => {
             } else {
               const existingIndex = mergedCerts.findIndex((item) => item.title === c.title);
               if (existingIndex > -1) {
-                mergedCerts[existingIndex] = certObj;
+                mergedCerts[existingIndex] = { ...mergedCerts[existingIndex], ...certObj };
               } else {
                 mergedCerts.push(certObj);
               }
             }
           });
 
-          setCertsList(mergedCerts);
+          setCertsList(sortCertificates(mergedCerts));
         }
       } catch (err) {
         console.warn("Failed to fetch certificates from Supabase, using local fallback:", err.message);

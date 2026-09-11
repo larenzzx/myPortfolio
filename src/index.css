@@ -305,3 +305,25 @@ html[data-theme="cyber-night"] {
   text-decoration-color: rgba(var(--ink) / 1);
 }
 
+/* SweetAlert2 Popup & Toast Theme Enhancements */
+.swal2-container.swal2-top-end,
+.swal2-container.swal2-center {
+  z-index: 99999 !important;
+}
+.swal2-popup {
+  background-color: rgb(var(--bg)) !important;
+  color: rgb(var(--ink)) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+.swal2-title {
+  color: rgb(var(--ink)) !important;
+}
+.swal2-html-container,
+.swal2-content {
+  color: rgb(var(--ink)) !important;
+  opacity: 0.85;
+}
+.swal2-timer-progress-bar {
+  background-color: rgb(var(--ink)) !important;
+}
+
